@@ -27,6 +27,14 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+;; When point goes outside the window, Emacs recenters the buffer point.
+;; This changes scrolling behaviour to only as far as point goes
+(setq scroll-conservatively 100)
+
+;; Highlight the current line
+(when window-system
+  (global-hl-line-mode))
+
 ;; No tabs
 (setq-default indent-tabs-mode nil)
 ;; But I won't mess current file indentation
@@ -100,15 +108,16 @@
 
 ;; Use Evil motions in occur-mode
 (add-hook 'occur-mode-hook
-        (lambda ()
+          (lambda ()
             (evil-add-hjkl-bindings occur-mode-map 'emacs
-            (kbd "/") 'evil-search-forward
-            (kbd "?") 'evil-search-backward
-            (kbd "n") 'evil-search-next
-            (kbd "N") 'evil-search-previous
-            (kbd "C-d") 'evil-scroll-down
-            (kbd "C-u") 'evil-scroll-up
-            (kbd "C-w C-w") 'other-window)))
+              (kbd "/") 'evil-search-forward
+              (kbd "?") 'evil-search-backward
+              (kbd "n") 'evil-search-next
+              (kbd "N") 'evil-search-previous
+              (kbd "C-d") 'evil-scroll-down
+              (kbd "C-u") 'evil-scroll-up
+              (kbd "C-w C-w") 'other-window)))
+
 ;; Helm
 (use-package helm
   :ensure t
