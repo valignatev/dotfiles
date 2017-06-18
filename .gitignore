@@ -8,6 +8,7 @@
 /.config/pulse
 /.config/yarn
 /.config/Slack
+/.config/htop
 .DS_Store
 .[0-9]*
 .cache
