@@ -187,7 +187,8 @@
   :ensure t
   :init (global-company-mode)
   :config
-  (setq company-minimum-prefix-length 2)
+  (setq company-minimum-prefix-length 1)
+  (setq company-idle-delay 0.2)
 
   (use-package company-tern
     :ensure t
