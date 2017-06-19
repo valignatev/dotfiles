@@ -29,7 +29,7 @@
 
 ;; When point goes outside the window, Emacs recenters the buffer point.
 ;; This changes scrolling behaviour to only as far as point goes
-(setq scroll-conservatively 100)
+(setq scroll-conservatively 101)
 
 ;; Highlight the current line
 (when window-system
