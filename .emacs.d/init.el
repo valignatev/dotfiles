@@ -200,11 +200,6 @@
     :config
     (add-to-list 'company-backends 'company-tern)))
 
-;; Beacon
-(use-package beacon
-  :ensure t
-  :config
-  (beacon-mode 1))
 
 (provide 'init)
 ;;; init.el ends here
