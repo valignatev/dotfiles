@@ -159,6 +159,10 @@
 (use-package web-mode
   :ensure t
   :defer t
+  :init
+  (setq web-mode-engines-alist
+        '(("django" . "\\.html\\'")))
+  (setq web-mode-enable-auto-quoting t)
   :config
   (setq web-mode-attr-indent-offset 2
         web-mode-code-indent-offset 2
