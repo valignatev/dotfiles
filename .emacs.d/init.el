@@ -200,6 +200,20 @@
     :config
     (add-to-list 'company-backends 'company-tern)))
 
+;; Python stuff
+(use-package anaconda-mode
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'anaconda-mode)
+  (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+  (add-to-list 'company-backends 'company-anaconda)
+
+  (use-package virtualenvwrapper
+    :ensure t
+    :config
+    (venv-initialize-interactive-shells)
+    (venv-initialize-eshell))
+
 
 (provide 'init)
 ;;; init.el ends here
