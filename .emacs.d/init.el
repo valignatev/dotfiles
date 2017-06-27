@@ -214,6 +214,16 @@
     (venv-initialize-interactive-shells)
     (venv-initialize-eshell)))
 
+; Smartparens
+(use-package smartparens-config
+  :ensure smartparens
+  :init
+  (add-hook 'prog-mode-hook #'smartparens-strict-mode)
+
+  (use-package evil-smartparens
+    :ensure t
+    :init
+    (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)))
 
 (provide 'init)
 ;;; init.el ends here
