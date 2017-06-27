@@ -212,7 +212,7 @@
     :ensure t
     :config
     (venv-initialize-interactive-shells)
-    (venv-initialize-eshell))
+    (venv-initialize-eshell)))
 
 
 (provide 'init)
