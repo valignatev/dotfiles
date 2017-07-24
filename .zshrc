@@ -89,6 +89,7 @@ alias cdw="cd ~/workspace/work"
 alias cdm="cd ~/workspace/me"
 
 # virtualenvwrapper
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export WORKON_HOME=~/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
