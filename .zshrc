@@ -89,15 +89,27 @@ alias cdw="cd ~/workspace/work"
 alias cdm="cd ~/workspace/me"
 
 # virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=python3
 export WORKON_HOME=~/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+mac_virtualenvwrapper="/usr/local/bin/virtualenvwrapper.sh"
+arch_virtualenvwrapper="/usr/bin/virtualenvwrapper.sh"
+if [ -e $mac_virtualenvwrapper ]; then
+    source $mac_virtualenvwrapper
+else
+    source $arch_virtualenvwrapper
+fi
 
 # Completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # zsh syntax highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+mac_zsh_syntax_highlighting="/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+arch_zsh_syntax_highlighting="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+if [ -e $mac_zsh_syntax_highlighting ]; then
+    source $mac_zsh_syntax_highlighting
+else
+    source $arch_zsh_syntax_highlighting
+fi
 
 # pipenv by kennethreitz in order to shell into virtualenv
 export PIPENV_SHELL_COMPAT="true"
