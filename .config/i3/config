@@ -2,6 +2,8 @@
 set $class_telegram "Telegram"
 set $class_slack "Slack"
 set $class_firefox "Firefox"
+set $class_chrome "Google-chrome"
+set $class_pycharm "jetbrains-pycharm"
 
 # It is Super_R, check .Xmodmap
 set $mod Mod5
@@ -134,19 +136,21 @@ new_window pixel 1
 assign [class=$class_telegram] $ws10
 assign [class=$class_slack] $ws10
 assign [class=$class_firefox] $ws3
+assign [class=$class_chrome] $ws3
+assign [class=$class_pycharm] $ws2
 
 # Keyboard brightness controls
 bindsym XF86KbdBrightnessUp exec kbdlight up 5
 bindsym XF86KbdBrightnessDown exec kbdlight down 5
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec gmux_backlight +50
-bindsym XF86MonBrightnessDown exec gmux_backlight -50
+bindsym XF86MonBrightnessUp exec gmux_backlight +15
+bindsym XF86MonBrightnessDown exec gmux_backlight -15
 
 # Multimedia keys
-bindsym XF86AudioRaiseVolume exec "amixer -c 0 sset Master '3%+'"
-bindsym XF86AudioLowerVolume exec "amixer -c 0 sset Master '1%-'"
-bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
+bindsym XF86AudioRaiseVolume exec "pamixer -i 3"
+bindsym XF86AudioLowerVolume exec "pamixer -d 1"
+bindsym XF86AudioMute exec "pamixer -t"
 
 # Scratchpad
 for_window [instance="^termite_scratchpad"] move scratchpad
