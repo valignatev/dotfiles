@@ -157,3 +157,8 @@ for_window [instance="^termite_scratchpad"] move scratchpad
 bindsym $mod+x scratchpad show
 bindsym $mod+minus move scratchpad
 exec --no-startup-id termite --name "termite_scratchpad"
+
+# Auto start message applications I use with proper layout
+exec --no-startup-id "i3-msg 'workspace 10; append_layout ~/.config/i3/workspaces/ws10.json'"
+exec --no-startup-id telegram-desktop
+exec --no-startup-id slack
