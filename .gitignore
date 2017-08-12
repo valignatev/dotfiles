@@ -5,6 +5,7 @@
 # The rest ignored stuff
 /.emacs.d/*
 !/.emacs.d/*.el
+/.config/autostart
 /.config/configstore
 /.config/mimeapps.list
 /.config/pavucontrol.ini
