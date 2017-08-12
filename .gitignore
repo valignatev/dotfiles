@@ -5,6 +5,9 @@
 # The rest ignored stuff
 /.emacs.d/*
 !/.emacs.d/*.el
+/.config/configstore
+/.config/mimeapps.list
+/.config/pavucontrol.ini
 /.config/pulse
 /.config/yarn
 /.config/Slack
