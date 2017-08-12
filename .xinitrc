@@ -32,6 +32,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+# Set faster key repeat
+xset r rate 200 100
+
 # Matches 1920X1200 for my 15'' mid-2015 macbook pro
 xrandr --dpi 147
 exec i3
