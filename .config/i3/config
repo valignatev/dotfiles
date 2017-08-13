@@ -130,6 +130,7 @@ bindsym $mod+r mode "resize"
 
 # Turn off tray icons and use polybar
 bar {
+    mode hide
     tray_output none
 }
 
