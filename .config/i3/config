@@ -102,6 +102,12 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exit
 
+# move floating window
+bindsym $mod+Mod1+k move up 30px
+bindsym $mod+Mod1+j move down 30px
+bindsym $mod+Mod1+h move left 30px
+bindsym $mod+Mod1+l move right 30px
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
