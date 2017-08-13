@@ -2,6 +2,7 @@
 *
 !/.*
 !/.*/**
+*.swp
 # The rest ignored stuff
 /.emacs.d/*
 !/.emacs.d/*.el
