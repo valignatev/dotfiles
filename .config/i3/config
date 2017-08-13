@@ -168,3 +168,6 @@ exec --no-startup-id termite --name "termite_scratchpad"
 exec --no-startup-id "i3-msg 'workspace 10; append_layout ~/.config/i3/workspaces/ws10.json'"
 exec --no-startup-id telegram-desktop
 exec --no-startup-id slack
+
+# i3 gives me tearing, so I use compton to fix it without any fancy effects
+exec compton -CGb --no-fading-openclose
