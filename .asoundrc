@@ -1,0 +1,6 @@
+# ALSA library configuration file
+
+# Include settings that are under the control of asoundconf(1).
+# (To disable these settings, comment out this line.)
+</mbp/Users/vj/.asoundrc.asoundconf>
+
