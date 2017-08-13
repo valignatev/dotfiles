@@ -128,12 +128,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Turn off tray icons and use polybar
 bar {
-        position top
-        status_command bumblebee-status -m nic disk:root cpu memory battery date time pasink pasource dnf -p root.path=/ time.format="%H:%M CW %V" date.format="%a, %b %d %Y" -t solarized
+    tray_output none
 }
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Borders
 new_window pixel 1
