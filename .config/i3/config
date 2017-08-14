@@ -139,6 +139,9 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Borders
 new_window pixel 1
 
+# Prevent firefox from stealing focus
+no_focus [class=$class_firefox]
+
 # Assign to workspaces
 assign [class=$class_telegram] $ws10
 assign [class=$class_slack] $ws10
