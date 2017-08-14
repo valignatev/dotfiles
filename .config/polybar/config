@@ -50,8 +50,12 @@ index-sort = true
 wrapping-scroll = false
 enable-scroll = false
 
-format = <label-state>
+format = <label-state> <label-mode>
 format-padding-right = 2
+
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-foreground = #c16772
 
 label-unfocused-foreground = #8a7f8f
 label-unfocused-padding = 1
