@@ -21,6 +21,10 @@
 (blink-cursor-mode 0)
 (desktop-save-mode 1)
 
+;; Default font
+(add-to-list 'default-frame-alist
+             '(font . "FuraCode Nerd Font Mono-10"))
+
 ;; Store backups and autosaves in temp directory
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
@@ -64,9 +68,28 @@
   (package-refresh-contents))
 (package-install-selected-packages)
 
+;; Ivy
+(use-package ivy
+  :ensure t
+  :config
+  (setq ivy-use-virtual-buffers t
+        ivy-count-format "%d/%d"
+        ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+  (ivy-mode )
+
+  (use-package swiper
+    :ensure t
+
+    (use-package counsel
+        :ensure t
+        :config
+        (global-set-key (kbd "M-x") 'counsel-M-x)
+        (global-set-key (kbd "C-x C-f") 'counsel-find-file))
+    )
+
 ;; PATH from shell
 (use-package exec-path-from-shell
-  :ensure t
+  :disabled t
   :if (memq window-system '(mac ns x))
   :config
   (setq exec-path-from-shell-check-startup-files nil
@@ -89,7 +112,8 @@
     (global-evil-leader-mode)
     (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key
-      "<SPC>" 'helm-M-x))
+      "<SPC>" 'counsel-M-x)
+    )
 
   (use-package evil-surround
     :ensure t
@@ -117,14 +141,6 @@
               (kbd "C-d") 'evil-scroll-down
               (kbd "C-u") 'evil-scroll-up
               (kbd "C-w C-w") 'other-window)))
-
-;; Helm
-(use-package helm
-  :ensure t
-  :config
-  (helm-mode 1)
-  (global-set-key (kbd "M-x") 'helm-M-x)
-  (setq helm-candidate-number-limit 100))
 
 ;; Which key
 (use-package which-key
@@ -218,7 +234,7 @@
 (use-package smartparens-config
   :ensure smartparens
   :init
-  (add-hook 'prog-mode-hook #'smartparens-strict-mode)
+  (add-hook 'prog-mode-hook #'smartparens--mode)
 
   (use-package evil-smartparens
     :ensure t
