@@ -5,3 +5,6 @@ export PATH="/usr/local/bin:/usr/local/share/npm/bin:/usr/local/sbin:/usr/local/
 if command -v docker-machine &>/dev/null; then
     eval "$(docker-machine env dev)"
 fi
+
+# Use keychain to enter ssh passphrase only once
+eval `keychain --agents ssh --eval id_rsa`
