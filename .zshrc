@@ -78,9 +78,6 @@ source ~/.bash_profile
 # Example aliases
 # alias ohmyzsh="vim ~/.oh-my-zsh"
 
-alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
-# mapping vim to emacs in order to get used to emacs quickly
-
 # go home
 alias cdh="cd ~"
 # go to work dev directory
