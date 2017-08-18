@@ -78,7 +78,7 @@
   (ivy-mode )
 
   (use-package swiper
-    :ensure t
+    :ensure t)
 
     (use-package counsel
         :ensure t
@@ -224,17 +224,26 @@
   (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
   (add-to-list 'company-backends 'company-anaconda)
 
-  (use-package virtualenvwrapper
+  (use-package company-anaconda
     :ensure t
     :config
-    (venv-initialize-interactive-shells)
-    (venv-initialize-eshell)))
+    (eval-after-load "company"
+      '(add-to-list 'company-backends 'company-anaconda))
+    )
+  )
+
+(use-package virtualenvwrapper
+  :ensure t
+  :config
+  (venv-initialize-interactive-shells)
+  (venv-initialize-eshell)
+  (setq venv-location "~/.virtualenvs/"))
 
 ; Smartparens
 (use-package smartparens-config
   :ensure smartparens
   :init
-  (add-hook 'prog-mode-hook #'smartparens--mode)
+  (add-hook 'prog-mode-hook #'smartparens-mode)
 
   (use-package evil-smartparens
     :ensure t
