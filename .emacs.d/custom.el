@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-anaconda which-key web-mode virtualenvwrapper use-package rjsx-mode popup org-bullets markdown-mode helm-core flycheck exec-path-from-shell evil-surround evil-smartparens evil-leader evil-indent-plus counsel company-tern anaconda-mode))))
+    (fill-column-indicator which-key web-mode virtualenvwrapper use-package rjsx-mode popup org-bullets markdown-mode helm-core flycheck exec-path-from-shell evil-surround evil-smartparens evil-leader evil-indent-plus counsel company-tern company-anaconda))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

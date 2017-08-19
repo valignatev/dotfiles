@@ -141,6 +141,7 @@
   (setq exec-path-from-shell-check-startup-files nil
         exec-path-from-shell-variables '("PATH"))
   (exec-path-from-shell-initialize))
+
 ;; Which key
 (use-package which-key
   :ensure t
@@ -221,7 +222,8 @@
   :config
   (add-hook 'python-mode-hook 'anaconda-mode)
   (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-  (add-to-list 'company-backends 'company-anaconda)
+  (add-hook 'python-mode-hook (lambda () (set-fill-column 78)))
+  (add-to-list 'company-backends #'company-anaconda)
 
   (use-package company-anaconda
     :ensure t
@@ -248,6 +250,22 @@
     :ensure t
     :init
     (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)))
+
+;; Turn off fill-column-indicator while company is active
+;; Check https://github.com/company-mode/company-mode/issues/180
+(defun on-off-fci-before-company(command)
+  (when (string= "show" command)
+    (turn-off-fci-mode))
+  (when (string= "hide" command)
+    (turn-on-fci-mode)))
+
+;; Vertical line
+(use-package fill-column-indicator
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'fci-mode)
+  (advice-add 'company-call-frontends :before #'on-off-fci-before-company)
+  )
 
 (provide 'init)
 ;;; init.el ends here
