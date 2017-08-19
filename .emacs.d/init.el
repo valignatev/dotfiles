@@ -68,34 +68,6 @@
   (package-refresh-contents))
 (package-install-selected-packages)
 
-;; Ivy
-(use-package ivy
-  :ensure t
-  :config
-  (setq ivy-use-virtual-buffers t
-        ivy-count-format "%d/%d"
-        ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
-  (ivy-mode )
-
-  (use-package swiper
-    :ensure t)
-
-    (use-package counsel
-        :ensure t
-        :config
-        (global-set-key (kbd "M-x") 'counsel-M-x)
-        (global-set-key (kbd "C-x C-f") 'counsel-find-file))
-    )
-
-;; PATH from shell
-(use-package exec-path-from-shell
-  :disabled t
-  :if (memq window-system '(mac ns x))
-  :config
-  (setq exec-path-from-shell-check-startup-files nil
-        exec-path-from-shell-variables '("PATH"))
-  (exec-path-from-shell-initialize))
-
 ;; Evil
 (use-package evil
   :ensure t
@@ -142,6 +114,33 @@
               (kbd "C-u") 'evil-scroll-up
               (kbd "C-w C-w") 'other-window)))
 
+;; Ivy
+(use-package ivy
+  :ensure t
+  :config
+  (setq ivy-use-virtual-buffers t
+        ivy-count-format "%d/%d"
+        ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+  (ivy-mode )
+
+  (use-package swiper
+    :ensure t)
+
+    (use-package counsel
+        :ensure t
+        :config
+        (global-set-key (kbd "M-x") 'counsel-M-x)
+        (global-set-key (kbd "C-x C-f") 'counsel-find-file))
+    )
+
+;; PATH from shell
+(use-package exec-path-from-shell
+  :disabled t
+  :if (memq window-system '(mac ns x))
+  :config
+  (setq exec-path-from-shell-check-startup-files nil
+        exec-path-from-shell-variables '("PATH"))
+  (exec-path-from-shell-initialize))
 ;; Which key
 (use-package which-key
   :ensure t
