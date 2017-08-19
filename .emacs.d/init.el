@@ -77,6 +77,7 @@
   (evil-mode 1)
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+  (define-key evil-normal-state-map "/" 'swiper)
 
   (use-package evil-leader
     :ensure t
