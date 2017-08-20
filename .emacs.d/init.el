@@ -273,6 +273,8 @@
 ;; Vertical line
 (use-package fill-column-indicator
   :ensure t
+  :init
+  (setq fci-rule-width 4)
   :config
   (add-hook 'prog-mode-hook 'fci-mode)
   (advice-add 'company-call-frontends :before #'on-off-fci-before-company)
