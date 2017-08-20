@@ -115,6 +115,12 @@
               (kbd "C-u") 'evil-scroll-up
               (kbd "C-w C-w") 'other-window)))
 
+;; Solarized theme
+(use-package solarized-theme
+  :ensure t
+  :config
+  (load-theme 'solarized-dark t))
+
 ;; Ivy
 (use-package ivy
   :ensure t
@@ -161,8 +167,12 @@
 
   (add-hook 'flycheck-mode-hook
             (lambda ()
-              (evil-define-key 'normal flycheck-mode-map (kbd "]e") 'flycheck-next-error)
-              (evil-define-key 'normal flycheck-mode-map (kbd "[e") 'flycheck-previous-error))
+              (evil-define-key
+                'normal flycheck-mode-map (kbd "]e")
+                'flycheck-next-error)
+              (evil-define-key
+                'normal flycheck-mode-map (kbd "[e")
+                'flycheck-previous-error))
             ))
 
 ;; Markdown
@@ -267,6 +277,13 @@
   (add-hook 'prog-mode-hook 'fci-mode)
   (advice-add 'company-call-frontends :before #'on-off-fci-before-company)
   )
+
+;; Projectile
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode)
+  (setq projectile-completion-system 'ivy))
 
 (provide 'init)
 ;;; init.el ends here
