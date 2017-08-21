@@ -28,39 +28,45 @@ cursor_shape = block
 # Hide links that are no longer valid in url select overlay mode
 filter_unmatched_urls = true
 
-# emit escape sequences for extra modified keys
-#modify_other_keys = false
-
 [colors]
-#cursor = #dcdccc
-#cursor_foreground = #dcdccc
-foreground = #dcdccc
-foreground_bold = #ffffff
-background = #3f3f3f
 
-# 20% background transparency (requires a compositor)
-#background = rgba(63, 63, 63, 0.8)
+# special
+foreground      = #ffeefc
+foreground_bold = #ffeefc
+cursor          = #ffeefc
+background      = #141021
 
-# if unset, will reverse foreground and background
-highlight = #2f2f2f
+# black
+color0  = #4f4858
+color8  = #545d67
 
-# colors from color0 to color254 can be set
-color0 = #3f3f3f
-color1 = #705050
-color2 = #60b48a
-color3 = #dfaf8f
-color4 = #506070
-color5 = #dc8cc3
-color6 = #8cd0d3
-color7 = #dcdccc
-color8 = #709080
-color9 = #dca3a3
-color10 = #c3bf9f
-color11 = #f0dfaf
-color12 = #94bff3
-color13 = #ec93d3
-color14 = #93e0e3
-color15 = #ffffff
+# red
+color1  = #c05c47
+color9  = #c16772
+
+# green
+color2  = #428e8e
+color10 = #afda6e
+
+# yellow
+color3  = #e4b226
+color11 = #ebcf1a
+
+# blue
+color4  = #4457a3
+color12 = #4880a5
+
+# magenta
+color5  = #903a62
+color13 = #9568a1
+
+# cyan
+color6  = #7aa1dc
+color14 = #abbcda
+
+# white
+color7  = #c4b7c5
+color15 = #ffeefc
 
 [hints]
 #font = Monospace 12
