@@ -15,8 +15,8 @@ foreground = ${colors.foreground}
 font-0 = Iosevka\ Nerd\ Font:pixelsize=14;weight=bold;0
 
 modules-left = i3 xwindow
-modules-center = date
-modules-right = wlan volume backlight filesystem xkeyboard memory cpu battery temperature
+modules-center = xkeyboard date
+modules-right = wlan volume backlight filesystem memory cpu battery temperature
 
 tray-position =
 
