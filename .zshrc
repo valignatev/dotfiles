@@ -86,7 +86,12 @@ alias cdw="cd ~/workspace/work"
 alias cdm="cd ~/workspace/me"
 
 # virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+if [ "$(uname)" = "Linux" ]; then
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+fi
+if [ "$(uname)" = "Darwin" ]; then
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+fi
 export WORKON_HOME=~/.virtualenvs
 mac_virtualenvwrapper="/usr/local/bin/virtualenvwrapper.sh"
 arch_virtualenvwrapper="/usr/bin/virtualenvwrapper.sh"
