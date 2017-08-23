@@ -1,41 +1,44 @@
 #!/bin/sh
 
-userresources=$HOME/.Xresources
-usermodmap=$HOME/.Xmodmap
-sysresources=/etc/X11/xinit/.Xresources
-sysmodmap=/etc/X11/xinit/.Xmodmap
+if [ "$(uname)" = "Linux" ]; then
 
-# merge in defaults and keymaps
+    userresources=$HOME/.Xresources
+    usermodmap=$HOME/.Xmodmap
+    sysresources=/etc/X11/xinit/.Xresources
+    sysmodmap=/etc/X11/xinit/.Xmodmap
 
-if [ -f $sysresources ]; then
-    xrdb -merge $sysresources
+    # merge in defaults and keymaps
+
+    if [ -f $sysresources ]; then
+        xrdb -merge $sysresources
+    fi
+
+    if [ -f $sysmodmap ]; then
+        xmodmap $sysmodmap
+    fi
+
+    if [ -f "$userresources" ]; then
+        xrdb -merge "$userresources"
+    fi
+
+    if [ -f "$usermodmap" ]; then
+        xmodmap "$usermodmap"
+    fi
+
+    # start some nice programs
+
+    if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+     for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+      [ -x "$f" ] && . "$f"
+     done
+     unset f
+    fi
+
+    # Set faster key repeat
+    xset r rate 200 70
+
+    # Matches 1920X1200 for my 15'' mid-2015 macbook pro
+    xrandr --dpi 150
+    libinput-gestures-setup start
+    exec i3
 fi
-
-if [ -f $sysmodmap ]; then
-    xmodmap $sysmodmap
-fi
-
-if [ -f "$userresources" ]; then
-    xrdb -merge "$userresources"
-fi
-
-if [ -f "$usermodmap" ]; then
-    xmodmap "$usermodmap"
-fi
-
-# start some nice programs
-
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
- for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-  [ -x "$f" ] && . "$f"
- done
- unset f
-fi
-
-# Set faster key repeat
-xset r rate 200 70
-
-# Matches 1920X1200 for my 15'' mid-2015 macbook pro
-xrandr --dpi 147
-libinput-gestures-setup start
-exec i3
