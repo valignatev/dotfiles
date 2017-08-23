@@ -28,46 +28,34 @@ cursor_shape = block
 # Hide links that are no longer valid in url select overlay mode
 filter_unmatched_urls = true
 
+# Solarized light color scheme
 [colors]
+foreground = #657b83
+foreground_bold = #073642
+#foreground_dim = #888888
+background = #fdf6e3
+cursor = #586e75
 
-# special
-foreground      = #ffeefc
-foreground_bold = #ffeefc
-cursor          = #ffeefc
-background      = #141021
+# if unset, will reverse foreground and background
+#highlight = #839496
 
-# black
-color0  = #4f4858
-color8  = #545d67
-
-# red
-color1  = #c05c47
-color9  = #c16772
-
-# green
-color2  = #428e8e
-color10 = #afda6e
-
-# yellow
-color3  = #e4b226
-color11 = #ebcf1a
-
-# blue
-color4  = #4457a3
-color12 = #4880a5
-
-# magenta
-color5  = #903a62
-color13 = #9568a1
-
-# cyan
-color6  = #7aa1dc
-color14 = #abbcda
-
-# white
-color7  = #c4b7c5
-color15 = #ffeefc
-
+# colors from color0 to color254 can be set
+color0 = #073642
+color1 = #dc322f
+color2 = #859900
+color3 = #b58900
+color4 = #268bd2
+color5 = #d33682
+color6 = #2aa198
+color7 = #eee8d5
+color8 = #002b36
+color9 = #cb4b16
+color10 = #586e75
+color11 = #657b83
+color12 = #839496
+color13 = #6c71c4
+color14 = #93a1a1
+color15 = #fdf6e3
 [hints]
 #font = Monospace 12
 #foreground = #dcdccc
