@@ -53,3 +53,4 @@
 .pki
 .node-gyp
 .ipython
+.PyCharm*
