@@ -173,3 +173,6 @@ exec --no-startup-id termite --name "termite_scratchpad"
 exec --no-startup-id "i3-msg 'workspace 10; append_layout ~/.config/i3/workspaces/ws10.json'"
 exec --no-startup-id telegram-desktop
 exec --no-startup-id slack
+
+# screenshot to clipboard
+bindsym --release $mod+p exec scrot -s -q 100 -e 'xclip -selection clipboard -target image/png $f && rm $f'
