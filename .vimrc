@@ -16,6 +16,7 @@ set smartcase
 set hlsearch
 set incsearch
 set updatetime=250
+set spell spelllang=en_us
 let mapleader="\<Space>"
 
 " Bad whitespace highlightion
@@ -23,7 +24,6 @@ highlight BadWhitespace ctermbg=red guibg=darkred
 match BadWhitespace /\s\+$/
 
 " Movement
-inoremap fd <ESC>
 noremap j gj
 noremap k gk
 noremap <leader>sc :nohlsearch<cr>
@@ -51,8 +51,9 @@ call vundle#end()
 filetype plugin indent on
 
 " Theme settings
-set background=dark
-" colorscheme solarized
+set background=light
+colorscheme solarized
+
 call togglebg#map("<F5>")
 set laststatus=2
 let g:airline#extensions#tabline#enabled=1
