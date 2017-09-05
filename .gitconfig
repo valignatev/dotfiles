@@ -1,3 +1,5 @@
 [user]
 	name = Valentin Ignatyev
 	email = valentjedi@gmail.com
+[core]
+	excludesfile = ~/.gitignore_global
