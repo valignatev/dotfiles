@@ -84,6 +84,9 @@ alias cdh="cd ~"
 alias cdw="cd ~/workspace/work"
 # go to my personal dev directory
 alias cdm="cd ~/workspace/me"
+# vgaswitch
+alias dgpu-off="echo OFF | sudo tee /sys/kernel/debug/vgaswitcheroo/switch"
+alias dgpu-check="sudo cat /sys/kernel/debug/vgaswitcheroo/switch"
 
 # virtualenvwrapper
 if [ "$(uname)" = "Linux" ]; then
