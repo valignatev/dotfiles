@@ -54,3 +54,4 @@
 .node-gyp
 .ipython
 .PyCharm*
+.Trash
