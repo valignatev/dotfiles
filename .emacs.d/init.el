@@ -115,12 +115,6 @@
               (kbd "C-u") 'evil-scroll-up
               (kbd "C-w C-w") 'other-window)))
 
-;; Solarized theme
-(use-package solarized-theme
-  :ensure t
-  :config
-  (load-theme 'solarized-dark t))
-
 ;; Ivy
 (use-package ivy
   :ensure t
@@ -233,7 +227,6 @@
   :config
   (add-hook 'python-mode-hook 'anaconda-mode)
   (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-  (add-hook 'python-mode-hook (lambda () (set-fill-column 78)))
   (add-to-list 'company-backends #'company-anaconda)
 
   (use-package company-anaconda
@@ -261,24 +254,6 @@
     :ensure t
     :init
     (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)))
-
-;; Turn off fill-column-indicator while company is active
-;; Check https://github.com/company-mode/company-mode/issues/180
-(defun on-off-fci-before-company(command)
-  (when (string= "show" command)
-    (turn-off-fci-mode))
-  (when (string= "hide" command)
-    (turn-on-fci-mode)))
-
-;; Vertical line
-(use-package fill-column-indicator
-  :ensure t
-  :init
-  (setq fci-rule-width 4)
-  :config
-  (add-hook 'prog-mode-hook 'fci-mode)
-  (advice-add 'company-call-frontends :before #'on-off-fci-before-company)
-  )
 
 ;; Projectile
 (use-package projectile
