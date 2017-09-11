@@ -26,7 +26,6 @@ match BadWhitespace /\s\+$/
 " Movement
 noremap j gj
 noremap k gk
-noremap <leader>sc :nohlsearch<cr>
 
 " folding
 set foldmethod=indent
@@ -38,14 +37,10 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Plugins here
-Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-surround'
-Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -56,13 +51,6 @@ colorscheme solarized
 
 call togglebg#map("<F5>")
 set laststatus=2
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#right_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-
 
 " Python stuff
 au BufNewFile,BufRead *.py,*.pyw
