@@ -77,7 +77,6 @@
   (evil-mode 1)
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-  (define-key evil-normal-state-map "/" 'swiper)
 
   (use-package evil-leader
     :ensure t
@@ -91,17 +90,8 @@
   (use-package evil-surround
     :ensure t
     :config
-    (global-evil-surround-mode))
+    (global-evil-surround-mode)))
 
-  (use-package evil-indent-plus
-    :ensure t
-    :config
-    (define-key evil-inner-text-objects-map "i" 'evil-indent-plus-i-indent)
-    (define-key evil-outer-text-objects-map "i" 'evil-indent-plus-a-indent)
-    (define-key evil-inner-text-objects-map "I" 'evil-indent-plus-i-indent-up)
-    (define-key evil-outer-text-objects-map "I" 'evil-indent-plus-a-indent-up)
-    (define-key evil-inner-text-objects-map "J" 'evil-indent-plus-i-indent-up-down)
-    (define-key evil-outer-text-objects-map "J" 'evil-indent-plus-a-indent-up-down)))
 
 ;; Use Evil motions in occur-mode
 (add-hook 'occur-mode-hook
@@ -114,6 +104,10 @@
               (kbd "C-d") 'evil-scroll-down
               (kbd "C-u") 'evil-scroll-up
               (kbd "C-w C-w") 'other-window)))
+
+;; Sorting engine. Used by swiper and counsel
+(use-package flx
+  :ensure t)
 
 ;; Ivy
 (use-package ivy
