@@ -77,6 +77,7 @@
   (evil-mode 1)
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+  (modify-syntax-entry ?_ "w")
 
   (use-package evil-leader
     :ensure t
