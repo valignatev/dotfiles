@@ -138,11 +138,6 @@
         exec-path-from-shell-variables '("PATH"))
   (exec-path-from-shell-initialize))
 
-;; Which key
-(use-package which-key
-  :ensure t
-  :config (which-key-mode))
-
 ;; Org-mode
 (use-package org-bullets
   :ensure t
