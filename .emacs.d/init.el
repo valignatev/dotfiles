@@ -132,7 +132,7 @@
 ;; PATH from shell
 (use-package exec-path-from-shell
   :disabled t
-  :if (memq window-system '(mac ns x))
+  :if (memq window-system '(mac ns))
   :config
   (setq exec-path-from-shell-check-startup-files nil
         exec-path-from-shell-variables '("PATH"))
