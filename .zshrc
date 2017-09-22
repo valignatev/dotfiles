@@ -87,7 +87,10 @@ alias cdm="cd ~/workspace/me"
 # vgaswitch
 alias dgpu-off="echo OFF | sudo tee /sys/kernel/debug/vgaswitcheroo/switch"
 alias dgpu-check="sudo cat /sys/kernel/debug/vgaswitcheroo/switch"
+# clean orphan packages
 alias yaourt-clean="yaourt -Rsn $(yaourt -Qdtq)"
+# map vi to vim, I'm to lazy to type last letter
+alias vi="vim"
 
 # virtualenvwrapper
 if [ "$(uname)" = "Linux" ]; then
