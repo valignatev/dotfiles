@@ -20,6 +20,7 @@
 (setq column-number-mode t)
 (blink-cursor-mode 0)
 (desktop-save-mode 1)
+(visual-line-mode 1)
 
 ;; Default font
 (add-to-list 'default-frame-alist
