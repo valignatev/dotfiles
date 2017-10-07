@@ -1,0 +1,69 @@
+# reload config
+rcmd + shift - r : khd -e "reload"
+
+# Open terminal
+rcmd - return : open -na /Applications/iTerm.app
+
+# focus window
+rcmd - h : chunkc tiling::window --focus west
+rcmd - j : chunkc tiling::window --focus south
+rcmd - k : chunkc tiling::window --focus north
+rcmd - l : chunkc tiling::window --focus east
+
+# swap window
+rcmd + shift - h : chunkc tiling::window --swap west
+rcmd + shift - j : chunkc tiling::window --swap south
+rcmd + shift - k : chunkc tiling::window --swap north
+rcmd + shift - l : chunkc tiling::window --swap east
+
+# send window to desktop
+rcmd + shift - 1 : chunkc tiling::window --send-to-desktop 1
+rcmd + shift - 2 : chunkc tiling::window --send-to-desktop 2
+rcmd + shift - 3 : chunkc tiling::window --send-to-desktop 3
+rcmd + shift - 4 : chunkc tiling::window --send-to-desktop 4
+rcmd + shift - 5 : chunkc tiling::window --send-to-desktop 5
+rcmd + shift - 6 : chunkc tiling::window --send-to-desktop 6
+rcmd + shift - 7 : chunkc tiling::window --send-to-desktop 7
+rcmd + shift - 8 : chunkc tiling::window --send-to-desktop 8
+rcmd + shift - 9 : chunkc tiling::window --send-to-desktop 9
+rcmd + shift - 0 : chunkc tiling::window --send-to-desktop 10
+
+# switch desktop
+rcmd - 1 : khd -p "ctrl - 1"
+rcmd - 2 : khd -p "ctrl - 2"
+rcmd - 3 : khd -p "ctrl - 3"
+rcmd - 4 : khd -p "ctrl - 4"
+rcmd - 5 : khd -p "ctrl - 5"
+rcmd - 6 : khd -p "ctrl - 6"
+rcmd - 7 : khd -p "ctrl - 7"
+rcmd - 8 : khd -p "ctrl - 8"
+rcmd - 9 : khd -p "ctrl - 9"
+rcmd - 0 : khd -p "ctrl - 0"
+
+# set insertion point for focused container
+rcmd - g : chunkc tiling::window --use-insertion-point east
+rcmd - v : chunkc tiling::window --use-insertion-point south
+
+# toggle fullscreen
+rcmd - f : chunkc tiling::window --toggle fullscreen
+
+# toggle float
+rcmd + shift - space : chunkc tiling::window --toggle float
+
+# toggle window parent zoom
+rcmd - p : chunkc tiling::window --toggle parent
+
+# increase region size
+rcmd + shift + alt - h : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge west
+rcmd + shift + alt - j : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge south
+rcmd + shift + alt - k : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge north
+rcmd + shift + alt - l : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge east
+
+# decrease region size
+rcmd + alt - h : chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge west
+rcmd + alt - j : chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge south
+rcmd + alt - k : chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge north
+rcmd + alt - l : chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge east
+
+# serealize
+rcmd + shift - s : chunkc tiling::desktop --serialize ~/.chunkwm_layouts/dev_raw
