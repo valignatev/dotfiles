@@ -13,6 +13,7 @@
 !.vimrc
 !.xinitrc
 !.zshrc
+!.chunkwmrc
 
 # ~/.config folder
 !.config/
