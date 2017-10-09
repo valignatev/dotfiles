@@ -1,3 +1,5 @@
 set surround
 set incsearch
 set clipboard+=unnamed
+set ignorecase
+set smartcase
