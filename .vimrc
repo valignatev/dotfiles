@@ -1,7 +1,7 @@
 set nocompatible
 syntax enable
 set clipboard=unnamed
-set relativenumber
+set number
 set ts=4
 set autoindent
 set expandtab
