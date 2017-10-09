@@ -67,3 +67,6 @@ rcmd + alt - l : chunkc tiling::window --use-temporary-ratio -0.05 --adjust-wind
 
 # serealize
 rcmd + shift - s : chunkc tiling::desktop --serialize ~/.chunkwm_layouts/dev_raw
+
+# remap rcmd - x to F12 to open iterm hotkey window (similar to scratch on i3wm)
+rcmd - x : khd -p "0x6F"
