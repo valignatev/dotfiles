@@ -20,11 +20,11 @@
 (setq column-number-mode t)
 (blink-cursor-mode 0)
 (desktop-save-mode 1)
-(visual-line-mode 1)
+(global-visual-line-mode 1)
 
 ;; Default font
-(add-to-list 'default-frame-alist
-             '(font . "FuraCode Nerd Font Mono-10"))
+;; (add-to-list 'default-frame-alist
+;;              '(font . "FuraCode Nerd Font Mono-10"))
 
 ;; Store backups and autosaves in temp directory
 (setq backup-directory-alist
