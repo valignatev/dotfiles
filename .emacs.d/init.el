@@ -144,6 +144,13 @@
   :ensure t
   :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
+(add-hook 'org-mode-hook (lambda () (setq org-src-fontify-natively t)))
+(add-hook 'org-mode-hook (lambda ()
+                           (org-babel-do-load-languages
+                            'org-babel-load-languages
+                            '((python . t)))
+                           ))
+
 ;; Flycheck
 (use-package flycheck
   :ensure t
