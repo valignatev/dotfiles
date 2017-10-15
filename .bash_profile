@@ -9,5 +9,5 @@ fi
 
 if [ "$(uname)" = "Linux" ]; then
     # Use keychain to enter ssh passphrase only once
-    eval `keychain --agents ssh --eval id_rsa`
+    eval `keychain --agents ssh --eval --quiet id_rsa`
 fi
