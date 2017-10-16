@@ -86,6 +86,7 @@ alias cdw="cd ~/workspace/work"
 alias cdm="cd ~/workspace/me"
 # vgaswitch
 alias dgpu-off="echo OFF | sudo tee /sys/kernel/debug/vgaswitcheroo/switch"
+alias dgpu-on="echo ON | sudo tee /sys/kernel/debug/vgaswitcheroo/switch"
 alias dgpu-check="sudo cat /sys/kernel/debug/vgaswitcheroo/switch"
 # clean orphan packages
 # map vi to vim, I'm to lazy to type last letter
