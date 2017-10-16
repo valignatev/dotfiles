@@ -174,3 +174,6 @@ exec --no-startup-id slack
 
 # screenshot to clipboard
 bindsym --release $mod+p exec scrot -s -q 100 -e 'xclip -selection clipboard -target image/png $f && rm $f'
+
+# compton
+exec compton -CGb --no-fading-openclose
