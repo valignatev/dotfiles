@@ -16,7 +16,6 @@ set smartcase
 set hlsearch
 set incsearch
 set updatetime=250
-set spell spelllang=en_us
 let mapleader="\<Space>"
 
 " Bad whitespace highlightion
@@ -31,25 +30,6 @@ noremap k gk
 set foldmethod=indent
 set foldlevel=99
 
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-
-" Plugins here
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-surround'
-
-call vundle#end()
-filetype plugin indent on
-
-" Theme settings
-set background=light
-colorscheme solarized
-
-call togglebg#map("<F5>")
 set laststatus=2
 
 " Python stuff
