@@ -62,6 +62,9 @@ let g:neosolarized_underline = 2
 let g:neosolarized_italic = 1
 colorscheme NeoSolarized
 
+" Goyo
+let g:goyo_height = '90%'
+
 "" NetRW
 let g:netrw_banner = 0
 
