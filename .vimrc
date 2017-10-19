@@ -8,6 +8,7 @@ Plug 'iCyMind/NeoSolarized'
 Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
@@ -46,7 +47,10 @@ set directory=$HOME/.vim/swap,/tmp
 set backupdir=$HOME/.vim/backup,/tmp
 set undodir=~/.vim/undo,/tmp
 
-"" Colors
+""""""""""""""""""""""""""""""""
+"" Display
+""""""""""""""""""""""""""""""""
+" Theme
 set cursorline
 set hlsearch
 set list
