@@ -50,6 +50,7 @@ set undodir=~/.vim/undo,/tmp
 set cursorline
 set hlsearch
 set list
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:· " Unicode characters for various things
 set termguicolors
 let g:neosolarized_contrast = "high"
 let g:neosolarized_bold = 1
