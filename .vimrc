@@ -9,6 +9,9 @@ Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'rakr/vim-one'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
@@ -62,6 +65,9 @@ let g:neosolarized_underline = 2
 let g:neosolarized_italic = 1
 colorscheme NeoSolarized
 
+" Markdown
+let g:vim_markdown_folding_disabled = 1
+
 " Goyo
 let g:goyo_height = '90%'
 
@@ -81,3 +87,5 @@ let g:ale_linters = {
 \   'jsx': ['eslint'],
 \   'python': ['flake8'],
 \}
+
+autocmd BufRead,BufNewFile *.css,*.scss,*.js set shiftwidth=2  softtabstop=2
