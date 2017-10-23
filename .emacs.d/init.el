@@ -259,7 +259,11 @@
   :config
   (projectile-mode)
   (setq projectile-enable-caching t)
-  (setq projectile-completion-system 'ivy))
+  (setq projectile-completion-system 'ivy)
+  ;; workaround for https://github.com/bbatsov/projectile/issues/1183
+  (setq projectile-mode-line
+        '(:eval (format " Projectile[%s]"
+                        (projectile-project-name)))))
 
 ;; YAML
 (use-package yaml-mode
