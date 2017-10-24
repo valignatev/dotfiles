@@ -21,6 +21,7 @@
 (blink-cursor-mode 0)
 (desktop-save-mode 1)
 (global-visual-line-mode 1)
+(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 
 ;; Default font
 ;; (add-to-list 'default-frame-alist
