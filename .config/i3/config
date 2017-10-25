@@ -179,4 +179,4 @@ bindsym --release $mod+p exec scrot -s -q 100 -e 'xclip -selection clipboard -ta
 exec compton -CGb --no-fading-openclose
 
 # hide mouse cursor after a brief period
-exec --no-startup-id xbanish
+exec --no-startup-id unclutter --ignore-scrolling --timeout 1
