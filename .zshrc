@@ -78,8 +78,6 @@ source ~/.bash_profile
 # Example aliases
 # alias ohmyzsh="vim ~/.oh-my-zsh"
 
-# go home
-alias cdh="cd ~"
 # go to work dev directory
 alias cdw="cd ~/workspace/work"
 # go to my personal dev directory
@@ -88,7 +86,6 @@ alias cdm="cd ~/workspace/me"
 alias dgpu-off="echo OFF | sudo tee /sys/kernel/debug/vgaswitcheroo/switch"
 alias dgpu-on="echo ON | sudo tee /sys/kernel/debug/vgaswitcheroo/switch"
 alias dgpu-check="sudo cat /sys/kernel/debug/vgaswitcheroo/switch"
-# clean orphan packages
 # map vi to vim, I'm to lazy to type last letter
 alias vi="vim"
 
