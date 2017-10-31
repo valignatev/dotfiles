@@ -265,6 +265,10 @@
         '(:eval (format " Projectile[%s]"
                         (projectile-project-name)))))
 
+;; Ag
+(use-package ag
+  :ensure t)
+
 ;; YAML
 (use-package yaml-mode
   :ensure t
@@ -272,6 +276,10 @@
   (add-hook 'yaml-mode-hook
         (lambda ()
             (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
+
+;; Magit
+(use-package magit
+  :ensure t)
 
 (provide 'init)
 ;;; init.el ends here
