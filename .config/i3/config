@@ -26,6 +26,9 @@ bindsym $mod+q kill
 # start dmenu (a program launcher)
 bindsym $lalt+space exec --no-startup-id i3-dmenu-desktop
 
+# make window sticky
+bindsym $mod+shift+s sticky toggle
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
