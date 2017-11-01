@@ -259,11 +259,7 @@
   :ensure t
   :config
   (projectile-mode)
-  (setq projectile-completion-system 'ivy)
-  ;; workaround for https://github.com/bbatsov/projectile/issues/1183
-  (setq projectile-mode-line
-        '(:eval (format " Projectile[%s]"
-                        (projectile-project-name)))))
+  (setq projectile-completion-system 'ivy))
 
 ;; Ag
 (use-package ag
