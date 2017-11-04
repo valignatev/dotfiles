@@ -219,11 +219,8 @@
   (define-key company-active-map (kbd "C-p") 'company-select-previous)
   (define-key company-search-map (kbd "C-n") 'company-select-next)
   (define-key company-search-map (kbd "C-p") 'company-select-previous)
-  ;; I hate in place previews,
-  ;; So I just redefine it to show tooltip even if there is only one candidate
-  (defun company-preview-if-just-one-frontend (COMMAND)
-    (company-pseudo-tooltip-frontend COMMAND))
-
+  (setq company-frontends '(company-pseudo-tooltip-frontend
+                            company-echo-metadata-frontend))
   (use-package company-tern
     :ensure t
     :config
