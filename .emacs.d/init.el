@@ -1,5 +1,5 @@
 ;;; init.el -- My emacs configuration
-;-*-Emacs-Lisp-*-
+;; -*-Emacs-Lisp-*-
 ;;; Commentary:
 ;; Why linter wants me to do this?
 ;;
@@ -124,12 +124,12 @@
   (use-package swiper
     :ensure t)
 
-    (use-package counsel
-        :ensure t
-        :config
-        (global-set-key (kbd "M-x") 'counsel-M-x)
-        (global-set-key (kbd "C-x C-f") 'counsel-find-file))
-    )
+  (use-package counsel
+    :ensure t
+    :config
+    (global-set-key (kbd "M-x") 'counsel-M-x)
+    (global-set-key (kbd "C-x C-f") 'counsel-find-file))
+  )
 
 ;; PATH from shell
 (use-package exec-path-from-shell
@@ -252,7 +252,7 @@
   (venv-initialize-eshell)
   (setq venv-location "~/.virtualenvs/"))
 
-; Smartparens
+;; Smartparens
 (use-package smartparens-config
   :ensure smartparens
   :init
@@ -279,8 +279,8 @@
   :ensure t
   :config
   (add-hook 'yaml-mode-hook
-        (lambda ()
-            (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
+            (lambda ()
+              (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
 
 ;; Magit
 (use-package magit
