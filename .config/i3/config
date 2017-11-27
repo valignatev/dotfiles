@@ -165,10 +165,10 @@ bindsym XF86AudioLowerVolume exec "pamixer -d 1"
 bindsym XF86AudioMute exec "pamixer -t"
 
 # Scratchpad
-for_window [instance="^termite_scratchpad"] move scratchpad
+for_window [instance="^terminal_scratchpad"] move scratchpad
 bindsym $mod+x scratchpad show
 bindsym $mod+minus move scratchpad
-exec --no-startup-id termite --name "termite_scratchpad"
+exec --no-startup-id i3-sensible-terminal -t "terminal_scratchpad"
 
 # Auto start message applications I use with proper layout
 exec --no-startup-id "i3-msg 'workspace 10; append_layout ~/.config/i3/workspaces/ws10.json'"
@@ -179,7 +179,7 @@ exec --no-startup-id slack
 bindsym --release $mod+p exec scrot -s -q 100 -e 'xclip -selection clipboard -target image/png $f && rm $f'
 
 # compton
-exec compton -CGb --no-fading-openclose
+exec compton -CGb
 
 # hide mouse cursor after a brief period
 exec --no-startup-id unclutter --ignore-scrolling --timeout 1
