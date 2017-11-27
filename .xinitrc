@@ -40,5 +40,6 @@ if [ "$(uname)" = "Linux" ]; then
     # Matches 1920X1200 for my 15'' mid-2015 macbook pro
     xrandr --dpi 150
     libinput-gestures-setup start
+    export TERMINAL=alacritty
     exec i3
 fi
