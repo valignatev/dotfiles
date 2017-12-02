@@ -87,7 +87,8 @@ alias dgpu-off="echo OFF | sudo tee /sys/kernel/debug/vgaswitcheroo/switch"
 alias dgpu-on="echo ON | sudo tee /sys/kernel/debug/vgaswitcheroo/switch"
 alias dgpu-check="sudo cat /sys/kernel/debug/vgaswitcheroo/switch"
 # map vi to vim, I'm to lazy to type last letter
-alias vi="vim"
+alias vi="nvim"
+alias vim="nvim"
 
 # virtualenvwrapper
 if [ "$(uname)" = "Linux" ]; then
