@@ -25,6 +25,7 @@
 !.config/polybar/
 !.config/termite/
 !.config/libinput-gestures.conf
+!.config/compton.conf
 
 # ~/.emacs.d folder
 !.emacs.d/
