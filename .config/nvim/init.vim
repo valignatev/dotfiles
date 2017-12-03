@@ -1,3 +1,6 @@
+"" Leader
+let mapleader="\<Space>"
+
 "" Plugins
 call plug#begin('~/.vim/plugged')
 
