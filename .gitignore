@@ -26,6 +26,7 @@
 !.config/termite/
 !.config/libinput-gestures.conf
 !.config/compton.conf
+!.config/nvim/init.vim
 
 # ~/.emacs.d folder
 !.emacs.d/
