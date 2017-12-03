@@ -10,10 +10,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'godlygeek/tabular'  " vim-markdown dependency
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'sheerun/vim-polyglot'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
 "" Interface
+set updatetime=250
 set mouse=a
 set cursorline
 set title
