@@ -61,6 +61,11 @@ set expandtab
 "" Search
 set ignorecase
 set smartcase
+" No search highlighting while in insert mode
+autocmd InsertEnter * :setlocal nohlsearch
+autocmd InsertLeave * :setlocal hlsearch
+" Mnemonic is C-l in unix shell - clear all
+nnoremap <C-l> :nohlsearch<CR><C-l>
 
 "" Session
 set nobackup
