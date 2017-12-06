@@ -86,3 +86,8 @@ let g:ale_linters = {
 \   'jsx': ['eslint'],
 \   'python': ['flake8'],
 \}
+
+
+"" Autocompletion
+set omnifunc=syntaxcomplete#Complete
+set completeopt=menuone,preview,noinsert,noselect
