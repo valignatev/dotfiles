@@ -34,3 +34,10 @@
 .emacs.d/*
 !.emacs.d/init.el
 !.emacs.d/custom.el
+
+# ~/.local/bin folder
+!.local/
+.local/*
+!.local/bin/
+.local/bin/*
+!.local/bin/flash_win.sh

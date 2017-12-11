@@ -143,6 +143,9 @@ for_window [class="^.*"] border pixel 1
 smart_borders on
 hide_edge_borders on
 
+# flash active window
+bindsym $mod+BackSpace exec --no-startup-id sh ~/.local/bin/flash_win.sh
+
 # Prevent firefox from stealing focus
 no_focus [class=$class_firefox]
 
