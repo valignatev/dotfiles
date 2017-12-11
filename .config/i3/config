@@ -140,6 +140,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Borders
 for_window [class="^.*"] border pixel 1
+smart_borders on
+hide_edge_borders on
 
 # Prevent firefox from stealing focus
 no_focus [class=$class_firefox]
