@@ -24,9 +24,6 @@
 (global-visual-line-mode 1)
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 
-;; Default font
-;; (add-to-list 'default-frame-alist
-;;              '(font . "FuraCode Nerd Font Mono-10"))
 
 ;; Store backups and autosaves in temp directory
 (setq backup-directory-alist
