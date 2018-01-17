@@ -7,6 +7,7 @@
 
 ;; My custom-file.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
 
 ;; Essential settings.
 (setq inhibit-startup-message t
