@@ -108,6 +108,11 @@
               (kbd "C-u") 'evil-scroll-up
               (kbd "C-w C-w") 'other-window)))
 
+(use-package which-key
+  :ensure t
+  :init
+  (which-key-mode))
+
 ;; Sorting engine. Used by swiper and counsel
 (use-package flx
   :ensure t)
