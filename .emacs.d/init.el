@@ -154,6 +154,8 @@
                             'org-babel-load-languages
                             '((python . t)))
                            ))
+(setq org-ellipsis "⤵")
+(add-hook 'org-mode-hook 'flyspell-mode)
 
 ;; Flycheck
 (use-package flycheck
