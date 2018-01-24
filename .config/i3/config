@@ -181,7 +181,7 @@ exec --no-startup-id telegram-desktop
 exec --no-startup-id slack
 
 # screenshot to clipboard
-bindsym --release $mod+p exec scrot -s -q 100 -e 'xclip -selection clipboard -target image/png $f && rm $f'
+bindsym --release $mod+p exec maim -s | xclip -selection clipboard -t image/png
 
 # compton
 exec compton --config /home/vj/.config/compton.conf -b
