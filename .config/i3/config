@@ -139,9 +139,14 @@ bar {
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Borders
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 3
 smart_borders on
 hide_edge_borders on
+
+# Colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #2aa198
+client.unfocused        #333333 #222222 #888888 #292d2e   #93a1a1
 
 # flash active window
 bindsym $mod+BackSpace exec --no-startup-id sh ~/.local/bin/flash_win.sh
