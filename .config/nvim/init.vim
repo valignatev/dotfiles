@@ -91,3 +91,6 @@ let g:ale_linters = {
 "" Autocompletion
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menuone,preview,noinsert,noselect
+
+"" Filetypes
+autocmd BufRead,BufNewFile *.jinja2 setfiletype jinja2
