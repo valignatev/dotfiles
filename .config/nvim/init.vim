@@ -15,6 +15,7 @@ Plug 'godlygeek/tabular'  " vim-markdown dependency
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
+Plug 'sgur/vim-editorconfig'
 
 call plug#end()
 
