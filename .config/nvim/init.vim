@@ -88,10 +88,12 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \}
 
-
 "" Autocompletion
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menuone,preview,noinsert,noselect
 
 "" Filetypes
 autocmd BufRead,BufNewFile *.jinja2 setfiletype jinja2
+
+"" FZF
+nnoremap <leader>f :FZF<cr>
