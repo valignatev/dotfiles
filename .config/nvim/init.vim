@@ -16,7 +16,6 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'sgur/vim-editorconfig'
-Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 
 call plug#end()
