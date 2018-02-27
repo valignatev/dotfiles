@@ -188,7 +188,8 @@
   :defer t
   :init
   (setq web-mode-engines-alist
-        '(("django" . "\\.html\\'")))
+        '(("django" . "\\.html\\'")
+          ("django" . "\\.jinja2\\'")))
   (setq web-mode-enable-auto-quoting t)
   :config
   (setq web-mode-attr-indent-offset 2
@@ -272,7 +273,10 @@
   :ensure t
   :config
   (projectile-mode)
-  (setq projectile-completion-system 'ivy))
+  (setq projectile-completion-system 'ivy)
+  (evil-leader/set-key
+    "f" 'projectile-find-file)
+)
 
 ;; Ag
 (use-package ag
