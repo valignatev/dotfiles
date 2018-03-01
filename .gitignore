@@ -40,3 +40,8 @@
 !.local/bin/
 .local/bin/*
 !.local/bin/flash_win.sh
+
+# ~/.gnupg folder
+!.gnupg/
+.gnupg/*
+!.gnupg/gpg-agent.conf
