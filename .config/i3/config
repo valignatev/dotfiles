@@ -141,7 +141,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Borders
 for_window [class="^.*"] border pixel 3
 smart_borders on
-hide_edge_borders on
 
 # Colors
 # class                 border  backgr. text    indicator child_border
