@@ -46,6 +46,7 @@ set spelllang=en_us,ru
 
 "" Buffers
 set hidden
+set autoread
 
 "" Windows
 " Open new split window to the right for vertical
@@ -95,6 +96,7 @@ set completeopt=menuone,preview,noinsert,noselect
 
 "" Filetypes
 autocmd BufRead,BufNewFile *.jinja2 setfiletype jinja2
+autocmd BufRead,BufNewFile *.css,*.scss,*.js,*.json set shiftwidth=2 softtabstop=2
 
 "" FZF
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
