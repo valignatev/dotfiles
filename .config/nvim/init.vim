@@ -97,6 +97,7 @@ set completeopt=menuone,preview,noinsert,noselect
 autocmd BufRead,BufNewFile *.jinja2 setfiletype jinja2
 
 "" FZF
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 nnoremap <leader>f :FZF<cr>
 
 "" HTML
