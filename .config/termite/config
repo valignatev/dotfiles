@@ -34,7 +34,6 @@ foreground = #657b83
 foreground_bold = #073642
 #foreground_dim = #888888
 background = #fdf6e3
-cursor = #586e75
 
 # if unset, will reverse foreground and background
 #highlight = #839496
