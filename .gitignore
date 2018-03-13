@@ -41,6 +41,7 @@
 !.local/bin/
 .local/bin/*
 !.local/bin/flash_win.sh
+!.local/bin/camtoggle
 
 # ~/.gnupg folder
 !.gnupg/

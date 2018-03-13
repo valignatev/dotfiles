@@ -151,6 +151,12 @@ client.unfocused        #333333 #222222 #888888 #292d2e   #93a1a1
 # flash active window
 bindsym $mod+BackSpace exec --no-startup-id sh ~/.local/bin/flash_win.sh
 
+# Toggle webcam, make it sticky and floating
+for_window [title="video0 - mpv"] floating enable
+for_window [title="video0 - mpv"] sticky enable
+
+bindsym $mod+c exec --no-startup-id camtoggle
+
 # Prevent firefox from stealing focus
 no_focus [class=$class_firefox]
 

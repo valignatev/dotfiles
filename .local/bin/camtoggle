@@ -1,0 +1,3 @@
+#/usr/bin/env sh
+
+pkill -f /dev/video0 || mpv --geometry=-0-0 --autofit=20% --framedrop=no --osc=no --msg-level=all=no av://v4l2:/dev/video0
