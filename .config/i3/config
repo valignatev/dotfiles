@@ -148,6 +148,9 @@ smart_borders on
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #2aa198
 client.unfocused        #333333 #222222 #888888 #292d2e   #93a1a1
 
+# Emacs
+for_window [title="Ediff"] floating enable
+
 # flash active window
 bindsym $mod+BackSpace exec --no-startup-id sh ~/.local/bin/flash_win.sh
 
