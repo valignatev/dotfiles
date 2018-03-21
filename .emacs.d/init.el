@@ -182,3 +182,11 @@
 ;; editorconfig
 (straight-use-package 'editorconfig)
 (editorconfig-mode t)
+
+;; Python
+;; Scroll to bottom of inferior python REPL
+(add-hook 'inferior-python-mode-hook
+	  (lambda ()
+	    (setq comint-move-point-for-output t)))
+;; comint-output-filter-functions
+;; comint-postoutput-scroll-to-bottom
