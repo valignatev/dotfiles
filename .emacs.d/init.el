@@ -188,5 +188,3 @@
 (add-hook 'inferior-python-mode-hook
 	  (lambda ()
 	    (setq comint-move-point-for-output t)))
-;; comint-output-filter-functions
-;; comint-postoutput-scroll-to-bottom
