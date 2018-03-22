@@ -156,6 +156,7 @@
 	   (ansi-color-apply-on-region (point-min) (point-max))))))
 (advice-add 'display-message-or-buffer :before #'parse-ansi-for-shell-command-output)
 
+
 ;; Term (I actually use it).
 ;; This section is a total mess
 ;; Set normal mote for terminal-mode so we can have
@@ -185,6 +186,8 @@
 
 ;; Python
 ;; Scroll to bottom of inferior python REPL
+;; and kill running Python process without confirmation.
 (add-hook 'inferior-python-mode-hook
 	  (lambda ()
-	    (setq comint-move-point-for-output t)))
+	    (setq comint-move-point-for-output t)
+	    (set-process-query-on-exit-flag (get-process "Python") nil)))
