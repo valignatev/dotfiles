@@ -157,7 +157,7 @@
 (advice-add 'display-message-or-buffer :before #'parse-ansi-for-shell-command-output)
 
 
-;; Term (I actually use it).
+;; Term (I actually use it)
 ;; This section is a total mess
 ;; Set normal mote for terminal-mode so we can have
 ;; block cursor. May be there is a better way
