@@ -178,6 +178,9 @@
 (advice-add 'vj/term :after #'turn-off-evil-mode)
 (advice-add 'term-char-mode :after #'turn-off-evil-mode)
 (advice-add 'term-line-mode :after #'turn-on-evil-mode)
+(add-hook 'term-mode-hook
+	  (lambda ()
+	    (define-key term-raw-map (kbd "M-x") 'smex)))
 
 ;; Parens
 (electric-pair-mode t)
