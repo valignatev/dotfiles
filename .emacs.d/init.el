@@ -190,13 +190,6 @@
 (editorconfig-mode t)
 
 ;; Python
-;; Scroll to bottom of inferior python REPL
-;; and kill running Python process without confirmation.
-(add-hook 'inferior-python-mode-hook
-	  (lambda ()
-	    (setq comint-move-point-for-output t)
-	    (set-process-query-on-exit-flag (get-process "Python") nil)))
-
 (defun vj/comint-clear-buffer (&optional buffer-or-name)
   "Same as plain `comint-clear-buffer' but can pass buffer or name of buffer.
 I often work with two splits - the code and inferior shell. With this function
@@ -206,3 +199,17 @@ I don't need to switch to another window with comint buffer to clear it"
     (let ((buf (or (get-buffer buffer-or-name) (current-buffer))))
       (with-current-buffer buf
 	(comint-clear-buffer)))))
+
+;; Scroll to bottom of inferior python REPL
+;; and kill running Python process without confirmation.
+(add-hook 'inferior-python-mode-hook
+	  (lambda ()
+	    (setq comint-move-point-for-output t)
+	    (set-process-query-on-exit-flag (get-process "Python") nil)))
+
+(add-hook 'python-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "C-c M-o")
+			   (lambda ()
+			     (interactive)
+			     (vj/comint-clear-buffer "*Python*")))))
