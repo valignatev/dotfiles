@@ -193,3 +193,13 @@
 	  (lambda ()
 	    (setq comint-move-point-for-output t)
 	    (set-process-query-on-exit-flag (get-process "Python") nil)))
+
+(defun vj/comint-clear-buffer (&optional buffer-or-name)
+  "Same as plain `comint-clear-buffer' but can pass buffer or name of buffer.
+I often work with two splits - the code and inferior shell. With this function
+I don't need to switch to another window with comint buffer to clear it"
+  (interactive)
+  (let ((buffer-or-name (or buffer-or-name "")))
+    (let ((buf (or (get-buffer buffer-or-name) (current-buffer))))
+      (with-current-buffer buf
+	(comint-clear-buffer)))))
