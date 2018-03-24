@@ -121,6 +121,8 @@
 ;; Generalize it
 (evil-leader/set-key
   "t" '(lambda () (interactive)(shell-command "npm test")))
+;; Evil can do this:
+;; (evil-leader/set-key-for-mode 'emacs-lisp-mode "b" 'byte-compile-file)
 
 ;; Magit
 (straight-use-package 'magit)
