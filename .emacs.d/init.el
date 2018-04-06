@@ -215,3 +215,8 @@ I don't need to switch to another window with comint buffer to clear it"
 			   (lambda ()
 			     (interactive)
 			     (vj/comint-clear-buffer "*Python*")))))
+
+;; Anaconda mode
+(straight-use-package 'anaconda-mode)
+(add-hook 'python-mode-hook 'anaconda-mode)
+(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
