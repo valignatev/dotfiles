@@ -84,6 +84,8 @@
 (global-auto-revert-mode t)
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 (setq undo-tree-auto-save-history t)
 (setq undo-tree-history-directory-alist
       `((".*" . ,(concat user-emacs-directory "undo/"))))
