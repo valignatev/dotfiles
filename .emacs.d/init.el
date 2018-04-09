@@ -218,5 +218,24 @@ I don't need to switch to another window with comint buffer to clear it"
 
 ;; Anaconda mode
 (straight-use-package 'anaconda-mode)
+(straight-use-package 'company-anaconda)
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+(eval-after-load "company"
+ '(add-to-list 'company-backends 'company-anaconda))
+
+;; Company
+(straight-use-package 'company)
+(setq company-minimum-prefix-length 1)
+(setq company-idle-delay 0.2)
+(setq company-frontends '(company-pseudo-tooltip-frontend
+			  company-echo-metadata-frontend))
+
+(add-hook 'prog-mode-hook 'company-mode)
+
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "C-n") 'company-select-next)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous)
+  (define-key company-search-map (kbd "C-n") 'company-select-next)
+  (define-key company-search-map (kbd "C-p") 'company-select-previous))
+
