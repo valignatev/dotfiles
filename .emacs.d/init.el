@@ -231,3 +231,8 @@ I don't need to switch to another window with comint buffer to clear it"
   (define-key company-search-map (kbd "C-n") 'company-select-next)
   (define-key company-search-map (kbd "C-p") 'company-select-previous))
 
+;; Flycheck
+(use-package flycheck
+  :straight t
+  :hook (after-init . global-flycheck-mode))
+
