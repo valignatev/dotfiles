@@ -143,7 +143,7 @@
 (setq comint-input-ignoredups t)
 
 ;; Parse ANSI escape characters in *Shell Command Output* buffer
-(defun parse-ansi-for-shell-command-output (message-or-buffer)
+(defun parse-ansi-for-shell-command-output (message-or-buffer &rest _)
   (let ((buf message-or-buffer))
     (and (bufferp buf)
 	 (string= (buffer-name buf) "*Shell Command Output*")
