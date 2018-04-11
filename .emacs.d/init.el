@@ -57,27 +57,18 @@
 ;; 			'((comment-light . "#2aa1ae"))))
 (global-hl-line-mode t)
 
-(defvar vj/themes
-  '((light . #'spacemacs-light)
-    (dark . #'spacemacs-dark)))
+(straight-use-package
+ '(heaven-and-hell :type git :host github :repo "valignatev/heaven-and-hell"))
 
-(defvar vj/theme-type 'light)
+(setq heaven-and-hell-themes
+      '((light . #'spacemacs-light)
+	(dark . #'spacemacs-dark)))
 
-(defun vj/toggle-theme ()
-  (interactive)
-  (mapcar #'disable-theme custom-enabled-themes)
-  (if (eq vj/theme-type 'light)
-      (setq vj/theme-type 'dark)
-    (setq vj/theme-type 'light))
-    (load-theme (eval (cdr (assoc vj/theme-type vj/themes))) t))
+(add-hook 'after-init-hook 'heaven-and-hell-init-hook)
 
-;; Reset to default emacs theme
-(global-set-key (kbd "C-c <f6>") (lambda ()
-				   (interactive)
-				   (mapcar #'disable-theme custom-enabled-themes)))
+(global-set-key (kbd "C-c <f6>") 'heaven-and-hell-load-default-emacs-theme)
 
-(global-set-key (kbd "<f6>") 'vj/toggle-theme)
-(load-theme (eval (cdr (assoc vj/theme-type vj/themes))) t)
+(global-set-key (kbd "<f6>") 'heaven-and-hell-toggle-theme)
 
 ;; Buffers and backups
 (desktop-save-mode t)
