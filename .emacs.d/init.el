@@ -32,6 +32,9 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+;; Also, I wand use-package
+(straight-use-package 'use-package)
+
 ;; Set frame font
 (setq vj/font-name "Hack"
       vj/font-size 12)
@@ -57,18 +60,16 @@
 ;; 			'((comment-light . "#2aa1ae"))))
 (global-hl-line-mode t)
 
-(straight-use-package
- '(heaven-and-hell :type git :host github :repo "valignatev/heaven-and-hell"))
-
-(setq heaven-and-hell-themes
-      '((light . #'spacemacs-light)
-	(dark . #'spacemacs-dark)))
-
-(add-hook 'after-init-hook 'heaven-and-hell-init-hook)
-
-(global-set-key (kbd "C-c <f6>") 'heaven-and-hell-load-default-emacs-theme)
-
-(global-set-key (kbd "<f6>") 'heaven-and-hell-toggle-theme)
+(use-package heaven-and-hell
+  :straight (heaven-and-hell :type git :host github :repo "valignatev/heaven-and-hell")
+  :init
+  (setq heaven-and-hell-theme-type 'light)
+  (setq heaven-and-hell-themes
+	'((light . #'spacemacs-light)
+	  (dark . #'spacemacs-dark)))
+  :hook (after-init . heaven-and-hell-init-hook)
+  :bind (("C-c <f6>" . heaven-and-hell-load-default-emacs-theme)
+	 ("<f6>" . heaven-and-hell-toggle-theme)))
 
 ;; Buffers and backups
 (desktop-save-mode t)
