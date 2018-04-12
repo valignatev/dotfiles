@@ -10,6 +10,7 @@
 (global-visual-line-mode 1)
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 (defalias 'yes-or-no-p 'y-or-n-p)
+(setq x-gtk-use-system-tooltips nil)
 
 ;; Bind meta to left command key and then unset Command+Space
 ;; because I use it for switching layout
