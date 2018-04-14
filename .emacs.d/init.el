@@ -42,7 +42,7 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; Also, I wand use-package
+;; Also, I want use-package
 (straight-use-package 'use-package)
 
 ;; Set frame font
