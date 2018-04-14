@@ -1,3 +1,11 @@
+;;; init.el --- my Emacs customization.
+;;;
+;;; Commentary:
+;; I add things here when I need 'em.
+;; Custom functions are prefixed with "vj/"
+;;
+;;; Code:
+
 ;; Interface
 (setq inhibit-startup-message t
       inhibit-splash-screen t)
@@ -11,6 +19,7 @@
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq x-gtk-use-system-tooltips nil)
+(global-hl-line-mode t)
 
 ;; Bind meta to left command key and then unset Command+Space
 ;; because I use it for switching layout
@@ -37,17 +46,18 @@
 (straight-use-package 'use-package)
 
 ;; Set frame font
-(setq vj/font-name "Hack"
-      vj/font-size 12)
+(defvar vj/font-name "Hack")
+(defvar vj/font-size 12)
 
 (defun vj/set-frame-font-size (&optional font-size)
-  "Sets font size for all frames. Default is vj/font-size"
+  "Set font size FONT-SIZE for all frames (including modeline and minibuffer).
+Default is vj/font-size"
   (interactive (list
 		(read-number "number: " vj/font-size)))
   (let ((font-size (or font-size vj/font-size)))
     (set-frame-font (format "%s %d" vj/font-name font-size) nil t)))
 
-(vj/set-frame-font-size)
+(add-hook 'after-init-hook 'vj/set-frame-font-size)
 
 ;; Theme
 ;; TODO may be check if custom themes is empty and then load?
@@ -59,7 +69,6 @@
 ;; See https://github.com/nashamri/spacemacs-theme/issues/104
 ;; (custom-set-variables '(spacemacs-theme-custom-colors
 ;; 			'((comment-light . "#2aa1ae"))))
-(global-hl-line-mode t)
 
 (use-package heaven-and-hell
   :straight (heaven-and-hell :type git :host github :repo "valignatev/heaven-and-hell")
@@ -98,10 +107,9 @@
 
 ;; Evil
 (straight-use-package 'evil)
-;; Bind it to something silly since I use C-z to run terminal
 (setq evil-vsplit-window-right t)
 (setq evil-split-window-below t)
-;; (setq evil-split-window-below t)
+;; Bind it to something silly since I use C-z to run terminal
 (setq evil-toggle-key "C-c C-z")
 (setq evil-want-C-u-scroll t)
 (evil-mode 1)
@@ -130,13 +138,6 @@
 (projectile-mode 1)
 
 ;; Modeline
-;; TODO: moody master now autoloads commands
-;;(straight-use-package 'moody)
-;;(require 'moody )
-;; (require 'moody "~/.emacs.d/straight/repos/moody/moody.el")
-;;(setq x-underline-at-descent-line t)
-;;(moody-replace-mode-line-buffer-identification)
-;;(moody-replace-vc-mode)
 (straight-use-package 'minions)
 (minions-mode t)
 
@@ -144,8 +145,9 @@
 (setq comint-prompt-read-only t)
 (setq comint-input-ignoredups t)
 
-;; Parse ANSI escape characters in *Shell Command Output* buffer
 (defun parse-ansi-for-shell-command-output (message-or-buffer &rest _)
+"Parse ANSI escape characters in MESSAGE-OR-BUFFER.
+But only if it's *Shell Command Output* buffer."
   (let ((buf message-or-buffer))
     (and (bufferp buf)
 	 (string= (buffer-name buf) "*Shell Command Output*")
@@ -160,11 +162,10 @@
 ;; block cursor. May be there is a better way
 (evil-set-initial-state 'term-mode 'normal)
 (setq term-input-ignoredups t)
-;; Original term function constantly asks for my shell
 (defun vj/term ()
+"Original term function constantly asks for my shell."
   (interactive)
   (term shell-file-name))
-;; (evil-set-initial-state 'term-mode 'emacs)
 (global-set-key (kbd "C-z") 'vj/term)
 ;; I need to call for disabling evil-mode for both
 ;; vj/term and term-char-mode because in first scenario
@@ -186,9 +187,9 @@
 
 ;; Python
 (defun vj/comint-clear-buffer (&optional buffer-or-name)
-  "Same as plain `comint-clear-buffer' but can pass buffer or name of buffer.
-I often work with two splits - the code and inferior shell. With this function
-I don't need to switch to another window with comint buffer to clear it"
+  "Same as plain `comint-clear-buffer' but can pass BUFFER-OR-NAME.
+I often work with two splits - the code and inferior shell.
+With this function I don't need to switch to comint window to clear it"
   (interactive)
   (let ((buffer-or-name (or buffer-or-name "")))
     (let ((buf (or (get-buffer buffer-or-name) (current-buffer))))
@@ -240,3 +241,6 @@ I don't need to switch to another window with comint buffer to clear it"
 ;; Elisp
 (use-package package-lint
   :straight t)
+
+(provide 'init)
+;;; init.el ends here
