@@ -237,3 +237,6 @@ I don't need to switch to another window with comint buffer to clear it"
   :straight t
   :hook (after-init . global-flycheck-mode))
 
+;; Elisp
+(use-package package-lint
+  :straight t)
