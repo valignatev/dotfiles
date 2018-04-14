@@ -60,7 +60,6 @@ Default is vj-font-size"
 (add-hook 'after-init-hook 'vj-set-frame-font-size)
 
 ;; Theme
-;; TODO may be check if custom themes is empty and then load?
 (straight-use-package 'spacemacs-theme)
 (setq spacemacs-theme-comment-bg nil)
 (setq spacemacs-theme-comment-italic t)
