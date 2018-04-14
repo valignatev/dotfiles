@@ -2,7 +2,7 @@
 ;;;
 ;;; Commentary:
 ;; I add things here when I need 'em.
-;; Custom functions are prefixed with "vj/"
+;; Custom functions are prefixed with "vj"
 ;;
 ;;; Code:
 
@@ -46,18 +46,18 @@
 (straight-use-package 'use-package)
 
 ;; Set frame font
-(defvar vj/font-name "Hack")
-(defvar vj/font-size 12)
+(defvar vj-font-name "Hack")
+(defvar vj-font-size 12)
 
-(defun vj/set-frame-font-size (&optional font-size)
+(defun vj-set-frame-font-size (&optional font-size)
   "Set font size FONT-SIZE for all frames (including modeline and minibuffer).
-Default is vj/font-size"
+Default is vj-font-size"
   (interactive (list
-		(read-number "number: " vj/font-size)))
-  (let ((font-size (or font-size vj/font-size)))
-    (set-frame-font (format "%s %d" vj/font-name font-size) nil t)))
+		(read-number "number: " vj-font-size)))
+  (let ((font-size (or font-size vj-font-size)))
+    (set-frame-font (format "%s %d" vj-font-name font-size) nil t)))
 
-(add-hook 'after-init-hook 'vj/set-frame-font-size)
+(add-hook 'after-init-hook 'vj-set-frame-font-size)
 
 ;; Theme
 ;; TODO may be check if custom themes is empty and then load?
@@ -162,16 +162,16 @@ But only if it's *Shell Command Output* buffer."
 ;; block cursor. May be there is a better way
 (evil-set-initial-state 'term-mode 'normal)
 (setq term-input-ignoredups t)
-(defun vj/term ()
+(defun vj-term ()
 "Original term function constantly asks for my shell."
   (interactive)
   (term shell-file-name))
-(global-set-key (kbd "C-z") 'vj/term)
+(global-set-key (kbd "C-z") 'vj-term)
 ;; I need to call for disabling evil-mode for both
-;; vj/term and term-char-mode because in first scenario
+;; vj-term and term-char-mode because in first scenario
 ;; we should wait until we in *terminal* buffer before
 ;; disabling evil
-(advice-add 'vj/term :after #'turn-off-evil-mode)
+(advice-add 'vj-term :after #'turn-off-evil-mode)
 (advice-add 'term-char-mode :after #'turn-off-evil-mode)
 (advice-add 'term-line-mode :after #'turn-on-evil-mode)
 (add-hook 'term-mode-hook
@@ -186,7 +186,7 @@ But only if it's *Shell Command Output* buffer."
 (editorconfig-mode t)
 
 ;; Python
-(defun vj/comint-clear-buffer (&optional buffer-or-name)
+(defun vj-comint-clear-buffer (&optional buffer-or-name)
   "Same as plain `comint-clear-buffer' but can pass BUFFER-OR-NAME.
 I often work with two splits - the code and inferior shell.
 With this function I don't need to switch to comint window to clear it"
@@ -208,7 +208,7 @@ With this function I don't need to switch to comint window to clear it"
 	    (local-set-key (kbd "C-c M-o")
 			   (lambda ()
 			     (interactive)
-			     (vj/comint-clear-buffer "*Python*")))))
+			     (vj-comint-clear-buffer "*Python*")))))
 
 ;; Anaconda mode
 (straight-use-package 'anaconda-mode)
