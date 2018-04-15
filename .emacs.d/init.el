@@ -210,21 +210,25 @@ With this function I don't need to switch to comint window to clear it"
 			     (vj-comint-clear-buffer "*Python*")))))
 
 ;; Anaconda mode
-(straight-use-package 'anaconda-mode)
-(straight-use-package 'company-anaconda)
-(add-hook 'python-mode-hook 'anaconda-mode)
-(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-(eval-after-load "company"
- '(add-to-list 'company-backends 'company-anaconda))
+(use-package anaconda-mode
+  :straight t
+  :hook ((python-mode . anaconda-mode)
+  	 (python-mode . anaconda-eldoc-mode))
+  :config
+  (use-package company-anaconda
+    :straight t
+    :requires company
+    :config (add-to-list 'company-backends 'company-anaconda)))
 
 ;; Company
-(straight-use-package 'company)
-(setq company-minimum-prefix-length 1)
-(setq company-idle-delay 0.2)
-(setq company-frontends '(company-pseudo-tooltip-frontend
-			  company-echo-metadata-frontend))
-
-(add-hook 'prog-mode-hook 'company-mode)
+(use-package company
+  :straight t
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.2)
+  (company-frontends '(company-pseudo-tooltip-frontend
+		       company-echo-metadata-frontend))
+  :hook (prog-mode . company-mode))
 
 (with-eval-after-load 'company
   (define-key company-active-map (kbd "C-n") 'company-select-next)
