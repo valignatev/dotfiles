@@ -165,7 +165,7 @@ But only if it's *Shell Command Output* buffer."
 (defun vj-term ()
   "Original term function constantly asks for my shell."
   (interactive)
-  (term shell-file-name))
+  (ansi-term shell-file-name))
 (global-set-key (kbd "C-z") 'vj-term)
 ;; I need to call for disabling evil-mode for both
 ;; vj-term and term-char-mode because in first scenario
