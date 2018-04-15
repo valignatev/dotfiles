@@ -53,7 +53,7 @@
   "Set font size FONT-SIZE for all frames (including modeline and minibuffer).
 Default is vj-font-size"
   (interactive (list
-		(read-number "number: " vj-font-size)))
+                (read-number "number: " vj-font-size)))
   (let ((font-size (or font-size vj-font-size)))
     (set-frame-font (format "%s %d" vj-font-name font-size) nil t)))
 
@@ -67,22 +67,23 @@ Default is vj-font-size"
 ;; I should uncomment these 2 lines.
 ;; See https://github.com/nashamri/spacemacs-theme/issues/104
 ;; (custom-set-variables '(spacemacs-theme-custom-colors
-;; 			'((comment-light . "#2aa1ae"))))
+;;                         '((comment-light . "#2aa1ae"))))
 
 (use-package heaven-and-hell
   :straight (heaven-and-hell :type git :host github :repo "valignatev/heaven-and-hell")
   :init
   (setq heaven-and-hell-theme-type 'light)
   (setq heaven-and-hell-themes
-	'((light . #'spacemacs-light)
-	  (dark . #'spacemacs-dark)))
+        '((light . #'spacemacs-light)
+          (dark . #'spacemacs-dark)))
   :hook (after-init . heaven-and-hell-init-hook)
   :bind (("C-c <f6>" . heaven-and-hell-load-default-emacs-theme)
-	 ("<f6>" . heaven-and-hell-toggle-theme)))
+         ("<f6>" . heaven-and-hell-toggle-theme)))
 
 ;; Buffers and backups
 (desktop-save-mode t)
 (global-auto-revert-mode t)
+(setq indent-tabs-mode nil)
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
@@ -145,13 +146,13 @@ Default is vj-font-size"
 (setq comint-input-ignoredups t)
 
 (defun parse-ansi-for-shell-command-output (message-or-buffer &rest _)
-"Parse ANSI escape characters in MESSAGE-OR-BUFFER.
+  "Parse ANSI escape characters in MESSAGE-OR-BUFFER.
 But only if it's *Shell Command Output* buffer."
   (let ((buf message-or-buffer))
     (and (bufferp buf)
-	 (string= (buffer-name buf) "*Shell Command Output*")
-	 (with-current-buffer buf
-	   (ansi-color-apply-on-region (point-min) (point-max))))))
+         (string= (buffer-name buf) "*Shell Command Output*")
+         (with-current-buffer buf
+           (ansi-color-apply-on-region (point-min) (point-max))))))
 (advice-add 'display-message-or-buffer :before #'parse-ansi-for-shell-command-output)
 
 
@@ -162,7 +163,7 @@ But only if it's *Shell Command Output* buffer."
 (evil-set-initial-state 'term-mode 'normal)
 (setq term-input-ignoredups t)
 (defun vj-term ()
-"Original term function constantly asks for my shell."
+  "Original term function constantly asks for my shell."
   (interactive)
   (term shell-file-name))
 (global-set-key (kbd "C-z") 'vj-term)
@@ -174,8 +175,8 @@ But only if it's *Shell Command Output* buffer."
 (advice-add 'term-char-mode :after #'turn-off-evil-mode)
 (advice-add 'term-line-mode :after #'turn-on-evil-mode)
 (add-hook 'term-mode-hook
-	  (lambda ()
-	    (define-key term-raw-map (kbd "M-x") 'smex)))
+          (lambda ()
+            (define-key term-raw-map (kbd "M-x") 'smex)))
 
 ;; Parens
 (electric-pair-mode t)
@@ -193,27 +194,27 @@ With this function I don't need to switch to comint window to clear it"
   (let ((buffer-or-name (or buffer-or-name "")))
     (let ((buf (or (get-buffer buffer-or-name) (current-buffer))))
       (with-current-buffer buf
-	(comint-clear-buffer)))))
+        (comint-clear-buffer)))))
 
 ;; Scroll to bottom of inferior python REPL
 ;; and kill running Python process without confirmation.
 (add-hook 'inferior-python-mode-hook
-	  (lambda ()
-	    (setq comint-move-point-for-output t)
-	    (set-process-query-on-exit-flag (get-process "Python") nil)))
+          (lambda ()
+            (setq comint-move-point-for-output t)
+            (set-process-query-on-exit-flag (get-process "Python") nil)))
 
 (add-hook 'python-mode-hook
-	  (lambda ()
-	    (local-set-key (kbd "C-c M-o")
-			   (lambda ()
-			     (interactive)
-			     (vj-comint-clear-buffer "*Python*")))))
+          (lambda ()
+            (local-set-key (kbd "C-c M-o")
+                           (lambda ()
+                             (interactive)
+                             (vj-comint-clear-buffer "*Python*")))))
 
 ;; Anaconda mode
 (use-package anaconda-mode
   :straight t
   :hook ((python-mode . anaconda-mode)
-  	 (python-mode . anaconda-eldoc-mode))
+         (python-mode . anaconda-eldoc-mode))
   :config
   (use-package company-anaconda
     :straight t
@@ -227,7 +228,7 @@ With this function I don't need to switch to comint window to clear it"
   (company-minimum-prefix-length 1)
   (company-idle-delay 0.2)
   (company-frontends '(company-pseudo-tooltip-frontend
-		       company-echo-metadata-frontend))
+                       company-echo-metadata-frontend))
   :hook (prog-mode . company-mode))
 
 (with-eval-after-load 'company
