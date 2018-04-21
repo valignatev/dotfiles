@@ -74,10 +74,10 @@ Default is vj-font-size"
   :init
   (setq heaven-and-hell-theme-type 'light)
   (setq heaven-and-hell-themes
-        '((light . #'spacemacs-light)
-          (dark . #'spacemacs-dark)))
+        '((light . spacemacs-light)
+          (dark . spacemacs-dark)))
   :hook (after-init . heaven-and-hell-init-hook)
-  :bind (("C-c <f6>" . heaven-and-hell-load-default-emacs-theme)
+  :bind (("C-c <f6>" . heaven-and-hell-load-default-theme)
          ("<f6>" . heaven-and-hell-toggle-theme)))
 
 ;; Buffers and backups
