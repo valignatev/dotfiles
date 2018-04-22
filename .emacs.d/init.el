@@ -70,7 +70,7 @@ Default is vj-font-size"
 ;;                         '((comment-light . "#2aa1ae"))))
 
 (use-package heaven-and-hell
-  :straight (heaven-and-hell :type git :host github :repo "valignatev/heaven-and-hell")
+  :straight t
   :init
   (setq heaven-and-hell-theme-type 'light)
   (setq heaven-and-hell-themes
