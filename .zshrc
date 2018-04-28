@@ -89,6 +89,8 @@ alias dgpu-check="sudo cat /sys/kernel/debug/vgaswitcheroo/switch"
 # map vi to vim, I'm to lazy to type last letter
 alias vi="nvim"
 alias vim="nvim"
+# Monday should be the first day of the week
+alias cal="cal -m"
 
 # virtualenvwrapper
 if [ "$(uname)" = "Linux" ]; then
