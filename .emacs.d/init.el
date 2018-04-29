@@ -135,6 +135,10 @@ Default is vj-font-size"
 (straight-use-package 'evil-magit)
 (evil-magit-init)
 
+;; Search
+(use-package ag
+  :straight t)
+
 ;; Projectile
 (straight-use-package 'projectile)
 (projectile-mode 1)
