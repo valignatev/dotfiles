@@ -108,6 +108,11 @@ Default is vj-font-size"
 (straight-use-package 'smex)
 (global-set-key (kbd "M-x") 'smex)
 
+(use-package which-key
+  :straight t
+  :init
+  (which-key-mode))
+
 ;; Evil
 (straight-use-package 'evil)
 (setq evil-vsplit-window-right t)
