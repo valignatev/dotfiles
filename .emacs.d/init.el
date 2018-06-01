@@ -21,6 +21,7 @@
 (setq x-gtk-use-system-tooltips nil)
 (global-hl-line-mode t)
 (winner-mode 1)
+(setq confirm-kill-processes nil)
 
 
 ;; Bind meta to left command key and then unset Command+Space
