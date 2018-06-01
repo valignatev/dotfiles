@@ -176,9 +176,14 @@ But only if it's *Shell Command Output* buffer."
 (evil-set-initial-state 'term-mode 'normal)
 (setq term-input-ignoredups t)
 (defun vj-term ()
-  "Original term function constantly asks for my shell."
+  "Original term function constantly asks for my shell.
+Also, I don't want to multiply terminals.
+So switch to existing *ansi-term* is buffer exists"
   (interactive)
-  (ansi-term shell-file-name))
+  (let ((buf (get-buffer "*ansi-term*")))
+    (if (bufferp buf)
+	(switch-to-buffer-other-window buf)
+      (ansi-term shell-file-name))))
 (global-set-key (kbd "C-z") 'vj-term)
 ;; I need to call for disabling evil-mode for both
 ;; vj-term and term-char-mode because in first scenario
