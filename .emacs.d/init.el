@@ -19,6 +19,7 @@
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq x-gtk-use-system-tooltips nil)
+(setq use-dialog-box nil)
 (global-hl-line-mode t)
 (winner-mode 1)
 (setq confirm-kill-processes nil)
