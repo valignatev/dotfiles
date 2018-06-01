@@ -243,6 +243,7 @@ With this function I don't need to switch to comint window to clear it"
 (use-package company
   :straight t
   :custom
+  (company-require-match nil)
   (company-minimum-prefix-length 1)
   (company-idle-delay 0.2)
   (company-frontends '(company-pseudo-tooltip-frontend
