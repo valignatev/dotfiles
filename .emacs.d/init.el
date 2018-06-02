@@ -183,6 +183,7 @@ So switch to existing *ansi-term* is buffer exists"
   (let ((buf (get-buffer "*ansi-term*")))
     (if (bufferp buf)
 	(switch-to-buffer-other-window buf)
+      (switch-to-buffer-other-window (get-buffer "*scratch*"))
       (ansi-term shell-file-name))))
 (global-set-key (kbd "C-z") 'vj-term)
 ;; I need to call for disabling evil-mode for both
