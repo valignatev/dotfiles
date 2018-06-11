@@ -1,5 +1,10 @@
 [user]
 	name = Valentin Ignatev
 	email = valentignatev@gmail.com
+	signingkey = 8F5EB48D83031F6AF1076A7E9D59E0DF85FFD21B
 [core]
 	excludesfile = ~/.gitignore_global
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
