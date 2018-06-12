@@ -204,6 +204,15 @@ So switch to existing *ansi-term* is buffer exists"
 (straight-use-package 'editorconfig)
 (editorconfig-mode t)
 
+;; Markdown
+(use-package markdown-mode
+  :straight t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
 ;; Python
 (defun vj-comint-clear-buffer (&optional buffer-or-name)
   "Same as plain `comint-clear-buffer' but can pass BUFFER-OR-NAME.
