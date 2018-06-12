@@ -64,9 +64,12 @@ Default is vj-font-size"
 (add-hook 'after-init-hook 'vj-set-frame-font-size)
 
 ;; Theme
-(straight-use-package 'spacemacs-theme)
-(setq spacemacs-theme-comment-bg nil)
-(setq spacemacs-theme-comment-italic t)
+(use-package spacemacs-theme
+  :straight t
+  :defer t
+  :custom
+  (spacemacs-theme-comment-bg nil)
+  (spacemacs-theme-comment-italic t))
 ;; If I want to use original comment color with italics together,
 ;; I should uncomment these 2 lines.
 ;; See https://github.com/nashamri/spacemacs-theme/issues/104
