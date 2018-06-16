@@ -143,14 +143,6 @@ Default is vj-font-size"
 (global-evil-surround-mode t)
 (straight-use-package 'evil-ediff)
 (evil-ediff-init)
-(straight-use-package 'evil-leader)
-(global-evil-leader-mode)
-(evil-leader/set-leader "<SPC>")
-;; Generalize it
-(evil-leader/set-key
-  "t" '(lambda () (interactive)(shell-command "npm test")))
-;; Evil can do this:
-;; (evil-leader/set-key-for-mode 'emacs-lisp-mode "b" 'byte-compile-file)
 
 ;; Magit
 (straight-use-package 'magit)
