@@ -87,6 +87,19 @@ Default is vj-font-size"
   :bind (("C-c <f6>" . heaven-and-hell-load-default-theme)
          ("<f6>" . heaven-and-hell-toggle-theme)))
 
+;; Icons for dired
+(use-package all-the-icons
+  :straight t
+  :config
+  ;; all-the-icons doesn't work without font-lock+
+  ;; And font-lock+ doesn't have autoloads
+  (use-package font-lock+
+    :straight (:host github :repo "emacsmirror/font-lock-plus")
+    :config (require 'font-lock+))
+  (use-package all-the-icons-dired
+    :straight t
+    :hook (dired-mode . all-the-icons-dired-mode)))
+
 ;; Buffers and backups
 (desktop-save-mode t)
 (global-auto-revert-mode t)
