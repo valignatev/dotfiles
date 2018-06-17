@@ -283,5 +283,8 @@ With this function I don't need to switch to comint window to clear it"
 (use-package package-lint
   :straight t)
 
+(setq custom-file (concat (file-name-directory user-init-file) "custom-variables.el"))
+(load custom-file)
+
 (provide 'init)
 ;;; init.el ends here
