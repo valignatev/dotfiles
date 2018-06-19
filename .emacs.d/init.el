@@ -135,6 +135,7 @@ Default is vj-font-size"
 (straight-use-package 'evil)
 (setq evil-vsplit-window-right t)
 (setq evil-split-window-below t)
+(setq evil--jumps-buffer-targets "\\(\\*\\(\\new\\|scratch\\)\\*\\|Dired:.+\\)")
 ;; Bind it to something silly since I use C-z to run terminal
 (setq evil-toggle-key "C-c C-z")
 (setq evil-want-C-u-scroll t)
@@ -144,6 +145,8 @@ Default is vj-font-size"
 (global-evil-surround-mode t)
 (straight-use-package 'evil-ediff)
 (evil-ediff-init)
+(evil-add-command-properties #'ido-dired :jump t)
+(evil-add-command-properties #'dired-find-file :jump t)
 
 ;; Magit
 (straight-use-package 'magit)
