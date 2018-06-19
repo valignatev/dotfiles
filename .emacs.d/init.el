@@ -17,6 +17,7 @@
 (blink-cursor-mode 0)
 (global-visual-line-mode 1)
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
+(fringe-mode 16)
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq x-gtk-use-system-tooltips nil)
 (setq use-dialog-box nil)
