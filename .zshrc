@@ -78,6 +78,8 @@ source ~/.bash_profile
 # Example aliases
 # alias ohmyzsh="vim ~/.oh-my-zsh"
 
+export WORKON_HOME="~/.cache/pypoetry/virtualenvs/"
+
 # go to work dev directory
 alias cdw="cd ~/workspace/work"
 # go to my personal dev directory

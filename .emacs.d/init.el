@@ -261,6 +261,15 @@ With this function I don't need to switch to comint window to clear it"
     :requires company
     :config (add-to-list 'company-backends 'company-anaconda)))
 
+;; Virtualenvwrapper
+(use-package virtualenvwrapper
+  :straight t
+  :defer t
+  :init
+  (setq venv-location "~/.cache/pypoetry/virtualenvs/")
+  :config
+  (venv-initialize-interactive-shells))
+
 ;; Company
 (use-package company
   :straight t
