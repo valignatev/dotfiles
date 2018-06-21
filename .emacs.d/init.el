@@ -288,13 +288,14 @@ With this function I don't need to switch to comint window to clear it"
 	 ;; I didn't have this problem before I've installed diff-hl.
 	 (company-completion-started . (lambda (_) (setq evil-emacs-state-cursor 'bar) (evil-emacs-state)))
 	 (company-completion-finished . (lambda (_) (setq evil-emacs-state-cursor nil) (evil-insert-state)))
-	 (company-completion-cancelled . (lambda (_) (setq evil-emacs-state-cursor nil) (evil-insert-state)))))
-
-(with-eval-after-load 'company
-  (define-key company-active-map (kbd "C-n") 'company-select-next)
-  (define-key company-active-map (kbd "C-p") 'company-select-previous)
-  (define-key company-search-map (kbd "C-n") 'company-select-next)
-  (define-key company-search-map (kbd "C-p") 'company-select-previous))
+	 (company-completion-cancelled . (lambda (_) (setq evil-emacs-state-cursor nil) (evil-insert-state))))
+  :bind (
+	 :map company-active-map
+	 ("C-n" . company-select-next)
+	 ("C-p" . company-select-previous)
+	 :map company-search-map
+	 ("C-n" . company-select-next)
+	 ("C-p" . company-select-previous)))
 
 ;; Flycheck
 (use-package flycheck
