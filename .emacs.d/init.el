@@ -278,8 +278,17 @@ With this function I don't need to switch to comint window to clear it"
   (company-minimum-prefix-length 1)
   (company-idle-delay 0.2)
   (company-frontends '(company-pseudo-tooltip-frontend
-                       company-echo-metadata-frontend))
-  :hook (prog-mode . company-mode))
+		       company-echo-metadata-frontend))
+  :hook ((prog-mode . company-mode)
+	 ;; For some reason I can't use C-n/C-p which I defined for
+	 ;; company-active-map at the same time diff-hl is working.
+	 ;; So I have to disable either evil or diff-hl during
+	 ;; company completions.
+	 ;; Maybe diff-hl messes with keymaps somehow during updates?
+	 ;; I didn't have this problem before I've installed diff-hl.
+	 (company-completion-started . (lambda (_) (setq evil-emacs-state-cursor 'bar) (evil-emacs-state)))
+	 (company-completion-finished . (lambda (_) (setq evil-emacs-state-cursor nil) (evil-insert-state)))
+	 (company-completion-cancelled . (lambda (_) (setq evil-emacs-state-cursor nil) (evil-insert-state)))))
 
 (with-eval-after-load 'company
   (define-key company-active-map (kbd "C-n") 'company-select-next)
