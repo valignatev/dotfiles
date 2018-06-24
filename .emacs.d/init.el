@@ -132,21 +132,34 @@ Default is vj-font-size"
   (which-key-mode))
 
 ;; Evil
-(straight-use-package 'evil)
-(setq evil-vsplit-window-right t)
-(setq evil-split-window-below t)
-(setq evil--jumps-buffer-targets "\\(\\*\\(\\new\\|scratch\\)\\*\\|Dired:.+\\)")
-;; Bind it to something silly since I use C-z to run terminal
-(setq evil-toggle-key "C-c C-z")
-(setq evil-want-C-u-scroll t)
-(evil-mode 1)
-(modify-syntax-entry ?_ "w")
-(straight-use-package 'evil-surround)
-(global-evil-surround-mode t)
-(straight-use-package 'evil-ediff)
-(evil-ediff-init)
-(evil-add-command-properties #'ido-dired :jump t)
-(evil-add-command-properties #'dired-find-file :jump t)
+(use-package evil
+  :straight t
+  :init
+  (setq evil-vsplit-window-right t)
+  ;; Bind it to something silly since I use C-z to run terminal
+  (setq evil-toggle-key "C-c C-z")
+  (setq evil-want-C-u-scroll t)
+  (setq evil-split-window-below t)
+  (setq evil--jumps-buffer-targets "\\(\\*\\(\\new\\|scratch\\)\\*\\|Dired:.+\\)")
+  (defun vj-rename-dired-buffer ()
+    "Rename dired buffer <buffer_name> to Dired:<buffer_name>."
+    (interactive)
+    (unless (string-match-p "Dired:" (buffer-name))
+      (rename-buffer (concat "Dired:" (buffer-name)))))
+  :hook (dired-mode . vj-rename-dired-buffer)
+  :config
+  (evil-mode 1)
+  (evil-add-command-properties #'ido-dired :jump t)
+  (evil-add-command-properties #'dired-find-file :jump t)
+  ;; Set normal mote for terminal-mode so we can have
+  ;; block cursor. May be there is a better way
+  (evil-set-initial-state 'term-mode 'normal)
+  (use-package evil-surround
+    :straight t
+    :config (global-evil-surround-mode t))
+  (use-package evil-ediff
+    :straight t
+    :config (evil-ediff-init)))
 
 ;; Magit
 (straight-use-package 'magit)
