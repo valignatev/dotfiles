@@ -162,10 +162,24 @@ Default is vj-font-size"
     :config (evil-ediff-init)))
 
 ;; Magit
-(straight-use-package 'magit)
-(global-set-key (kbd "C-c g") 'magit-status)
-(straight-use-package 'evil-magit)
-(evil-magit-init)
+(use-package magit
+  :straight t
+  :defer t
+  :bind ("C-c g" . magit-status)
+  :config
+  (use-package evil-magit
+    :straight t
+    :after evil
+    :config (evil-magit-init)))
+
+;; Git gutter
+(use-package diff-hl
+  :straight t
+  :hook ((dired-mode . diff-hl-dired-mode)
+	 (magit-post-refresh . diff-hl-magit-post-refresh))
+  :config
+  (global-diff-hl-mode t)
+  (diff-hl-flydiff-mode 1))
 
 ;; Search
 (use-package ag
