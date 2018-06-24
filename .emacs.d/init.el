@@ -124,7 +124,7 @@ Default is vj-font-size"
 (ido-vertical-mode t)
 (setq ido-vertical-define-keys 'C-n-and-C-p-only)
 (straight-use-package 'smex)
-(global-set-key (kbd "M-x") 'smex)
+(define-key global-map [remap execute-extended-command] 'smex)
 
 (use-package which-key
   :straight t
