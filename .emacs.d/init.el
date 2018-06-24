@@ -270,6 +270,14 @@ With this function I don't need to switch to comint window to clear it"
   :config
   (venv-initialize-interactive-shells))
 
+(defun vj-rename-dired-buffer ()
+  "Rename dired buffer <buffer_name> to Dired:<buffer_name>."
+  (interactive)
+  (unless (string-match-p "Dired:" (buffer-name))
+    (rename-buffer (concat "Dired:" (buffer-name)))))
+
+(add-hook 'dired-mode-hook 'vj-rename-dired-buffer)
+
 ;; Company
 (use-package company
   :straight t
