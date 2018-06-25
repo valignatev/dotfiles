@@ -234,7 +234,7 @@ So switch to existing *ansi-term* is buffer exists"
 (advice-add 'term-line-mode :after #'turn-on-evil-mode)
 (add-hook 'term-mode-hook
           (lambda ()
-            (define-key term-raw-map (kbd "M-x") 'smex)))
+            (define-key term-raw-map (kbd "M-x") 'execute-extended-command)))
 
 ;; Parens
 (electric-pair-mode t)
