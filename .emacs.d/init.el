@@ -328,6 +328,7 @@ With this function I don't need to switch to comint window to clear it"
 	 :map company-active-map
 	 ("C-n" . company-select-next)
 	 ("C-p" . company-select-previous)
+	 ("<escape>" . company-abort)
 	 :map company-search-map
 	 ("C-n" . company-select-next)
 	 ("C-p" . company-select-previous)))
