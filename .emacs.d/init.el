@@ -176,7 +176,7 @@ Default is vj-font-size"
 (use-package diff-hl
   :straight t
   :hook ((dired-mode . diff-hl-dired-mode)
-	 (magit-post-refresh . diff-hl-magit-post-refresh))
+         (magit-post-refresh . diff-hl-magit-post-refresh))
   :config
   (global-diff-hl-mode t)
   (diff-hl-flydiff-mode 1))
@@ -210,9 +210,6 @@ But only if it's *Shell Command Output* buffer."
 
 ;; ansi-term (I actually use it)
 ;; This section is a total mess
-;; Set normal mote for terminal-mode so we can have
-;; block cursor. May be there is a better way
-(evil-set-initial-state 'term-mode 'normal)
 (setq term-input-ignoredups t)
 (defun vj-term ()
   "Original term function constantly asks for my shell.
@@ -221,7 +218,7 @@ So switch to existing *ansi-term* is buffer exists"
   (interactive)
   (let ((buf (get-buffer "*ansi-term*")))
     (if (bufferp buf)
-	(switch-to-buffer-other-window buf)
+        (switch-to-buffer-other-window buf)
       (switch-to-buffer-other-window (get-buffer (buffer-name)))
       (ansi-term shell-file-name))))
 (global-set-key (kbd "C-z") 'vj-term)
@@ -297,13 +294,7 @@ With this function I don't need to switch to comint window to clear it"
   :config
   (venv-initialize-interactive-shells))
 
-(defun vj-rename-dired-buffer ()
-  "Rename dired buffer <buffer_name> to Dired:<buffer_name>."
-  (interactive)
-  (unless (string-match-p "Dired:" (buffer-name))
-    (rename-buffer (concat "Dired:" (buffer-name)))))
 
-(add-hook 'dired-mode-hook 'vj-rename-dired-buffer)
 
 ;; Company
 (use-package company
@@ -313,15 +304,15 @@ With this function I don't need to switch to comint window to clear it"
   (company-minimum-prefix-length 1)
   (company-idle-delay 0.2)
   (company-frontends '(company-pseudo-tooltip-frontend
-		       company-echo-metadata-frontend))
+                       company-echo-metadata-frontend))
   :hook ((prog-mode . company-mode)
-	 ;; For some reason I can't use C-n/C-p which I defined for
-	 ;; company-active-map at the same time diff-hl is working.
-	 ;; So I have to disable either evil or diff-hl during
-	 ;; company completions.
-	 ;; Maybe diff-hl messes with keymaps somehow during updates?
-	 ;; I didn't have this problem before I've installed diff-hl.
-	 (company-completion-started . (lambda (_) (setq evil-emacs-state-cursor 'bar) (evil-emacs-state)))
+         ;; For some reason I can't use C-n/C-p which I defined for
+         ;; company-active-map at the same time diff-hl is working.
+         ;; So I have to disable either evil or diff-hl during
+         ;; company completions.
+         ;; Maybe diff-hl messes with keymaps somehow during updates?
+         ;; I didn't have this problem before I've installed diff-hl.
+         (company-completion-started . (lambda (_) (setq evil-emacs-state-cursor 'bar) (evil-emacs-state)))
 	 (company-completion-finished . (lambda (_) (setq evil-emacs-state-cursor nil) (evil-insert-state)))
 	 (company-completion-cancelled . (lambda (_) (setq evil-emacs-state-cursor nil) (evil-insert-state))))
   :bind (
