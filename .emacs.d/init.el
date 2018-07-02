@@ -145,7 +145,7 @@ Default is vj-font-size"
     "Rename dired buffer <buffer_name> to Dired:<buffer_name>."
     (interactive)
     (unless (string-match-p "Dired:" (buffer-name))
-      (rename-buffer (concat "Dired:" (buffer-name)))))
+      (rename-buffer (concat "Dired:" (buffer-name)) t)))
   :hook (dired-mode . vj-rename-dired-buffer)
   :config
   (evil-mode 1)
