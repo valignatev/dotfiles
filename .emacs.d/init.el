@@ -159,7 +159,11 @@ Default is vj-font-size"
     :config (global-evil-surround-mode t))
   (use-package evil-ediff
     :straight t
-    :config (evil-ediff-init)))
+    :config (evil-ediff-init))
+  (with-eval-after-load 'smart-jump
+    (evil-define-key 'motion prog-mode-map
+      "gd" 'smart-jump-go
+      "gr" 'smart-jump-references)))
 
 ;; Magit
 (use-package magit
@@ -248,6 +252,18 @@ So switch to existing *ansi-term* is buffer exists"
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
+
+; Go to definition
+(use-package smart-jump
+  :straight t
+  :config
+  (smart-jump-setup-default-registers)
+  (smart-jump-register :modes 'emacs-lisp-mode
+                       :jump-fn 'xref-find-definitions
+                       :refs-fn 'xref-find-references
+                       :pop-fn 'pop-tag-mark
+                       :should-jump t
+                       :heuristic 'error))
 
 ;; Python
 (defun vj-comint-clear-buffer (&optional buffer-or-name)
