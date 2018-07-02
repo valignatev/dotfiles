@@ -349,7 +349,43 @@ With this function I don't need to switch to comint window to clear it"
 ;; Flycheck
 (use-package flycheck
   :straight t
-  :hook (after-init . global-flycheck-mode))
+  :init
+  (define-fringe-bitmap 'vj-flycheck-fringe-indicator
+    (vector #b0000000000000000
+            #b0000000000000000
+            #b0000000000000000
+            #b0000000000000000
+            #b0000000000000000
+            #b1111111111111111
+            #b1111111111111111
+            #b1111111111111111
+            #b1111111111111111
+            #b1111111111111111
+            #b1111111111111111
+            #b0000000000000000
+            #b0000000000000000
+            #b0000000000000000
+            #b0000000000000000
+            #b0000000000000000
+            #b0000000000000000) nil 16)
+  :custom (flycheck-indication-mode 'right-fringe)
+  :hook (after-init . global-flycheck-mode)
+  :config
+  (flycheck-define-error-level 'error
+    :severity 2
+    :overlay-category 'flycheck-error-overlay
+    :fringe-bitmap 'vj-flycheck-fringe-indicator
+    :fringe-face 'flycheck-fringe-error)
+  (flycheck-define-error-level 'warning
+    :severity 1
+    :overlay-category 'flycheck-warning-overlay
+    :fringe-bitmap 'vj-flycheck-fringe-indicator
+    :fringe-face 'flycheck-fringe-warning)
+  (flycheck-define-error-level 'info
+    :severity 0
+    :overlay-category 'flycheck-info-overlay
+    :fringe-bitmap 'vj-flycheck-fringe-indicator
+    :fringe-face 'flycheck-fringe-info))
 
 ;; Elisp
 (use-package package-lint
