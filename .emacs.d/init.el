@@ -314,7 +314,7 @@ With this function I don't need to switch to comint window to clear it"
          ;; I didn't have this problem before I've installed diff-hl.
          (company-completion-started . (lambda (_) (setq evil-emacs-state-cursor 'bar) (evil-emacs-state)))
          (company-completion-finished . (lambda (_) (setq evil-emacs-state-cursor nil) (evil-insert-state)))
-         (company-completion-cancelled . (lambda (_) (setq evil-emacs-state-cursor nil) (evil-insert-state))))
+         (company-completion-cancelled . (lambda (_) (setq evil-emacs-state-cursor nil) (evil-normal-state))))
   :bind (
          :map company-active-map
          ("C-n" . company-select-next)
