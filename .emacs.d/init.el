@@ -299,6 +299,11 @@ With this function I don't need to switch to comint window to clear it"
 ;; Company
 (use-package company
   :straight t
+  :init
+  (defun vj-company-abort ()
+    "I'm using this when aborting company popup with ESC or C-["
+    (interactive)
+    (company-abort) (evil-normal-state))
   :custom
   (company-require-match nil)
   (company-minimum-prefix-length 1)
@@ -314,13 +319,13 @@ With this function I don't need to switch to comint window to clear it"
          ;; I didn't have this problem before I've installed diff-hl.
          (company-completion-started . (lambda (_) (setq evil-emacs-state-cursor 'bar) (evil-emacs-state)))
          (company-completion-finished . (lambda (_) (setq evil-emacs-state-cursor nil) (evil-insert-state)))
-         (company-completion-cancelled . (lambda (_) (setq evil-emacs-state-cursor nil) (evil-normal-state))))
+         (company-completion-cancelled . (lambda (_) (setq evil-emacs-state-cursor nil) (evil-insert-state))))
   :bind (
          :map company-active-map
          ("C-n" . company-select-next)
          ("C-p" . company-select-previous)
-         ("<escape>" . company-abort)
-	 ("C-[" . company-abort)
+         ("<escape>" . vj-company-abort)
+         ("C-[" . vj-company-abort)
 	 :map company-search-map
 	 ("C-n" . company-select-next)
 	 ("C-p" . company-select-previous)))
