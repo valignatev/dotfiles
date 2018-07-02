@@ -182,7 +182,11 @@ animation-charging-framerate = 500
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 0
+; 0 is battery temperature
+; 1 is CPU
+; 2 is pch
+; See yourself: $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+thermal-zone = 1
 warn-temperature = 68
 
 format = <ramp> <label>
