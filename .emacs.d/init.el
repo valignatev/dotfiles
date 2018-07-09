@@ -110,7 +110,7 @@ Default is vj-font-size"
 (global-auto-revert-mode t)
 (customize-set-variable 'indent-tabs-mode nil)
 (setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
+      `(("." . ,(concat user-emacs-directory "backups"))))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 (setq undo-tree-auto-save-history t)
