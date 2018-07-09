@@ -26,6 +26,9 @@
 (setq confirm-kill-processes nil)
 (modify-syntax-entry ?_ "w")
 
+;; Scrolling
+(setq mouse-wheel-scroll-amount '(1))
+(setq mouse-wheel-progressive-speed nil)
 
 ;; Bind meta to left command key and then unset Command+Space
 ;; because I use it for switching layout
