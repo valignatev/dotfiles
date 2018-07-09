@@ -36,7 +36,7 @@
 (global-unset-key (kbd "M-SPC"))
 (setq scroll-conservatively 101)
 ;; https://emacs.stackexchange.com/q/28736/13740
-;; Also, jwiegley does thi s
+;; Also, jwiegley does this
 (setq auto-window-vscroll nil)
 
 ;; Straight package manager bootstrap and setup
