@@ -24,6 +24,7 @@
 (global-hl-line-mode t)
 (winner-mode 1)
 (setq confirm-kill-processes nil)
+(modify-syntax-entry ?_ "w")
 
 
 ;; Bind meta to left command key and then unset Command+Space
