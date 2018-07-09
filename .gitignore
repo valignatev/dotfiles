@@ -17,6 +17,7 @@
 !.khdrc
 !.tmux.conf
 !.inputrc
+!.yarnrc
 
 # ~/.config folder
 !.config/
