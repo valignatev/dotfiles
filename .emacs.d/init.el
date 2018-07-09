@@ -189,6 +189,9 @@ Default is vj-font-size"
   (global-diff-hl-mode t)
   (diff-hl-flydiff-mode 1))
 
+(use-package git-link
+  :straight t)
+
 ;; Search
 (use-package ag
   :straight t)
