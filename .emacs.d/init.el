@@ -150,9 +150,9 @@ Default is vj-font-size"
     (interactive)
     (unless (string-match-p "Dired:" (buffer-name))
       (rename-buffer (concat "Dired:" (buffer-name)) t)))
-  :hook (dired-mode . vj-rename-dired-buffer)
+  :hook ((dired-mode . vj-rename-dired-buffer)
+         (after-init . evil-mode))
   :config
-  (evil-mode 1)
   (evil-add-command-properties #'ido-dired :jump t)
   (evil-add-command-properties #'dired-find-file :jump t)
   ;; Set normal mote for terminal-mode so we can have
