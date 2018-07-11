@@ -317,7 +317,65 @@ With this function I don't need to switch to comint window to clear it"
   :config
   (venv-initialize-interactive-shells))
 
+;; Web/javascript
+(use-package web-mode
+  :straight t
+  :init
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-enable-auto-closing t)
+  (setq web-mode-enable-auto-pairing t)
+  (setq web-mode-enable-comment-keywords t)
+  (setq web-mode-enable-current-element-highlight t))
 
+(use-package company-web
+  :straight t
+  :hook (web-mode . (lambda ()
+    (add-to-list 'company-backends 'company-web-html))))
+
+(use-package js2-mode
+  :straight t
+  :init
+  (setq js2-include-node-externs t)
+  (setq js2-include-browser-externs t)
+  :custom
+  (js-switch-indent-offset 2)
+  (js2-basic-offset 2)
+  (evil-shift-width 2)
+  :config
+  (js2-imenu-extras-mode))
+
+(use-package js2-refactor
+  :straight t
+  :hook (js2-mode . js2-refactor-mode)
+  :config
+  (js2r-add-keybindings-with-prefix "C-c C-m"))
+
+(use-package rjsx-mode
+  :straight t
+  :mode(("\\.js\\'" . rjsx-mode)
+        ("\\.jsx\\'" . rjsx-mode)))
+
+(use-package add-node-modules-path
+  :straight t
+  :hook (js2-mode . add-node-modules-path))
+
+(defun setup-tide-mode ()
+  "Custom Tide setup function."
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (company-mode +1))
+
+(use-package tide
+  :straight t
+  :hook
+  (js2-mode . setup-tide-mode))
+
+(use-package json-mode
+  :straight t)
 
 ;; Company
 (use-package company
@@ -352,6 +410,9 @@ With this function I don't need to switch to comint window to clear it"
 	 :map company-search-map
 	 ("C-n" . company-select-next)
 	 ("C-p" . company-select-previous)))
+
+(use-package graphql-mode
+  :straight t)
 
 ;; Flycheck
 (use-package flycheck
