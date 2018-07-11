@@ -180,6 +180,9 @@ Default is vj-font-size"
     :after evil
     :config (evil-magit-init)))
 
+(use-package gitignore-mode
+  :straight t)
+
 ;; Git gutter
 (use-package diff-hl
   :straight t
@@ -190,7 +193,8 @@ Default is vj-font-size"
   (diff-hl-flydiff-mode 1))
 
 (use-package git-link
-  :straight t)
+  :straight t
+  :custom (git-link-open-in-browser t))
 
 ;; Search
 (use-package ag
