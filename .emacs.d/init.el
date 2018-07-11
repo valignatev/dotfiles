@@ -24,7 +24,7 @@
 (global-hl-line-mode t)
 (winner-mode 1)
 (setq confirm-kill-processes nil)
-(modify-syntax-entry ?_ "w")
+(add-hook 'prog-mode-hook (lambda ()(modify-syntax-entry ?_ "w")))
 
 ;; Scrolling
 (setq mouse-wheel-scroll-amount '(1))
