@@ -265,13 +265,7 @@ So switch to existing *ansi-term* is buffer exists"
 (use-package smart-jump
   :straight t
   :config
-  (smart-jump-setup-default-registers)
-  (smart-jump-register :modes 'emacs-lisp-mode
-                       :jump-fn 'xref-find-definitions
-                       :refs-fn 'xref-find-references
-                       :pop-fn 'pop-tag-mark
-                       :should-jump t
-                       :heuristic 'error))
+  (smart-jump-setup-default-registers))
 
 ;; Python
 (defun vj-comint-clear-buffer (&optional buffer-or-name)
