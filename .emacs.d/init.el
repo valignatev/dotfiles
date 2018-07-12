@@ -454,6 +454,9 @@ With this function I don't need to switch to comint window to clear it"
 (use-package package-lint
   :straight t)
 
+(use-package emojify
+  :straight t)
+
 (setq custom-file (concat (file-name-directory user-init-file) "custom-variables.el"))
 (load custom-file)
 
