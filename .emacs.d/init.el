@@ -161,9 +161,6 @@ Default is vj-font-size"
   (use-package evil-surround
     :straight t
     :config (global-evil-surround-mode t))
-  (use-package evil-ediff
-    :straight t
-    :config (evil-ediff-init))
   (with-eval-after-load 'smart-jump
     (evil-define-key 'motion prog-mode-map
       "gd" 'smart-jump-go
