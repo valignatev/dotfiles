@@ -409,7 +409,14 @@ With this function I don't need to switch to comint window to clear it"
          ("C-[" . vj-company-abort)
 	 :map company-search-map
 	 ("C-n" . company-select-next)
-	 ("C-p" . company-select-previous)))
+	 ("C-p" . company-select-previous))
+  :config
+  (use-package company-quickhelp
+    :straight t
+    :init
+    (company-quickhelp-mode 1)
+    (use-package pos-tip
+      :straight t)))
 
 (use-package graphql-mode
   :straight t)
