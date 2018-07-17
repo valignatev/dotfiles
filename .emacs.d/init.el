@@ -108,6 +108,8 @@ Default is vj-font-size"
 ;; Buffers and backups
 (desktop-save-mode t)
 (global-auto-revert-mode t)
+(setq global-auto-revert-non-file-buffers t)
+(setq auto-revert-verbose nil)
 (customize-set-variable 'indent-tabs-mode nil)
 (setq backup-directory-alist
       `(("." . ,(concat user-emacs-directory "backups"))))
@@ -116,6 +118,9 @@ Default is vj-font-size"
 (setq undo-tree-auto-save-history t)
 (setq undo-tree-history-directory-alist
       `((".*" . ,(concat user-emacs-directory "undo/"))))
+(add-hook 'focus-out-hook (lambda () (interactive) (save-some-buffers t)))
+;; save when frame is closed
+(add-hook 'delete-frame-functions (lambda () (interactive) (save-some-buffers t)))
 
 ;; Security
 (setq gnutls-verify-error t)
