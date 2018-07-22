@@ -326,14 +326,35 @@ With this function I don't need to switch to comint window to clear it"
   (venv-initialize-interactive-shells))
 
 ;; Web/javascript
+(use-package rjsx-mode
+  :straight t)
+
 (use-package web-mode
   :straight t
   :init
-  (setq web-mode-code-indent-offset 2)
-  (setq web-mode-enable-auto-closing t)
-  (setq web-mode-enable-auto-pairing t)
-  (setq web-mode-enable-comment-keywords t)
-  (setq web-mode-enable-current-element-highlight t))
+  (setq web-mode-block-padding 2
+        web-mode-code-indent-offset 2
+        web-mode-code-indent-offset 2
+        web-mode-comment-style 2
+        web-mode-css-indent-offset 2
+        web-mode-enable-auto-closing t
+        web-mode-enable-auto-pairing t
+        web-mode-enable-comment-keywords t
+        web-mode-enable-css-colorization t
+        web-mode-enable-current-element-highlight t
+        web-mode-markup-indent-offset 2)
+  :mode (("\\.html?\\'" . web-mode)
+         ("\\.tsx\\'" . web-mode)
+         ("\\.jsx\\'" . web-mode)
+         ("\\.js\\'" . web-mode))
+  :hook ((web-mode . (lambda ()
+                       (setq evil-shift-width 2)
+                       (when (or (string-equal "tsx" (file-name-extension buffer-file-name))
+                                 (string-equal "jsx" (file-name-extension buffer-file-name))
+                                 (string-equal "js" (file-name-extension buffer-file-name)))
+                         (setup-tide-mode))))
+         (web-mode . rjsx-minor-mode)
+         (web-mode . js2-refactor-mode)))
 
 (use-package company-web
   :straight t
@@ -348,7 +369,6 @@ With this function I don't need to switch to comint window to clear it"
   :custom
   (js-switch-indent-offset 2)
   (js2-basic-offset 2)
-  (evil-shift-width 2)
   :config
   (js2-imenu-extras-mode))
 
@@ -357,11 +377,6 @@ With this function I don't need to switch to comint window to clear it"
   :hook (js2-mode . js2-refactor-mode)
   :config
   (js2r-add-keybindings-with-prefix "C-c C-m"))
-
-(use-package rjsx-mode
-  :straight t
-  :mode(("\\.js\\'" . rjsx-mode)
-        ("\\.jsx\\'" . rjsx-mode)))
 
 (use-package add-node-modules-path
   :straight t
