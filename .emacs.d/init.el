@@ -397,6 +397,7 @@ With this function I don't need to switch to comint window to clear it"
   (company-require-match nil)
   (company-minimum-prefix-length 1)
   (company-idle-delay 0.2)
+  (company-tooltip-align-annotation t)
   (company-frontends '(company-pseudo-tooltip-frontend
                        company-echo-metadata-frontend))
   :hook ((prog-mode . company-mode)
