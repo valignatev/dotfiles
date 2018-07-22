@@ -24,6 +24,11 @@
 (global-hl-line-mode t)
 (winner-mode 1)
 (setq confirm-kill-processes nil)
+(setq echo-keystrokes 0.5)
+(setq gc-cons-threshold 50000000)
+(setq frame-title-format
+      '("" invocation-name ": " (:eval (replace-regexp-in-string
+                                        "^ +" "" (or (buffer-file-name) (buffer-name))))))
 (add-hook 'prog-mode-hook (lambda ()(modify-syntax-entry ?_ "w")))
 
 ;; Scrolling
