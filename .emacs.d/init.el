@@ -118,8 +118,11 @@ Default is vj-font-size"
 (customize-set-variable 'indent-tabs-mode nil)
 (setq backup-directory-alist
       `(("." . ,(concat user-emacs-directory "backups"))))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+(setq delete-old-versions t)
+;; I tried to use concat (user-emacs-directory "autosave") here, but
+;; it doesn't work
+(setq auto-save-list-file-prefix "~/.emacs.d/autosave/")
+(setq auto-save-file-name-transforms '((".*"  "~/.emacs.d/autosave/" t)))
 (setq undo-tree-auto-save-history t)
 (setq undo-tree-history-directory-alist
       `((".*" . ,(concat user-emacs-directory "undo/"))))
