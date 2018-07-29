@@ -144,7 +144,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Borders
 for_window [class="^.*"] border pixel 3
-for_window [class=$class_pycharm floating] border none
 smart_borders on
 
 # Colors
