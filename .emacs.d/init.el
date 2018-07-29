@@ -500,6 +500,11 @@ With this function I don't need to switch to comint window to clear it"
 (use-package emojify
   :straight t)
 
+;; TRAMP
+(setq tramp-backup-directory-alist backup-directory-alist)
+(with-eval-after-load 'tramp-cache
+  (setq tramp-persistency-file-name "~/.emacs.d/etc/tramp"))
+
 (setq custom-file (concat (file-name-directory user-init-file) "custom-variables.el"))
 (load custom-file)
 
