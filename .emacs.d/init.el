@@ -119,6 +119,7 @@ Default is vj-font-size"
 ;; Buffers and backups
 (desktop-save-mode t)
 (global-auto-revert-mode t)
+(setq create-lockfiles nil)
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
 (customize-set-variable 'indent-tabs-mode nil)
