@@ -30,6 +30,12 @@
       '("" invocation-name ": " (:eval (replace-regexp-in-string
                                         "^ +" "" (or (buffer-file-name) (buffer-name))))))
 (add-hook 'prog-mode-hook (lambda ()(modify-syntax-entry ?_ "w")))
+(setq savehist-file "~/.emacs.d/etc/savehist"
+      history-length 150)
+(savehist-mode)
+(setq-default save-place t)
+(setq save-place-file "~/.emacs.d/etc/saveplace")
+(setq bookmark-default-file "~/.emacs.d/etc/bookmarks")
 
 ;; Scrolling
 (setq mouse-wheel-scroll-amount '(1))
