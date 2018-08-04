@@ -218,8 +218,13 @@ Default is vj-font-size"
   :straight t)
 
 ;; Projectile
-(straight-use-package 'projectile)
-(projectile-mode 1)
+(use-package projectile
+  :straight t
+  :config
+  (projectile-mode 1)
+  (with-eval-after-load 'evil
+    (evil-define-key 'motion global-map
+      " p" 'projectile-command-map)))
 
 ;; Modeline
 (straight-use-package 'minions)
