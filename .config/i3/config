@@ -187,7 +187,7 @@ bindsym XF86AudioLowerVolume exec "pamixer -d 1"
 bindsym XF86AudioMute exec "pamixer -t"
 
 # Scratchpad
-for_window [instance="^terminal_scratchpad"] move scratchpad
+for_window [title="^terminal_scratchpad"] move scratchpad
 bindsym $mod+x scratchpad show
 bindsym $mod+minus move scratchpad
 exec --no-startup-id i3-sensible-terminal -t "terminal_scratchpad"
