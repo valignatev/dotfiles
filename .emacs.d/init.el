@@ -259,13 +259,8 @@ So switch to existing *ansi-term* is buffer exists"
       (switch-to-buffer-other-window (get-buffer (buffer-name)))
       (ansi-term shell-file-name))))
 (global-set-key (kbd "C-z") 'vj-term)
-;; I need to call for disabling evil-mode for both
-;; vj-term and term-char-mode because in first scenario
-;; we should wait until we in *terminal* buffer before
-;; disabling evil
-(advice-add 'vj-term :after #'turn-off-evil-mode)
-(advice-add 'term-char-mode :after #'turn-off-evil-mode)
-(advice-add 'term-line-mode :after #'turn-on-evil-mode)
+(advice-add 'term-char-mode :after #'evil-emacs-state)
+(advice-add 'term-line-mode :after #'evil-normal-state)
 (add-hook 'term-mode-hook
           (lambda ()
             (define-key term-raw-map (kbd "M-x") 'execute-extended-command)))
