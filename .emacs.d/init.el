@@ -320,7 +320,7 @@ With this function I don't need to switch to comint window to clear it"
   :config
   (use-package company-anaconda
     :straight t
-    :requires company
+    :after company
     :config (add-to-list 'company-backends 'company-anaconda)))
 
 ;; Virtualenvwrapper
@@ -365,6 +365,7 @@ With this function I don't need to switch to comint window to clear it"
 
 (use-package company-web
   :straight t
+  :after company
   :hook (web-mode . (lambda ()
     (add-to-list 'company-backends 'company-web-html))))
 
