@@ -153,6 +153,7 @@ client.unfocused        #333333 #222222 #888888 #292d2e   #93a1a1
 
 # Emacs
 for_window [title="Ediff"] floating enable
+for_window [title="\*SmartJump Peek\*"] floating enable
 
 # flash active window
 bindsym $mod+BackSpace exec --no-startup-id sh ~/.local/bin/flash_win.sh
