@@ -184,7 +184,7 @@ animation-charging-framerate = 500
 type = internal/temperature
 ; Find needed zone:
 ; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
-thermal-zone = 0
+thermal-zone = 2
 warn-temperature = 68
 
 format = <ramp> <label>
