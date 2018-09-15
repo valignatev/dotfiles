@@ -103,6 +103,10 @@ Default is vj-font-size"
   :bind (("C-c <f6>" . heaven-and-hell-load-default-theme)
          ("<f6>" . heaven-and-hell-toggle-theme)))
 
+(use-package dired-sidebar
+  :straight t
+  :commands (dired-sidebar-toggle-sidebar))
+
 ;; Icons for dired
 (use-package all-the-icons
   :straight t
@@ -231,7 +235,7 @@ Default is vj-font-size"
 (minions-mode t)
 
 ;; Shell (if I accidentally end up there)
-(setq comint-prompt-read-only t)
+(setq comint-prompt-read-only nil)
 (setq comint-input-ignoredups t)
 
 (defun parse-ansi-for-shell-command-output (message-or-buffer &rest _)
@@ -331,6 +335,13 @@ With this function I don't need to switch to comint window to clear it"
   (setq venv-location "~/.cache/pypoetry/virtualenvs/")
   :config
   (venv-initialize-interactive-shells))
+
+;; Pytest
+(use-package python-pytest
+  :straight t
+  :custom
+  (python-pytest-executable "poetry run pytest")
+  (python-pytest-unsaved-buffers-behavior 'save-all))
 
 ;; Web/javascript
 (use-package rjsx-mode
