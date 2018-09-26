@@ -222,6 +222,8 @@ Default is vj-font-size"
 ;; Projectile
 (use-package projectile
   :straight t
+  :init
+  (setq projectile-switch-project-action #'projectile-dired)
   :config
   (projectile-mode 1)
   (with-eval-after-load 'evil
