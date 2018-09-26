@@ -7,7 +7,6 @@ set $class_pycharm "jetbrains-pycharm"
 
 # It is Super_R, check .Xmodmap
 set $mod Mod5
-
 set $lalt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -40,10 +39,10 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left 30px
+bindsym $mod+Shift+j move down 30px
+bindsym $mod+Shift+k move up 30px
+bindsym $mod+Shift+l move right 30px
 
 # split in horizontal orientation
 bindsym $mod+g split h
@@ -108,12 +107,6 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exit
 
-# move floating window
-bindsym $mod+$lalt+k move up 30px
-bindsym $mod+$lalt+j move down 30px
-bindsym $mod+$lalt+h move left 30px
-bindsym $mod+$lalt+l move right 30px
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -159,8 +152,8 @@ for_window [title="\*SmartJump Peek\*"] floating enable
 bindsym $mod+BackSpace exec --no-startup-id sh ~/.local/bin/flash_win.sh
 
 # Toggle webcam, make it sticky and floating
-for_window [title="video0 - mpv"] floating enable
-for_window [title="video0 - mpv"] sticky enable
+for_window [title="video2 - mpv"] floating enable
+for_window [title="video2 - mpv"] sticky enable
 
 bindsym $mod+c exec --no-startup-id camtoggle
 
@@ -179,13 +172,14 @@ bindsym XF86KbdBrightnessUp exec kbdlight up 5
 bindsym XF86KbdBrightnessDown exec kbdlight down 5
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec gmux_backlight +5
-bindsym XF86MonBrightnessDown exec gmux_backlight -5
+bindsym XF86MonBrightnessUp exec xbacklight +2
+bindsym XF86MonBrightnessDown exec xbacklight -2
 
 # Multimedia keys
 bindsym XF86AudioRaiseVolume exec "pamixer -i 3"
 bindsym XF86AudioLowerVolume exec "pamixer -d 1"
 bindsym XF86AudioMute exec "pamixer -t"
+bindsym XF86AudioMicMute exec "pamixer --source 1 -t"
 
 # Scratchpad
 for_window [title="^terminal_scratchpad"] move scratchpad
@@ -201,10 +195,10 @@ exec --no-startup-id slack
 # screenshot to clipboard
 bindsym --release $mod+p exec maim -s | xclip -selection clipboard -t image/png
 # flameshot - more powerful screenshoting, XF86LaunchA is Fn+F3 on my mbp 2015 keyboard
-bindsym --release shift+XF86LaunchA exec flameshot gui
+bindsym --release Print exec flameshot gui
 
 # compton
 exec compton --config /home/vj/.config/compton.conf -b
 
-# hide mouse cursor after a brief period
-exec --no-startup-id unclutter --ignore-scrolling --timeout 1
+# Get my location, used by Redshift
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
