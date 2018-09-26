@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+while(true)
+do
+    xclip -i /dev/null
+    sleep 1
+done &
