@@ -1,8 +1,0 @@
-# ALSA library configuration file managed by asoundconf(1).
-#
-# MANUAL CHANGES TO THIS FILE WILL BE OVERWRITTEN!
-#
-# Manual changes to the ALSA library configuration should be implemented
-# by editing the ~/.asoundrc file, not by editing this file.
-pcm.!default { type pulse }
-ctl.!default { type pulse }
