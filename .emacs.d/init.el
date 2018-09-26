@@ -41,9 +41,7 @@
 (setq mouse-wheel-scroll-amount '(1))
 (setq mouse-wheel-progressive-speed nil)
 
-;; Bind meta to left command key and then unset Command+Space
-;; because I use it for switching layout
-(setq x-super-keysym 'meta)
+;; Unset M+SPC because I use it for dmenu
 (global-unset-key (kbd "M-SPC"))
 (setq scroll-conservatively 101)
 ;; https://emacs.stackexchange.com/q/28736/13740
