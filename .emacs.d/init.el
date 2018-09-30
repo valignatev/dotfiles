@@ -248,6 +248,9 @@ But only if it's *Shell Command Output* buffer."
            (ansi-color-apply-on-region (point-min) (point-max))))))
 (advice-add 'display-message-or-buffer :before #'parse-ansi-for-shell-command-output)
 
+;; fish-shell
+(use-package fish-mode
+  :straight t)
 
 ;; ansi-term (I actually use it)
 ;; This section is a total mess
