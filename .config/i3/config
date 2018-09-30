@@ -198,6 +198,7 @@ bindsym Control+shift+Print exec flameshot gui
 
 # compton
 exec compton --config /home/vj/.config/compton.conf -b
+exec redshift-gtk
 
 # Get my location, used by Redshift
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
