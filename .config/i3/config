@@ -192,10 +192,9 @@ exec --no-startup-id "i3-msg 'workspace 10; append_layout ~/.config/i3/workspace
 exec --no-startup-id telegram-desktop
 exec --no-startup-id slack
 
-# screenshot to clipboard
-bindsym --release $mod+p exec maim -s | xclip -selection clipboard -t image/png
-# flameshot - more powerful screenshoting, XF86LaunchA is Fn+F3 on my mbp 2015 keyboard
-bindsym --release Print exec flameshot gui
+# Screenshoting
+bindsym shift+Print exec maim -s | xclip -selection clipboard -t image/png
+bindsym Control+shift+Print exec flameshot gui
 
 # compton
 exec compton --config /home/vj/.config/compton.conf -b
