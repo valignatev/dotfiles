@@ -12,7 +12,6 @@
 !.ideavimrc
 !.vimrc
 !.xinitrc
-!.zshrc
 !.tmux.conf
 !.inputrc
 
@@ -21,6 +20,7 @@
 .config/*
 !.config/alacritty/
 !.config/dunst/
+!.config/fish/
 !.config/i3/
 !.config/polybar/
 !.config/termite/
