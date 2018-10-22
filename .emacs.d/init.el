@@ -361,8 +361,10 @@ With this function I don't need to switch to comint window to clear it"
         web-mode-comment-style 2
         web-mode-css-indent-offset 2
         web-mode-enable-auto-closing t
+        web-mode-auto-close-style 2
         web-mode-enable-auto-pairing t
         web-mode-enable-comment-keywords t
+        web-mode-enable-html-entities-fontification t
         web-mode-enable-css-colorization t
         web-mode-enable-current-element-highlight t
         web-mode-markup-indent-offset 2)
@@ -385,6 +387,9 @@ With this function I don't need to switch to comint window to clear it"
   :hook (web-mode . (lambda ()
     (add-to-list 'company-backends 'company-web-html))))
 
+(use-package emmet-mode
+  :straight t)
+
 (use-package js2-mode
   :straight t
   :init
@@ -401,6 +406,9 @@ With this function I don't need to switch to comint window to clear it"
   :hook (js2-mode . js2-refactor-mode)
   :config
   (js2r-add-keybindings-with-prefix "C-c C-m"))
+
+(use-package js-doc
+  :straight t)
 
 (use-package add-node-modules-path
   :straight t
