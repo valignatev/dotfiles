@@ -273,7 +273,9 @@ So switch to existing *ansi-term* is buffer exists"
             (define-key term-raw-map (kbd "M-x") 'execute-extended-command)))
 
 ;; Parens
-(electric-pair-mode t)
+(use-package smartparens
+  :straight t
+  :config (smartparens-global-mode t))
 
 ;; editorconfig
 (straight-use-package 'editorconfig)
