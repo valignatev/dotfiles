@@ -186,7 +186,9 @@ Default is vj-font-size"
   (with-eval-after-load 'smart-jump
     (evil-define-key 'motion prog-mode-map
       "gd" 'smart-jump-go
-      "gr" 'smart-jump-references)))
+      "gr" 'smart-jump-references)
+    (evil-set-command-property 'smart-jump-go :jump t)
+    (evil-set-command-property 'smart-jump-references :jump t)))
 
 ;; Magit
 (use-package magit
