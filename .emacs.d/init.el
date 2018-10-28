@@ -190,6 +190,14 @@ Default is vj-font-size"
     (evil-set-command-property 'smart-jump-go :jump t)
     (evil-set-command-property 'smart-jump-references :jump t)))
 
+(use-package evil-collection
+  :straight t
+  :after evil
+  :init (setq evil-want-keybinding nil)
+  :config
+  (evil-collection-init 'dired)
+  (define-key dired-mode-map (kbd "C-o") 'evil-jump-backward))
+
 ;; Magit
 (use-package magit
   :straight t
