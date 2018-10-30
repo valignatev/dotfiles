@@ -171,6 +171,7 @@ Default is vj-font-size"
   ;; Bind it to something silly since I use C-z to run terminal
   (setq evil-toggle-key "C-c C-z")
   (setq evil-want-C-u-scroll t)
+  (setq evil-want-keybinding nil)
   (setq evil-split-window-below t)
   (setq evil--jumps-buffer-targets "\\(\\*\\(\\new\\|scratch\\)\\*\\|Dired:.+\\)")
   (defun vj-rename-dired-buffer ()
@@ -199,7 +200,6 @@ Default is vj-font-size"
 (use-package evil-collection
   :straight t
   :after evil
-  :init (setq evil-want-keybinding nil)
   :config
   (evil-collection-init 'dired)
   (define-key dired-mode-map (kbd "C-o") 'evil-jump-backward))
