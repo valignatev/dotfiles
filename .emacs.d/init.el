@@ -146,11 +146,17 @@ Default is vj-font-size"
 ;; Minibuffer (find-file, M-x etc)
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
-(straight-use-package 'ido-vertical-mode)
-(ido-vertical-mode t)
-(setq ido-vertical-define-keys 'C-n-and-C-p-only)
-(straight-use-package 'smex)
-(define-key global-map [remap execute-extended-command] 'smex)
+
+(use-package ido-vertical-mode
+  :straight t
+  :custom (ido-vertical-define-keys 'C-n-and-C-p-only)
+  :config
+  (ido-vertical-mode t))
+
+(use-package smex
+  :straight t
+  :config
+  (define-key global-map [remap execute-extended-command] 'smex))
 
 (use-package which-key
   :straight t
@@ -241,8 +247,10 @@ Default is vj-font-size"
       " p" 'projectile-command-map)))
 
 ;; Modeline
-(straight-use-package 'minions)
-(minions-mode t)
+(use-package minions
+  :straight t
+  :config
+  (minions-mode t))
 
 ;; Shell (if I accidentally end up there)
 (setq comint-prompt-read-only nil)
@@ -288,8 +296,10 @@ So switch to existing *ansi-term* is buffer exists"
   :config (smartparens-global-mode t))
 
 ;; editorconfig
-(straight-use-package 'editorconfig)
-(editorconfig-mode t)
+(use-package editorconfig
+  :straight t
+  :config
+  (editorconfig-mode t))
 
 ;; Markdown
 (use-package markdown-mode
