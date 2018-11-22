@@ -4,15 +4,16 @@
     "current_border_width": 2,
     "floating": "auto_off",
     "geometry": {
-       "height": 1772,
+       "height": 1440,
        "width": 2876,
        "x": 0,
        "y": 0
     },
     "name": "Slack*",
-    "percent": 0.65,
+    "percent": 0.60,
     "swallows": [
        {
+         "title": "^Slack - .*",
          "class": "^Slack$",
          "instance": "^slack$"
        }
@@ -25,13 +26,13 @@
     "current_border_width": 2,
     "floating": "auto_off",
     "geometry": {
-       "height": 1772,
+       "height": 1440,
        "width": 1003,
        "x": 1875,
        "y": 26
     },
     "name": "Telegram",
-    "percent": 0.35,
+    "percent": 0.40,
     "swallows": [
        {
          "class": "^TelegramDesktop$",
