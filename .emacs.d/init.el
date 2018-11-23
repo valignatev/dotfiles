@@ -48,6 +48,9 @@
 ;; Also, jwiegley does this
 (setq auto-window-vscroll nil)
 
+;; Dired
+(setq dired-dwim-target t)
+
 ;; Straight package manager bootstrap and setup
 (let ((bootstrap-file (concat user-emacs-directory "straight/repos/straight.el/bootstrap.el"))
       (bootstrap-version 3))
@@ -223,6 +226,7 @@ Default is vj-font-size"
   :straight t
   :hook ((dired-mode . diff-hl-dired-mode)
          (magit-post-refresh . diff-hl-magit-post-refresh))
+  :custom (diff-hl-flydiff-delay 0.3)
   :config
   (global-diff-hl-mode t)
   (diff-hl-flydiff-mode 1))
