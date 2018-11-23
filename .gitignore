@@ -20,7 +20,8 @@
 .config/*
 !.config/alacritty/
 !.config/dunst/
-!.config/fish/
+!.config/fish/config.fish
+!.config/fish/functions/
 !.config/i3/
 !.config/polybar/
 !.config/termite/
