@@ -34,6 +34,7 @@
 .emacs.d/*
 !.emacs.d/init.el
 !.emacs.d/custom.el
+!.emacs.d/config.org
 !.emacs.d/etc/
 
 # ~/.local/bin folder
