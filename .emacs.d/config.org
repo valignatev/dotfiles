@@ -1,0 +1,498 @@
+* Welcome
+This is my attempt of a Literate Emacs Config (tm) (c) (R)
+* Essentials
+Things I want to enable no matter what, before anything else.
+So if something got fucked up I at least get somewhat useful setup.
+** Disable annoying GUI things
+Startup message, menu bar, tool bar, scroll bar, cursor blinking and GUI popups
+#+BEGIN_SRC emacs-lisp
+  (setq inhibit-startup-message t
+	inhibit-splash-screen t
+        x-gtk-use-system-tooltips nil
+        use-dialog-box nil)
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (blink-cursor-mode 0)
+#+END_SRC
+** Security
+Check certificates, fail if something is untrusted or wrong in either way.
+Don't let Russian hackers hack my Emacs.
+#+BEGIN_SRC emacs-lisp
+  (setq gnutls-verify-error t)
+  (setq tls-checktrust t)
+#+END_SRC
+** Easy confirmation
+"y"/"n" instead of "yes"/"no", don't confirm for process kill etc
+#+BEGIN_SRC emacs-lisp
+  (defalias 'yes-or-no-p 'y-or-n-p)
+  (setq confirm-kill-processes nil)
+#+END_SRC
+** Scrolling
+Scrolling should be less jumpy than the default.
+#+BEGIN_SRC emacs-lisp
+  (setq mouse-wheel-scroll-amount '(1))
+  (setq mouse-wheel-progressive-speed nil)
+  (setq scroll-conservatively 101)
+#+END_SRC
+** Codestyle defaults
+Editorconfig is cool, but I want some defaults
+#+BEGIN_SRC emacs-lisp
+(setq mode-require-final-newline t)
+#+END_SRC
+* Package management
+I'm using [[https://github.com/raxod502/straight.el][Straight]] for package management. Check it out, it's really cool.
+Here goes bootstrapping code:
+#+BEGIN_SRC emacs-lisp
+  (let ((bootstrap-file (concat user-emacs-directory "straight/repos/straight.el/bootstrap.el"))
+	(bootstrap-version 3))
+    (unless (file-exists-p bootstrap-file)
+      (with-current-buffer
+	  (url-retrieve-synchronously
+	   "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+	   'silent 'inhibit-cookies)
+	(goto-char (point-max))
+	(eval-print-last-sexp)))
+    (load bootstrap-file nil 'nomessage))
+#+END_SRC
+Also, I want use-package, and straight integrates with it quite well
+#+BEGIN_SRC emacs-lisp
+  (straight-use-package 'use-package)
+#+END_SRC
+* Theming, fancification
+Themes, fonts, icons etc.
+Highlight the current line.
+#+BEGIN_SRC emacs-lisp
+  (global-hl-line-mode t)
+#+END_SRC
+Enable visual line wrapping and tweak the fringes
+(vertical regions on both edges of the screen) a little bit.
+#+BEGIN_SRC emacs-lisp
+  (global-visual-line-mode 1)
+  (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
+  (fringe-mode 16)
+#+END_SRC
+** Themes
+My fav currently is the Spacemacs Theme. Any other themes will end up here as well.
+#+BEGIN_SRC emacs-lisp
+  (use-package spacemacs-theme
+    :straight t
+    :defer t
+    :custom
+    (spacemacs-theme-comment-bg nil)
+    (spacemacs-theme-comment-italic t))
+  ;; If I ever want to use original comment color with italics together,
+  ;; I should uncomment these 2 lines.
+  ;; See https://github.com/nashamri/spacemacs-theme/issues/104
+  ;; (custom-set-variables '(spacemacs-theme-custom-colors
+  ;;                         '((comment-light . "#2aa1ae"))))
+#+END_SRC
+That's how I enable, and then switch dark and light themes with one key.
+Btw, it's my package, [[https://github.com/valignatev/heaven-and-hell/][Heaven and Hell]].
+#+BEGIN_SRC emacs-lisp
+  (use-package heaven-and-hell
+    :straight t
+    :init
+    (setq heaven-and-hell-theme-type 'light)
+    (setq heaven-and-hell-themes
+	  '((light . spacemacs-light)
+	    (dark . spacemacs-dark)))
+    :hook (after-init . heaven-and-hell-init-hook)
+    :bind (("C-c <f6>" . heaven-and-hell-load-default-theme)
+	   ("<f6>" . heaven-and-hell-toggle-theme)))
+#+END_SRC
+** Fonts
+It's not that easy to "just set the frame font", e.g. to change the size of
+both text and modeline/minibuffer size.
+#+BEGIN_SRC emacs-lisp
+  (setq vj/font-name "Hack")
+  (defcustom vj/font-size 12 "My default font size")
+
+  (defun set-frame-font-size (&optional font-size)
+    "Change frame font size to FONT-SIZE.
+  If no FONT-SIZE provided, reset the font size to its default variable."
+    (let ((font-size
+	   (or font-size
+	       (car (get 'vj/font-size 'standard-value)))))
+      (customize-set-variable 'vj/font-size font-size)
+      (set-frame-font
+       (format "%s %d" vj/font-name font-size) nil t)))
+
+  (defun increase-frame-font ()
+    "Increase frame font by one."
+    (interactive)
+    (set-frame-font-size (+ vj/font-size 1)))
+
+  (defun decrease-frame-font ()
+    "Decrease frame font by one."
+    (interactive)
+    (set-frame-font-size (- vj/font-size 1)))
+
+  (defun reset-frame-font ()
+    "Reset frame font to its default value."
+    (interactive)
+    (set-frame-font-size))
+
+  (add-hook 'after-init-hook 'reset-frame-font)
+#+END_SRC
+** Icons
+With Emacs, I wanna go full fancy pleb-mode, with icons and emoji
+Btw don't forget =M-x all-the-icons-install-fonts=
+#+BEGIN_SRC emacs-lisp
+  (use-package all-the-icons
+    :straight t
+    :config
+    ;; all-the-icons doesn't work without font-lock+
+    ;; And font-lock+ doesn't have autoloads
+    (use-package font-lock+
+      :straight (:host github :repo "emacsmirror/font-lock-plus")
+      :config (require 'font-lock+)))
+
+  (use-package emojify
+    :defer t
+    :straight t)
+#+END_SRC
+** Modeline
+Enable column-mode, it shows column numbers. Maybe worth to move it to essentials
+#+BEGIN_SRC emacs-lisp
+  (column-number-mode t)
+#+END_SRC
+Doom-modeline
+#+BEGIN_SRC emacs-lisp
+  (use-package doom-modeline
+    :straight t
+    :defer t
+    :hook (after-init . doom-modeline-init))
+#+END_SRC
+* Saving behavior, backups, history
+** When and how to save
+Save opened buffers, save exact point in the buffer,
+save when I'm closing or switching off the focus.
+Also, obey changes from the outside of Emacs.
+#+BEGIN_SRC emacs-lisp
+  (desktop-save-mode t)
+  (save-place-mode t)
+  (add-hook 'focus-out-hook (lambda () (interactive) (save-some-buffers t)))
+  ;; save when frame is closed
+  (add-hook 'delete-frame-functions (lambda () (interactive) (save-some-buffers t)))
+  (global-auto-revert-mode t)
+  (setq global-auto-revert-non-file-buffers t)
+  (setq auto-revert-verbose nil)
+#+END_SRC
+** Cleanup Emacs backup noise
+I want to move out of the current directory things such as backups, lockfiles,
+autosaves. TRAMP backups are configured here as well.
+#+BEGIN_SRC emacs-lisp
+  (setq backup-directory-alist
+	`(("." . ,(concat user-emacs-directory "backups"))))
+  (setq delete-old-versions t)
+  (setq autosave-dir (format "%s%s" user-emacs-directory "autosave/"))
+  (setq auto-save-list-file-prefix autosave-dir)
+  (setq auto-save-file-name-transforms `((".*"  ,autosave-dir t)))
+  (setq tramp-backup-directory-alist backup-directory-alist)
+#+END_SRC
+** History
+I want a bit longer history of my minibuffer commands after restart.
+And, of course, undo-tree history, it's awesome.
+#+BEGIN_SRC emacs-lisp
+ (setq history-length 200)
+ (savehist-mode)
+ (setq undo-tree-auto-save-history t)
+ (setq undo-tree-history-directory-alist
+       `((".*" . ,(concat user-emacs-directory "undo/"))))
+#+END_SRC
+* Windows, Frames, buffers, M-x
+First and foremost, enable windows layout cycling.
+This way if I fuck up my layout (e.g. close all windows but one accidentally),
+I can easily restore previous state
+#+BEGIN_SRC emacs-lisp
+  (winner-mode 1)
+#+END_SRC
+Next, I want convenient help with available keybindings
+#+BEGIN_SRC emacs-lisp
+  (use-package which-key
+    :straight t
+    :init (which-key-mode))
+#+END_SRC
+I also don't want to wait for =which-key= popup forever
+#+BEGIN_SRC emacs-lisp
+(setq echo-keystrokes 0.5)
+#+END_SRC
+Hydra for sticky keys and for ivy dispatch.
+#+BEGIN_SRC emacs-lisp
+  (use-package hydra
+    :straight t
+    :defer t)
+#+END_SRC
+** Selection
+If I won't be using evil at all, I need at least something like the
+=evil-surround=. [[https://github.com/magnars/expand-region.el][Expand-region]] looks like it.
+#+BEGIN_SRC emacs-lisp
+  (use-package expand-region
+    :straight t
+    :config
+    (global-set-key (kbd "C-=") 'er/expand-region))
+#+END_SRC
+** Search
+Projectile doesn't use =ag= directly, but rather through [[https://github.com/Wilfred/ag.el][ag.el]].
+I think I should investigate counsel-projectile, and may be I won't need it anymore
+#+BEGIN_SRC emacs-lisp
+(use-package ag
+  :straight t)
+#+END_SRC
+Search with swiper, instead of isearch
+#+BEGIN_SRC emacs-lisp
+  (use-package swiper
+    :straight t
+    :after ivy
+    :config
+    (define-key global-map [remap isearch-forward] 'swiper))
+#+END_SRC
+** Ivy, the minibuffer harness
+Ivy is the base completion library which all following packages are using.
+#+BEGIN_SRC emacs-lisp
+  (use-package ivy
+    :straight t
+    :init
+    (setq ivy-initial-inputs-alist nil)
+    :custom
+    (ivy-use-virtual-buffers t)
+    :config
+    (ivy-mode 1)
+    (use-package ivy-hydra
+      :straight t
+      :defer t)
+    (use-package flx
+      :straight t))
+#+END_SRC
+Replace built in =M-x=, =find-file=, and all such stuff with counsel.
+#+BEGIN_SRC emacs-lisp
+  (use-package counsel
+    :straight t
+    :after swiper
+    :bind ("C-c s" . counsel-rg)
+    :config
+    (counsel-mode))
+#+END_SRC
+* Dired (working with directories)
+Copy/move to the open split by default
+#+BEGIN_SRC emacs-lisp
+  (setq dired-dwim-target t)
+#+END_SRC
+Icons for dired, requires =all-the-icons=
+#+BEGIN_SRC emacs-lisp
+  (use-package all-the-icons-dired
+      :straight t
+      :after all-the-icons
+      :hook (dired-mode . all-the-icons-dired-mode))
+#+END_SRC
+Some shortcuts to dired into dirs I often need
+#+BEGIN_SRC emacs-lisp
+  (global-set-key
+   (kbd "C-x w")
+   (lambda ()
+     (interactive)
+     (dired (concat user-emacs-directory "../workspace/me"))))
+#+END_SRC
+* Terminals
+Open =$TERMINAL= in a project root
+#+BEGIN_SRC emacs-lisp
+  (defun vj/terminal-in-project-root ()
+    (interactive)
+    (let ((default-directory (projectile-project-root)))
+      (start-process "terminal" nil (getenv "TERMINAL"))))
+
+  (global-set-key (kbd "C-x t") 'vj/terminal-in-project-root)
+#+END_SRC
+* Autocompletion
+** Company, the engine
+Here's general config for autocompletion in my Emacs. I'm using [[https://github.com/company-mode/company-mode/][company-mode]].
+For now, I enable company only for prog-mode.
+#+BEGIN_SRC emacs-lisp
+(use-package company
+  :straight t
+  :custom
+  (company-require-match nil)
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.2)
+  (company-tooltip-align-annotation t)
+  (company-frontends '(company-pseudo-tooltip-frontend
+		       company-echo-metadata-frontend))
+  :hook ((prog-mode . company-mode))
+  :bind (:map company-active-map
+         ("C-n" . company-select-next)
+         ("C-p" . company-select-previous)))
+#+END_SRC
+** Pairs
+Smartparens of course, what else would you expect?
+#+BEGIN_SRC emacs-lisp
+  (use-package smartparens
+    :straight t
+    :config
+    (require 'smartparens-config))
+#+END_SRC
+* Programming
+** Projects
+[[https://github.com/bbatsov/projectile/][Projectile]] for working with projects. I don't mind if it goes to project dired.
+#+BEGIN_SRC emacs-lisp
+(use-package projectile
+  :straight t
+  :init
+  (setq projectile-switch-project-action #'projectile-dired)
+  (setq projectile-completion-system 'ivy)
+  :config
+  (projectile-mode 1)
+  :bind-keymap ("C-c p" . projectile-command-map))
+#+END_SRC
+** Linters and codestyle
+Flycheck handles all the linters. I make it display errors and warning in the
+right fringe with a horizontal line defined by =flycheck-fringe-indicator=
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :straight t
+    :init
+    (define-fringe-bitmap 'flycheck-fringe-indicator
+      (vector #b0000000000000000
+	      #b0000000000000000
+	      #b0000000000000000
+	      #b0000000000000000
+	      #b0000000000000000
+	      #b1111111111111111
+	      #b1111111111111111
+	      #b1111111111111111
+	      #b1111111111111111
+	      #b1111111111111111
+	      #b1111111111111111
+	      #b0000000000000000
+	      #b0000000000000000
+	      #b0000000000000000
+	      #b0000000000000000
+	      #b0000000000000000
+	      #b0000000000000000) nil 16)
+    :custom (flycheck-indication-mode 'right-fringe)
+    :hook (after-init . global-flycheck-mode)
+    :config
+    (flycheck-define-error-level 'error
+				 :severity 2
+				 :overlay-category 'flycheck-error-overlay
+				 :fringe-bitmap 'flycheck-fringe-indicator
+				 :fringe-face 'flycheck-fringe-error)
+    (flycheck-define-error-level 'warning
+				 :severity 1
+				 :overlay-category 'flycheck-warning-overlay
+				 :fringe-bitmap 'flycheck-fringe-indicator
+				 :fringe-face 'flycheck-fringe-warning)
+    (flycheck-define-error-level 'info
+				 :severity 0
+				 :overlay-category 'flycheck-info-overlay
+				 :fringe-bitmap 'flycheck-fringe-indicator
+				 :fringe-face 'flycheck-fringe-info))
+#+END_SRC
+Editorconfig to ensure consistent file format, indentation and their friends.
+#+BEGIN_SRC emacs-lisp
+  (use-package editorconfig
+    :straight t
+    :config
+    (editorconfig-mode t))
+#+END_SRC
+** Git
+ Of course, Magit!
+ #+BEGIN_SRC emacs-lisp
+ (use-package magit
+   :straight t
+   :bind ("C-x g" . magit-status))
+ #+END_SRC
+ [[https://github.com/sshaw/git-link][Git-link]] builds links to GitHub/Gitlab/BitBucket, and can go straight to them.
+ #+BEGIN_SRC emacs-lisp
+   (use-package git-link
+     :straight t
+     :custom (git-link-open-in-browser t))
+ #+END_SRC
+ Git gutter functionality is provided by [[https://github.com/dgutov/diff-hl/][diff-hl]]. It's the only package
+ which works well with Emacs 26+. Maybe it belongs to the Theming section, idk.
+ #+BEGIN_SRC emacs-lisp
+   (use-package diff-hl
+     :straight t
+     :hook ((dired-mode . diff-hl-dired-mode)
+	    (magit-post-refresh . diff-hl-magit-post-refresh))
+     :custom (diff-hl-flydiff-delay 0.5)
+     :config
+     (global-diff-hl-mode t))
+ #+END_SRC
+ =.gitignore= files support, comes from [[https://github.com/magit/git-modes][git-modes]] repo.
+ #+BEGIN_SRC emacs-lisp
+   (use-package gitignore-mode
+     :straight t)
+ #+END_SRC
+** Python
+Anaconda-mode for goto-definition, autocompletion and docs.
+#+BEGIN_SRC emacs-lisp
+  (use-package anaconda-mode
+    :straight t
+    :hook ((python-mode . anaconda-mode)
+	   (python-mode . anaconda-eldoc-mode))
+    :config
+    (use-package company-anaconda
+      :straight t
+      :after company
+      :config (add-to-list 'company-backends 'company-anaconda)))
+#+END_SRC
+And Virtualenvwrapper for working with virtual environments
+#+BEGIN_SRC emacs-lisp
+(use-package virtualenvwrapper
+  :straight t
+  :defer t
+  :init (setq venv-location "~/.cache/pypoetry/virtualenvs/")
+  :config (venv-initialize-interactive-shells))
+#+END_SRC
+** Web
+ HTML, CSS, JavaScript, you know it all, right?
+*** Web-mode
+ Hail and glory to the web-mode.
+ I'm using editorconfig, of course, but for one-off files and ad-hoc experimenting
+ editorocnfig is an overkill. Hence an indentation defaults.
+ #+BEGIN_SRC emacs-lisp
+   (defun web-mode-defaults ()
+     (setq web-mode-block-padding 2
+	   web-mode-code-indent-offset 2
+	   web-mode-code-indent-offset 2
+	   web-mode-comment-style 2
+	   web-mode-css-indent-offset 2
+	   web-mode-enable-auto-closing t
+	   web-mode-auto-close-style 2
+	   web-mode-enable-auto-pairing t
+	   web-mode-enable-comment-keywords t
+	   web-mode-enable-html-entities-fontification t
+	   web-mode-enable-css-colorization t
+	   web-mode-enable-current-element-highlight t
+	   web-mode-markup-indent-offset 2))
+   (use-package web-mode
+     :straight t
+     :init (web-mode-defaults)
+     :mode (("\\.html?\\'" . web-mode )))
+ #+END_SRC
+*** Markup generation
+ Avoid tedious typing when producing an HTML. [[https://github.com/smihica/emmet-mode][Emmet-mode]] (previously Zen-coding) helps a ton with this.
+ #+BEGIN_SRC emacs-lisp
+   (use-package emmet-mode
+     :straight t)
+ #+END_SRC
+*** Javascript
+ Vanilla Javascript, TypeScript, React and all such stuff goes here.
+** Emacs-lisp
+#+BEGIN_SRC emacs-lisp
+  (use-package package-lint
+    :straight t)
+#+END_SRC
+* File formats
+** Markdown
+#+BEGIN_SRC emacs-lisp
+  (use-package markdown-mode
+    :straight t
+    :commands (markdown-mode gfm-mode)
+    :custom (markdown-fontify-code-blocks-natively t)
+    :mode (("README\\.md\\'" . gfm-mode)
+	   ("\\.md\\'" . markdown-mode)
+	   ("\\.markdown\\'" . markdown-mode))
+    :init (setq markdown-command "multimarkdown"))
+#+END_SRC
