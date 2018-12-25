@@ -439,11 +439,16 @@ Anaconda-mode for goto-definition, autocompletion and docs.
 #+END_SRC
 And Virtualenvwrapper for working with virtual environments
 #+BEGIN_SRC emacs-lisp
-(use-package virtualenvwrapper
-  :straight t
-  :defer t
-  :init (setq venv-location "~/.cache/pypoetry/virtualenvs/")
-  :config (venv-initialize-interactive-shells))
+  (use-package virtualenvwrapper
+    :straight t
+    :defer t
+    :init (setq venv-location
+		(apply 'append (mapcar
+				(lambda (loc) (directory-files loc t directory-files-no-dot-files-regexp))
+				'("~/.cache/pypoetry/virtualenvs/"
+				  "~/.local/share/virtualenvs/"))))
+    :config
+    (venv-initialize-interactive-shells))
 #+END_SRC
 ** Web
  HTML, CSS, JavaScript, you know it all, right?
