@@ -3,7 +3,11 @@ This is my attempt of a Literate Emacs Config (tm) (c) (R)
 * Essentials
 Things I want to enable no matter what, before anything else.
 So if something got fucked up I at least get somewhat useful setup.
-** Disable annoying GUI things
+** Disable annoying things
+Annoying bell
+#+BEGIN_SRC emacs-lisp
+  (setq ring-bell-function 'ignore)
+#+END_SRC
 Startup message, menu bar, tool bar, scroll bar, cursor blinking and GUI popups
 #+BEGIN_SRC emacs-lisp
   (setq inhibit-startup-message t
@@ -71,6 +75,10 @@ Enable visual line wrapping and tweak the fringes
   (global-visual-line-mode 1)
   (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
   (fringe-mode 16)
+#+END_SRC
+Show matching paren
+#+BEGIN_SRC emacs-lisp
+  (show-paren-mode t)
 #+END_SRC
 ** Themes
 My fav currently is the Spacemacs Theme. Any other themes will end up here as well.
@@ -329,7 +337,8 @@ Smartparens of course, what else would you expect?
   (use-package smartparens
     :straight t
     :config
-    (require 'smartparens-config))
+    (require 'smartparens-config)
+    (smartparens-global-mode))
 #+END_SRC
 * Programming
 ** Projects
