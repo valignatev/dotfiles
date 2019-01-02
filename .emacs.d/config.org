@@ -305,9 +305,11 @@ Some shortcuts to dired into dirs I often need
 * Terminals
 Open =$TERMINAL= in a project root
 #+BEGIN_SRC emacs-lisp
-  (defun vj/terminal-in-project-root ()
-    (interactive)
-    (let ((default-directory (projectile-project-root)))
+  (defun vj/terminal-in-project-root (arg)
+    (interactive "P")
+    (let ((default-directory
+	    (if arg default-directory
+	      (projectile-project-root))))
       (start-process "terminal" nil (getenv "TERMINAL"))))
 
   (global-set-key (kbd "C-x t") 'vj/terminal-in-project-root)
