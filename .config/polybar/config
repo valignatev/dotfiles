@@ -15,8 +15,8 @@ foreground = ${colors.foreground}
 font-0 = Iosevka\ Nerd\ Font:pixelsize=14;weight=bold;0
 
 modules-left = i3 xwindow
-modules-center = xkeyboard date pomodoro
-modules-right = wlan volume backlight filesystem memory cpu battery temperature
+modules-center = xkeyboard date
+modules-right = volume backlight filesystem memory cpu battery temperature
 
 tray-position = right
 
@@ -94,20 +94,6 @@ format = <label>
 format-padding = 2
 
 label =  %gb_used% (%percentage_used%%)
-
-[module/wlan]
-type = internal/network
-interface = wlp61s0
-interval = 3.0
-
-format-connected = <label-connected>
-format-connected-padding = 2
-
-format-disconnected = <label-disconnected>
-format-disconnected-padding = 2
-
-label-connected =  %essid%
-label-disconnected =  None
 
 [module/date]
 type = internal/date
