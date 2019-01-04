@@ -154,9 +154,6 @@ for_window [title="video2 - mpv"] sticky enable
 
 bindsym $mod+c exec --no-startup-id camtoggle
 
-# Prevent firefox from stealing focus
-no_focus [class=$class_firefox]
-
 # Assign to workspaces
 assign [class=$class_telegram] $ws10
 assign [class=$class_slack] $ws10
@@ -196,6 +193,7 @@ bindsym Control+shift+Print exec flameshot gui
 # compton
 exec compton --config /home/vj/.config/compton.conf -b
 exec redshift-gtk
+exec nm-applet
 
 # Get my location, used by Redshift
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
