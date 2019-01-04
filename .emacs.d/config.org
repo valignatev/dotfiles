@@ -19,6 +19,14 @@ Startup message, menu bar, tool bar, scroll bar, cursor blinking and GUI popups
   (scroll-bar-mode -1)
   (blink-cursor-mode 0)
 #+END_SRC
+Fixing rectangle-number-lines pattern which inserts bogus space
+#+BEGIN_SRC emacs-lisp
+(defun rectangle--default-line-number-format (start end start-at)
+  (concat "%"
+	  (int-to-string (length (int-to-string (+ (count-lines start end)
+						   start-at))))
+	  "d"))
+#+END_SRC
 ** Security
 Check certificates, fail if something is untrusted or wrong in either way.
 Don't let Russian hackers hack my Emacs.
