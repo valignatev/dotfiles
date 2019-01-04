@@ -12,6 +12,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'rakr/vim-one'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 

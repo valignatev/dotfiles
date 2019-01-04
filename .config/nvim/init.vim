@@ -17,6 +17,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'sgur/vim-editorconfig'
 Plug 'alvan/vim-closetag'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
