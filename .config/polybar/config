@@ -5,6 +5,7 @@ foreground-alt = #555
 secondary = #e60053
 
 [bar/top]
+monitor = eDP-1
 width = 100%
 height = 30
 fixed-center = true
