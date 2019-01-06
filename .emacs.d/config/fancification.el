@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 (global-hl-line-mode t)
 
 (use-package spacemacs-theme

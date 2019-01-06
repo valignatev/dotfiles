@@ -1,3 +1,22 @@
+;;; -*- lexical-binding: t -*-
+(defvar file-name-handler-alist-old file-name-handler-alist)
+
+;; Make startup faster
+(setq package-enable-at-startup nil
+      file-name-handler-alist nil
+      message-log-max 16384
+      gc-cons-threshold 402653184
+      gc-cons-percentage 0.6
+      auto-window-vscroll nil
+      package--init-file-ensured t)
+
+(add-hook 'after-init-hook
+          `(lambda ()
+             (setq file-name-handler-alist file-name-handler-alist-old
+                   gc-cons-threshold 800000
+                   gc-cons-percentage 0.1)
+             (garbage-collect)) t)
+
 (setq ring-bell-function 'ignore
       x-gtk-use-system-tooltips nil
       use-dialog-box nil
@@ -23,8 +42,9 @@
 
 (setq gnutls-verify-error t)
 (setq tls-checktrust t)
-(setq straight-use-package-by-default t)
+
 ;; Straight
+(setq straight-use-package-by-default t)
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -37,17 +57,18 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+
 ;; use-package
 (straight-use-package 'use-package)
 
 (setq vj/font-name "Hack")
-(defcustom vj/font-size 13 "My default font size")
+(defcustom vj/font-size 12 "My default font size")
 (defun set-frame-font-size (&optional font-size)
   "Change fram font size to FONT-SIZE.
 If no FONT-SIZE provided, reset the font size to its default variable."
   (let ((font-size
 	 (or font-size
-	     (car (get 'vj/font-size 'standard-value)))))
+	     (eval (car (get 'vj/font-size 'standard-value))))))
     (customize-set-variable 'vj/font-size font-size)
     (set-frame-font
      (format "%s %d" vj/font-name font-size) nil t)))
@@ -69,33 +90,18 @@ If no FONT-SIZE provided, reset the font size to its default variable."
 
 (add-hook 'after-init-hook 'reset-frame-font)
 
+;; Load all files from my ~/.emacs.d/config directory
+;; It doesn't support nested dirs
 (dolist
     (file
      (directory-files
       (concat (expand-file-name user-emacs-directory) "config")
       t
-      directory-files-no-dot-files-regexp
-      )
-     )
+      "^.[^#].+el$"))
   (load file))
 
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#d2ceda" "#f2241f" "#67b11d" "#b1951d" "#3a81c3" "#a31db1" "#21b8c7" "#655370"])
- '(custom-enabled-themes nil)
- '(custom-safe-themes
-   (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
- '(pdf-view-midnight-colors (quote ("#655370" . "#fbf8ef")))
- '(vj/font-size 13))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; Load automatically generated custom garbage
+(setq custom-file
+      (concat (file-name-directory user-init-file) "custom-variables.el"))
+(when (file-exists-p custom-file)
+  (load custom-file))
