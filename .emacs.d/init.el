@@ -31,6 +31,13 @@
 (scroll-bar-mode -1)
 (blink-cursor-mode 0)
 (show-paren-mode t)
+(column-number-mode t)
+
+(global-visual-line-mode 1)
+(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
+(fringe-mode 16)
+
+(setq mode-require-final-newline t)
 
 (winner-mode t)
 
