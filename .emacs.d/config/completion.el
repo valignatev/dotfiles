@@ -11,9 +11,10 @@
   :commands (company-mode global-company-mode company-complete
                           company-complete-common company-manual-begin
                           company-grab-line)
-  :bind (:map company-active-map
-        "C-n" . company-select-next)
-        "C-p" . company-select-previous))
+  :bind (
+         :map company-active-map
+         ("C-n" . company-select-next)
+         ("C-p" . company-select-previous))
   :config
   (global-company-mode +1))
 
