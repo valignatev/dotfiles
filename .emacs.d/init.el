@@ -70,35 +70,6 @@
 ;; use-package
 (straight-use-package 'use-package)
 
-(setq vj/font-name "Hack")
-(defcustom vj/font-size 12 "My default font size")
-(defun set-frame-font-size (&optional font-size)
-  "Change fram font size to FONT-SIZE.
-If no FONT-SIZE provided, reset the font size to its default variable."
-  (let ((font-size
-	 (or font-size
-	     (eval (car (get 'vj/font-size 'standard-value))))))
-    (customize-set-variable 'vj/font-size font-size)
-    (set-frame-font
-     (format "%s %d" vj/font-name font-size) nil t)))
-
-(defun increase-frame-font ()
-  "Increase frame font by one."
-  (interactive)
-  (set-frame-font-size (+ vj/font-size 1)))
-
-(defun decrease-frame-font ()
-  "Decrease frame font by one."
-  (interactive)
-  (set-frame-font-size (- vj/font-size 1)))
-
-(defun reset-frame-font ()
-  "Reset frame font to its default value."
-  (interactive)
-  (set-frame-font-size))
-
-(add-hook 'after-init-hook 'reset-frame-font)
-
 ;; Load all files from my ~/.emacs.d/config directory
 ;; It doesn't support nested dirs
 (dolist
