@@ -12,6 +12,12 @@
 	     company-complete-common company-manual-begin company-grab-line)
   :bind (:map company-active-map
          ("C-n" . company-select-next)
-         ("C-p" . company-select-previous))
-  :config
-  (global-company-mode +1))
+         ("C-p" . company-select-previous)))
+
+(use-package company-quickhelp
+  :after company
+  :commands (company-quickhelp-mode)
+  :init
+  (company-quickhelp-mode 1)
+  (use-package pos-tip
+    :commands (pos-tip-show)))

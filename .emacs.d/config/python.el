@@ -14,3 +14,24 @@
 ;;         "from IPython.core.completerlib import module_completion"
 ;;         python-shell-completion-string-code
 ;;         "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"))
+
+(use-package virtualenvwrapper
+  :straight t
+  :defer t
+  ;; all dirs from pipenv and poetry-based virtualenv dirs
+  :init
+  (setq venv-location
+        (apply
+         'append (mapcar
+                  (lambda (loc)
+                    (directory-files loc t directory-files-no-dot-files-regexp))
+                  '("~/.cache/pypoetry/virtualenvs/"
+			        "~/.local/share/virtualenvs/"))))
+  :config
+  (venv-initialize-interactive-shells))
+
+(use-package python-pytest
+  :defer t
+  :custom
+  (python-pytest-executable "poetry run pytest")
+  (python-pytest-unsaved-buffers-behavior 'save-all))
