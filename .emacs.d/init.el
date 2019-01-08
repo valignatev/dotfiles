@@ -17,41 +17,6 @@
                    gc-cons-threshold 800000
                    gc-cons-percentage 0.1)) t)
 
-(setq ring-bell-function 'ignore
-      x-gtk-use-system-tooltips nil
-      use-dialog-box nil
-      echo-keystrokes 0.5)
-
-;; Scrolling
-(setq mouse-wheel-scroll-amount '(1)
-      mouse-wheel-progressive-speed nil
-      scroll-conservatively 101
-      hscroll-margin 1
-      hscroll-step 1
-      scroll-preserve-screen-position t)
-
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(blink-cursor-mode 0)
-(show-paren-mode t)
-(column-number-mode t)
-
-(global-visual-line-mode 1)
-(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
-(fringe-mode 16)
-
-(winner-mode t)
-
-(defalias 'yes-or-no-p 'y-or-n-p)
-(setq confirm-kill-processes nil)
-
-(desktop-save-mode t)
-(save-place-mode t)
-
-(setq gnutls-verify-error t)
-(setq tls-checktrust t)
-
 ;; Straight
 (setq straight-use-package-by-default t)
 (defvar bootstrap-version)

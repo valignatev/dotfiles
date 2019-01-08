@@ -7,12 +7,15 @@
   (company-idle-delay 0.2)
   (company-tooltip-align-annotation t)
   (company-frontends '(company-pseudo-tooltip-frontend
-		       company-echo-metadata-frontend))
+		               company-echo-metadata-frontend))
   :commands (company-mode global-company-mode company-complete
-	     company-complete-common company-manual-begin company-grab-line)
+                          company-complete-common company-manual-begin
+                          company-grab-line)
   :bind (:map company-active-map
-         ("C-n" . company-select-next)
-         ("C-p" . company-select-previous)))
+        "C-n" . company-select-next)
+        "C-p" . company-select-previous))
+  :config
+  (global-company-mode +1))
 
 (use-package company-quickhelp
   :after company

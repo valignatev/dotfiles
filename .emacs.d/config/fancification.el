@@ -2,6 +2,10 @@
 
 (global-hl-line-mode t)
 
+(global-visual-line-mode 1)
+(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
+(fringe-mode 16)
+
 (setq vj/font-name "Hack")
 (defcustom vj/font-size 12 "My default font size")
 
