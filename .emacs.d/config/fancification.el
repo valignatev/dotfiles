@@ -30,9 +30,5 @@
     :straight (:host github :repo "emacsmirror/font-lock-plus")
     :config (require 'font-lock+)))
 
-(use-package all-the-icons-dired
-  :after all-the-icons
-  :hook (dired-mode . all-the-icons-dired-mode))
-
 (use-package which-key
   :init (which-key-mode))

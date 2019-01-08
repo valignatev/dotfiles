@@ -1,4 +1,5 @@
 ;;; -*- lexical-binding: t -*-
+
 (defvar file-name-handler-alist-old file-name-handler-alist)
 
 ;; Make startup faster
@@ -14,17 +15,20 @@
           `(lambda ()
              (setq file-name-handler-alist file-name-handler-alist-old
                    gc-cons-threshold 800000
-                   gc-cons-percentage 0.1)
-             (garbage-collect)) t)
+                   gc-cons-percentage 0.1)) t)
 
 (setq ring-bell-function 'ignore
       x-gtk-use-system-tooltips nil
       use-dialog-box nil
       echo-keystrokes 0.5)
 
+;; Scrolling
 (setq mouse-wheel-scroll-amount '(1)
       mouse-wheel-progressive-speed nil
-      scroll-conservatively 101)
+      scroll-conservatively 101
+      hscroll-margin 1
+      hscroll-step 1
+      scroll-preserve-screen-position t)
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -36,8 +40,6 @@
 (global-visual-line-mode 1)
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 (fringe-mode 16)
-
-(setq mode-require-final-newline t)
 
 (winner-mode t)
 
