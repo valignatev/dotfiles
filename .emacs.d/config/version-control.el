@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
 (use-package magit
+  :init (setq magit-diff-refine-hunk t)
   :commands (magit-status)
   :bind (("C-x g" . magit-status)))
 

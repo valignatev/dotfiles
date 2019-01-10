@@ -15,8 +15,8 @@
          :map company-active-map
          ("C-n" . company-select-next)
          ("C-p" . company-select-previous))
-  :config
-  (global-company-mode +1))
+  :hook ((prog-mode . company-mode)
+         (comint-mode . company-mode)))
 
 (use-package company-quickhelp
   :after company

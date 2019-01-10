@@ -43,7 +43,7 @@
       (concat (expand-file-name user-emacs-directory) "config")
       t
       "^.[^#].+el$"))
-  (load file))
+  (load-file file))
 
 ;; Load automatically generated custom garbage
 (setq custom-file
