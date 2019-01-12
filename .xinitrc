@@ -34,6 +34,7 @@ fi
 
 # Set faster key repeat
 xset r rate 200 70
+xset b off
 
 xrandr --dpi 150
 libinput-gestures-setup start

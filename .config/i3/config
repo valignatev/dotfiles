@@ -99,6 +99,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 # assign monitors
 workspace 2 output eDP-1
+workspace 3 output eDP-1
 workspace 9 output HDMI-2
 
 # reload the configuration file
