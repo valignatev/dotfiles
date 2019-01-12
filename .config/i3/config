@@ -196,7 +196,7 @@ bindsym shift+Print exec maim -s | xclip -selection clipboard -t image/png
 bindsym Control+shift+Print exec flameshot gui
 
 # compton
-exec compton --config /home/vj/.config/compton.conf -b
+exec compton --config ~/.config/compton.conf -b
 exec redshift-gtk
 exec nm-applet
 
