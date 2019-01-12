@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
-killall -q polybar
+killall -q polybar -u ${USER}
 
 # Wait until the processes have been shut down
-while pgrep -x polybar >/dev/null;do sleep 1; done
+while pgrep -U ${USER} -x polybar >/dev/null;do sleep 1; done
 
 MONITOR=eDP-1 polybar top &
 
