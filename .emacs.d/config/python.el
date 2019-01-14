@@ -35,3 +35,18 @@
   :custom
   (python-pytest-executable "poetry run pytest")
   (python-pytest-unsaved-buffers-behavior 'save-all))
+
+(use-package anaconda-mode
+  :disabled t
+  :hook ((python-mode . anaconda-mode)
+         (python-mode . anaconda-eldoc-mode))
+  :config
+  (use-package company-anaconda
+    :after company
+    :config (add-to-list 'company-backends 'company-anaconda)))
+
+(use-package ms-python
+  :after lsp-mode
+  :straight (:host github :repo "xhcoding/ms-python")
+  :config
+  (add-hook 'python-mode-hook #'lsp))
