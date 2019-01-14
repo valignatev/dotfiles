@@ -11,6 +11,17 @@
   (define-key evil-insert-state-map "\C-n" nil)
   (evil-set-initial-state 'dired-mode 'emacs))
 
+(use-package evil-surround
+  :after evil
+  :hook (evil-mode . global-evil-surround-mode))
+
+(use-package evil-numbers
+  :after evil
+  :bind (
+         :map evil-normal-state-map
+         ("+" . evil-numbers/inc-at-pt)
+         ("-" . evil-numbers/dec-at-pt)))
+
 (with-eval-after-load 'evil-vars
   (setq evil-want-C-w-in-emacs-state t))
 
@@ -37,4 +48,5 @@
   (define-key evil-normal-state-map (kbd "M-.") nil)
   (define-key evil-motion-state-map (kbd "SPC") nil)
   (define-key evil-motion-state-map (kbd "RET") nil)
-  (define-key evil-motion-state-map (kbd "TAB") nil))
+  (define-key evil-motion-state-map (kbd "TAB") nil)
+  (define-key evil-insert-state-map (kbd "C-w") 'evil-window-map))

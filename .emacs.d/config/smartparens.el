@@ -3,7 +3,8 @@
 (setq sp-highlight-pair-overlay nil
       sp-cancel-autoskip-on-backward-movement nil
       sp-show-pair-delay 0
-      sp-show-pair-from-inside t)
+      sp-show-pair-from-inside t
+      sp-autoescape-string-quote nil)
 
 ;; Stolen from http://web-mode.org/ "I want to use smartparens" section
 ;; and modified with eval-after-load and use-package
