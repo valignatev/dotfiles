@@ -9,7 +9,8 @@
   :config
   (define-key evil-insert-state-map "\C-p" nil)
   (define-key evil-insert-state-map "\C-n" nil)
-  (evil-set-initial-state 'dired-mode 'emacs))
+  (evil-set-initial-state 'dired-mode 'emacs)
+  (modify-syntax-entry ?_ "w"))
 
 (use-package evil-surround
   :after evil
