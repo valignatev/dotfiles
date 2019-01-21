@@ -41,6 +41,9 @@
       auto-save-list-file-prefix "~/.emacs.d/autosave/"
       auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
 
+;; But don't create stupid lockfiles
+(setq create-lockfiles nil)
+
 ;; History
 (setq savehist-file "~/.emacs.d/savehist"
       history-length t
