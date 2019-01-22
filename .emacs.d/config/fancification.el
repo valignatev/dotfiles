@@ -74,23 +74,12 @@ If no FONT-SIZE provided, reset the font size to its default variable."
 (use-package which-key
   :init (which-key-mode))
 
-;; Stolen from doom-emacs
-;; https://github.com/hlissner/doom-emacs/blob/develop/modules/completion/company/config.el#L97
-;; Until sebastiencs/company-box#40 is merged
-(defun vj/company-box-frontend-even-if-single (command)
-  (cond ((or (eq command 'hide)
-             (equal company-candidates-length 0))
-         (company-box-hide))
-        ((eq command 'update)
-         (company-box-show))
-        ((eq command 'post-command)
-         (company-box--post-command))))
-
 (use-package company-box
   :after (company all-the-icons)
   :hook (company-mode . company-box-mode)
   :config
   (setq
+   company-box-show-single-candidate t
    company-box-icons-elisp
    (list (all-the-icons-material "functions"                  :height 0.8 :face 'all-the-icons-red)
          (all-the-icons-material "check_circle"               :height 0.8 :face 'all-the-icons-blue)
@@ -122,5 +111,4 @@ If no FONT-SIZE provided, reset the font size to its default variable."
      (23 . ,(all-the-icons-material "event"                    :height 0.8 :face 'all-the-icons-red))   ; event
      (24 . ,(all-the-icons-material "control_point"            :height 0.8 :face 'all-the-icons-red))   ; operator
      (25 . ,(all-the-icons-material "class" :height 0.8 :face 'all-the-icons-red))))
-  (advice-add
-   #'company-box-frontend :override #'vj/company-box-frontend-even-if-single))
+  )
