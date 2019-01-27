@@ -7,7 +7,10 @@
   (add-to-list 'eglot-ignored-server-capabilites :hoverProvider))
 
 (use-package lsp-mode
-  :defer t)
+  :defer t
+  :init (setq lsp-auto-guess-root t)
+  :hook (python-mode . (lambda () (setq lsp-enable-on-type-formatting nil))))
+
 (use-package lsp-ui
   :after lsp-mode
   :init (setq lsp-ui-peek-always-show t
