@@ -23,8 +23,25 @@
                 (get-text-property (point) 'block-side)))))
 
 (use-package smartparens
-  :config
   :hook (after-init . smartparens-global-mode)
   :config
   (require 'smartparens-config)
   (sp-local-pair 'web-mode "<" nil :when '(sp-web-mode-is-code-context)))
+
+;; TODO: this is ugly as hell, do something with it
+(defun my-create-newline-and-enter-sexp (&rest _ignored)
+  "Open a new brace or bracket expression, with relevant newlines and indent."
+  (newline)
+  (indent-according-to-mode)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+(with-eval-after-load 'smartparens
+  (sp-local-pair 'c-mode "{" nil :post-handlers
+                 '((my-create-newline-and-enter-sexp "RET")))
+  (sp-local-pair 'java-mode "{" nil :post-handlers
+                 '((my-create-newline-and-enter-sexp "RET")))
+  (sp-local-pair 'python-mode "[" nil :post-handlers
+                 '((my-create-newline-and-enter-sexp "RET")))
+  (sp-local-pair 'python-mode "(" nil :post-handlers
+                 '((my-create-newline-and-enter-sexp "RET"))))
