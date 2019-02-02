@@ -112,3 +112,6 @@ If no FONT-SIZE provided, reset the font size to its default variable."
      (24 . ,(all-the-icons-material "control_point"            :height 0.8 :face 'all-the-icons-red))   ; operator
      (25 . ,(all-the-icons-material "class" :height 0.8 :face 'all-the-icons-red))))
   )
+
+(use-package org-bullets
+  :hook (org-mode . org-bullets-mode))
