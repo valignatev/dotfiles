@@ -4,7 +4,10 @@
       sp-cancel-autoskip-on-backward-movement nil
       sp-show-pair-delay 0
       sp-show-pair-from-inside t
-      sp-autoescape-string-quote nil)
+      ;; TODO: doesn't work,
+      ;; track https://github.com/Fuco1/smartparens/issues/961
+      sp-escape-quotes-after-insert nil
+      sp-escape-wrapped-region nil)
 
 ;; Stolen from http://web-mode.org/ "I want to use smartparens" section
 ;; and modified with eval-after-load and use-package
