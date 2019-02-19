@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 (use-package eglot
+  :disabled t
   :init (setq eglot-put-doc-in-help-buffer t)
   :commands (eglot)
   :config
@@ -22,4 +23,5 @@
     #'lsp-ui-peek-find-references))
 
 (use-package company-lsp
+  :init (setq company-lsp-cache-candidates 'auto)
   :commands (company-lsp))
