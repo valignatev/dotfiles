@@ -9,7 +9,9 @@
 
 (use-package lsp-mode
   :defer t
-  :init (setq lsp-auto-guess-root t)
+  :init (setq lsp-auto-guess-root t
+              lsp-prefer-flymake nil
+              lsp-eldoc-hook '(lsp-hover))
   :hook (python-mode . (lambda () (setq lsp-enable-on-type-formatting nil))))
 
 (use-package lsp-ui
@@ -23,5 +25,7 @@
     #'lsp-ui-peek-find-references))
 
 (use-package company-lsp
-  :init (setq company-lsp-cache-candidates 'auto)
+  :after (company lsp-mode)
+  :init
+  (setq company-lsp-cache-candidates 'auto)
   :commands (company-lsp))

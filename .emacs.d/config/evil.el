@@ -11,6 +11,7 @@
   (define-key evil-insert-state-map "\C-n" nil)
   (evil-set-initial-state 'dired-mode 'emacs)
   (evil-set-initial-state 'process-menu-mode 'emacs)
+  (evil-set-initial-state 'xref--xref-buffer-mode 'emacs)
   (modify-syntax-entry ?_ "w"))
 
 (use-package evil-surround
