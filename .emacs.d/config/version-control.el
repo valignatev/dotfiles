@@ -1,7 +1,8 @@
 ;;; -*- lexical-binding: t -*-
 
 (use-package magit
-  :init (setq magit-diff-refine-hunk t)
+  :init (setq magit-diff-refine-hunk t
+              git-commit-summary-max-length 72)
   :commands (magit-status)
   :bind (("C-x g" . magit-status)))
 
