@@ -9,6 +9,7 @@ monitor = eDP-1
 width = 100%
 height = 30
 fixed-center = true
+enable-ipc = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
