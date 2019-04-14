@@ -31,6 +31,7 @@
   (venv-initialize-interactive-shells))
 
 (use-package python-pytest
+  :straight t
   :defer t
   :custom
   (python-pytest-executable "poetry run pytest")
