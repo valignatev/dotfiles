@@ -34,7 +34,6 @@
   :straight t
   :defer t
   :custom
-  (python-pytest-executable "poetry run pytest")
   (python-pytest-unsaved-buffers-behavior 'save-all))
 
 (use-package anaconda-mode
