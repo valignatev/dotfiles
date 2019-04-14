@@ -39,7 +39,9 @@
       version-control t
       vc-make-backup-files t
       auto-save-list-file-prefix "~/.emacs.d/autosave/"
-      auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
+      auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t))
+      undo-tree-auto-save-history t
+      undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo/")))
 
 ;; But don't create stupid lockfiles
 (setq create-lockfiles nil)
