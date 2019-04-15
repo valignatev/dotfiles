@@ -138,7 +138,8 @@ bar {
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Borders
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
+for_window [floating] border pixel 1
 smart_borders on
 
 # Colors
