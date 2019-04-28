@@ -158,8 +158,6 @@ bindsym $mod+BackSpace exec --no-startup-id sh ~/.local/bin/flash_win.sh
 for_window [title="video2 - mpv"] floating enable
 for_window [title="video2 - mpv"] sticky enable
 
-bindsym $mod+c exec --no-startup-id camtoggle
-
 # Assign to workspaces
 assign [class=$class_telegram] $ws10
 assign [class=$class_slack] $ws10
