@@ -154,10 +154,6 @@ for_window [title="\*SmartJump Peek\*"] floating enable
 # flash active window
 bindsym $mod+BackSpace exec --no-startup-id sh ~/.local/bin/flash_win.sh
 
-# Toggle webcam, make it sticky and floating
-for_window [title="video2 - mpv"] floating enable
-for_window [title="video2 - mpv"] sticky enable
-
 # Assign to workspaces
 assign [class=$class_telegram] $ws10
 assign [class=$class_slack] $ws10
