@@ -26,6 +26,9 @@ bindsym $mod+m exec thunar
 bindsym $mod+q kill
 bindsym Ctrl+q nop
 
+# toggle polybar
+bindsym $mod+shift+b exec polybar-msg cmd toggle
+
 # start dmenu (a program launcher)
 bindsym $lalt+space exec --no-startup-id i3-dmenu-desktop
 
