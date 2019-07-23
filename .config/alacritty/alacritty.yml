@@ -100,19 +100,19 @@ tabspaces: 4
 font:
   # Normal (roman) font face
   normal:
-    family: monospace
+    family: Hack
     # The `style` can be specified to pick a specific face.
     #style: Regular
 
   # Bold font face
   bold:
-    family: monospace
+    family: Hack
     # The `style` can be specified to pick a specific face.
     #style: Bold
 
   # Italic font face
   italic:
-    family: monospace
+    family: Hack
     # The `style` can be specified to pick a specific face.
     #style: Italic
 
