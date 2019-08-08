@@ -190,7 +190,7 @@ exec --no-startup-id telegram-desktop
 exec --no-startup-id slack
 
 # Screenshoting
-bindsym shift+Print exec maim -s | xclip -selection clipboard -t image/png
+bindsym shift+Print exec maim -m 1 -s | xclip -selection clipboard -t image/png
 bindsym Control+shift+Print exec flameshot gui
 
 # compton
