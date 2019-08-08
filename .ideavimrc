@@ -1,4 +1,6 @@
 set surround
+set commentary
+set multiple-cursors
 set incsearch
 set clipboard+=unnamed
 set ignorecase
