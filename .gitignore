@@ -28,6 +28,7 @@
 !.config/libinput-gestures.conf
 !.config/compton.conf
 !.config/nvim/init.vim
+!.config/doom/
 
 # ~/.emacs.d folder
 !.emacs.d/
