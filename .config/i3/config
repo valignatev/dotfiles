@@ -186,9 +186,7 @@ bindsym $mod+x scratchpad show
 bindsym $mod+minus move scratchpad
 exec --no-startup-id i3-sensible-terminal -t "terminal_scratchpad"
 
-# Auto start message applications I use with proper layout
-exec --no-startup-id "i3-msg 'workspace 10; append_layout ~/.config/i3/workspaces/ws10.json'"
-exec --no-startup-id telegram-desktop
+# Auto start Slack
 exec --no-startup-id slack
 
 # Screenshoting
