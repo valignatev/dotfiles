@@ -1,7 +1,8 @@
 # Defines
 set $class_telegram "Telegram"
 set $class_slack "Slack"
-set $class_firefox "Firefox"
+set $class_discord "discord"
+
 set $class_chrome "Google-chrome"
 set $class_pycharm "jetbrains-pycharm"
 
@@ -160,6 +161,7 @@ bindsym $mod+BackSpace exec --no-startup-id sh ~/.local/bin/flash_win.sh
 # Assign to workspaces
 assign [class=$class_telegram] $ws10
 assign [class=$class_slack] $ws10
+assign [class=$class_discord] $ws10
 assign [class=$class_firefox] $ws3
 assign [class=$class_chrome] $ws3
 assign [class=$class_pycharm] $ws2
