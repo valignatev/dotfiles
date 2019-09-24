@@ -9,7 +9,8 @@
       spacemacs-theme-comment-bg nil
       yas-indent-line 'fixed
       lsp-ui-sideline-enable nil
-      org-startup-truncated nil)
+      org-startup-truncated nil
+      flycheck-display-errors-delay 0.5)
 (remove-hook! (prog-mode text-mode conf-mode) #'display-line-numbers-mode)
 (add-to-list '+doom-solaire-themes '(spacemacs-light . t))
 
