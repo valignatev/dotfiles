@@ -17,14 +17,12 @@
 (after! lsp-ui
   (setq lsp-eldoc-enable-hover t))
 
-(defun vj/enforce-git-commit-conventions ()
-    (setq fill-column nil
-          git-commit-summary-max-length 72
-          git-commit-style-convention-checks '(overlong-summary-line non-empty-second-line)))
-
 (after! git-commit
-  (remove-hook 'git-commit-mode-hook #'+vc|enforce-git-commit-conventions)
-  (add-hook 'git-commit-mode-hook #'vj/enforce-git-commit-conventions))
+  (setq git-commit-setup-hook (delete
+                               'git-commit-turn-on-auto-fill
+                               git-commit-setup-hook))
+  (setq git-commit-summary-max-length 72
+        fill-column nil))
 
 (map!
  :i "C-w" 'evil-window-map)
