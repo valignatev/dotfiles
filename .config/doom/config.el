@@ -10,8 +10,8 @@
       yas-indent-line 'fixed
       lsp-ui-sideline-enable nil
       org-startup-truncated nil
-      flycheck-display-errors-delay 0.5)
-(remove-hook! (prog-mode text-mode conf-mode) #'display-line-numbers-mode)
+      flycheck-display-errors-delay 0.5
+      display-line-numbers-type nil)
 (add-to-list '+doom-solaire-themes '(spacemacs-light . t))
 
 (after! lsp-ui
