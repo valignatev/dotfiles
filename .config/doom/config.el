@@ -12,6 +12,13 @@
       org-startup-truncated nil
       flycheck-display-errors-delay 0.5
       display-line-numbers-type nil)
+
+;; Make doom-modeline leaner, see
+;; https://github.com/seagle0128/doom-modeline/issues/187#issuecomment-507201556
+(defun my-doom-modeline--font-height ()
+  "Calculate the actual char height of the mode-line."
+  (+ (frame-char-height) 2))
+(advice-add #'doom-modeline--font-height :override #'my-doom-modeline--font-height)
 (add-to-list '+doom-solaire-themes '(spacemacs-light . t))
 
 (after! lsp-ui
