@@ -10,4 +10,7 @@
 (package! heaven-and-hell)
 (package! spacemacs-theme)
 (package! adoc-mode)
+(package! anaconda-mode :disable t)
+(package! company-anaconda :disable t)
+(package! flycheck-popup-tip :disable t)
 (package! glsl-mode)
