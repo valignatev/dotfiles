@@ -10,3 +10,4 @@
 (package! heaven-and-hell)
 (package! spacemacs-theme)
 (package! adoc-mode)
+(package! glsl-mode)

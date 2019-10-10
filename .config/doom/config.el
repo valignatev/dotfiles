@@ -53,3 +53,9 @@ words/underscores again.")
           'python-mode
           `((python-f-string-font-lock-find))
           'append)))
+
+(use-package! glsl-mode
+  :mode "\\.glsl\\'"
+  :mode "\\.vert\\'"
+  :mode "\\.frag\\'"
+  :mode "\\.geom\\'")
