@@ -31,6 +31,9 @@
   (setq git-commit-summary-max-length 72
         fill-column nil))
 
+(after! (lsp-rust)
+  (setq global-mode-string
+        (delete (list '(t lsp-clients-rust-progress-string)) global-mode-string)))
 (map!
  :i "C-w" 'evil-window-map)
 
