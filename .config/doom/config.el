@@ -3,7 +3,6 @@
 ;; Place your private configuration here
 (fringe-mode 16)
 
-(setq-default truncate-lines nil)
 (setq doom-font (font-spec :family "Hack" :size 24)
       doom-theme 'spacemacs-light
       spacemacs-theme-comment-bg nil
@@ -11,7 +10,8 @@
       lsp-ui-sideline-enable nil
       org-startup-truncated nil
       flycheck-display-errors-delay 0.5
-      display-line-numbers-type nil)
+      display-line-numbers-type nil
+      evil-echo-state nil)
 
 ;; Make doom-modeline leaner, see
 ;; https://github.com/seagle0128/doom-modeline/issues/187#issuecomment-507201556
