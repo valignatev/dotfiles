@@ -22,18 +22,20 @@
 (add-to-list '+doom-solaire-themes '(spacemacs-light . t))
 
 (after! lsp-ui
-  (setq lsp-eldoc-enable-hover t))
+  (setq lsp-eldoc-enable-hover t
+        lsp-enable-symbol-highlighting nil))
 
 (after! git-commit
   (setq git-commit-setup-hook (delete
                                'git-commit-turn-on-auto-fill
-                               git-commit-setup-hook))
-  (setq git-commit-summary-max-length 72
+                               git-commit-setup-hook)
+        git-commit-summary-max-length 72
         fill-column nil))
 
 (after! (lsp-rust)
   (setq global-mode-string
         (delete (list '(t lsp-clients-rust-progress-string)) global-mode-string)))
+
 (map!
  :i "C-w" 'evil-window-map)
 
