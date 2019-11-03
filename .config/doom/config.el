@@ -41,25 +41,6 @@
  :i "C-w" 'evil-window-map)
 
 
-(defconst python-f-string-regexp
-  "{\\s-*\\(\\sw\\|\\s_\\)+\\.?\\(\\sw\\|\\s_\\)+\\s-*}"
-  "Spaces following by underscores or words following by optional dot and
-words/underscores again.")
-
-(defun python-f-string-font-lock-find (limit)
-  (while (re-search-forward python-f-string-regexp limit t)
-      (when (python-syntax-comment-or-string-p)
-        (put-text-property (match-beginning 0) (match-end 0)
-                           'face 'font-lock-variable-name-face)))
-  nil)
-
-(after! python
-  (setq python-indent-def-block-scale 1)
-  (progn (font-lock-add-keywords
-          'python-mode
-          `((python-f-string-font-lock-find))
-          'append)))
-
 (use-package! glsl-mode
   :mode "\\.glsl\\'"
   :mode "\\.vert\\'"
