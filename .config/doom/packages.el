@@ -14,3 +14,5 @@
 (package! company-anaconda :disable t)
 (package! flycheck-popup-tip :disable t)
 (package! glsl-mode)
+(package! fast-scroll)
+(package! minions)

@@ -2,24 +2,25 @@
 
 ;; Place your private configuration here
 (fringe-mode 16)
+(fast-scroll-config)
+(fast-scroll-mode 1)
+(minions-mode)
 
 (setq doom-font (font-spec :family "Hack" :size 24)
       doom-theme 'spacemacs-light
+      doom-gc-cons-threshold 36777216
       spacemacs-theme-comment-bg nil
       yas-indent-line 'fixed
       lsp-ui-sideline-enable nil
       org-startup-truncated nil
       flycheck-display-errors-delay 0.5
       display-line-numbers-type nil
+      lsp-rust-server 'rust-analyzer
+      rustic-lsp-server 'rust-analyzer
       evil-echo-state nil)
 
-;; Make doom-modeline leaner, see
-;; https://github.com/seagle0128/doom-modeline/issues/187#issuecomment-507201556
-(defun my-doom-modeline--font-height ()
-  "Calculate the actual char height of the mode-line."
-  (+ (frame-char-height) 2))
-(advice-add #'doom-modeline--font-height :override #'my-doom-modeline--font-height)
-(add-to-list '+doom-solaire-themes '(spacemacs-light . t))
+(custom-set-faces!
+ '((hl-line region) :extend t))
 
 (after! lsp-ui
   (setq lsp-eldoc-enable-hover t

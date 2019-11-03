@@ -12,10 +12,10 @@
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       fill-column       ; a `fill-column' indicator
+       ;; fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE tags
        ;; indent-guides     ; highlighted indent columns
-       modeline          ; snazzy, Atom-inspired modeline, plus API
+       ;; modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink the current line after jumping
        ;;neotree           ; a project drawer, like NERDTree for vim
        treemacs          ; a project drawer, like neotree but cooler
@@ -41,6 +41,7 @@
        ;;parinfer          ; turn lisp into python, sort of
        rotate-text       ; cycle region at point between text candidates
        snippets          ; my elves. They type so I don't have to
+       ;; word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
        dired             ; making dired pretty [functional]
@@ -94,7 +95,7 @@
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ;
        ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
-       javascript        ; all(hope(abandon(ye(who(enter(here))))))
+       (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;latex             ; writing papers in Emacs has never been so fun
        ;;ledger            ; an accounting system in Emacs
@@ -158,13 +159,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   ["#f0f0f0" "#e45649" "#50a14f" "#986801" "#4078f2" "#a626a4" "#0184bc" "#383a42"])
+   ["#efeae9" "#e45649" "#50a14f" "#986801" "#4078f2" "#a626a4" "#0184bc" "#383a42"])
  '(custom-enabled-themes nil)
  '(custom-safe-themes nil)
  '(fci-rule-color "#383a42")
  '(hl-todo-keyword-faces
-   (quote
-    (("TODO" . "#dc752f")
+   '(("TODO" . "#dc752f")
      ("NEXT" . "#dc752f")
      ("THEM" . "#2d9574")
      ("PROG" . "#3a81c3")
@@ -178,12 +178,19 @@
      ("TEMP" . "#b1951d")
      ("FIXME" . "#dc752f")
      ("XXX+" . "#dc752f")
-     ("\\?\\?\\?+" . "#dc752f"))))
+     ("\\?\\?\\?+" . "#dc752f")))
  '(jdee-db-active-breakpoint-face-colors (cons "#f0f0f0" "#4078f2"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#f0f0f0" "#50a14f"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#f0f0f0" "#9ca0a4"))
  '(objed-cursor-color "#e45649")
- '(pdf-view-midnight-colors (quote ("#655370" . "#fbf8ef")))
+ '(pdf-view-midnight-colors '("#655370" . "#fbf8ef"))
+ '(safe-local-variable-values
+   '((eval progn
+           (pp-buffer)
+           (indent-buffer))
+     (projectile-project-root-files-bottom-up ".git")
+     (projectile-project-root-files-bottom-up quote
+                                              (".git"))))
  '(vc-annotate-background "#fafafa")
  '(vc-annotate-color-map
    (list
