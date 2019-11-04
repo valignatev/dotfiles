@@ -17,7 +17,12 @@
       display-line-numbers-type nil
       lsp-rust-server 'rust-analyzer
       rustic-lsp-server 'rust-analyzer
-      evil-echo-state nil)
+      evil-echo-state nil
+      +evil-want-o/O-to-continue-comments nil)
+
+(add-to-list '+doom-solaire-themes '(spacemacs-light . t))
+(after! solaire-mode
+  (setq hl-line-range-function nil))
 
 (custom-set-faces!
  '((hl-line region) :extend t))
