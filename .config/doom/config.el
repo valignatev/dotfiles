@@ -12,6 +12,7 @@
       spacemacs-theme-comment-bg nil
       yas-indent-line 'fixed
       lsp-ui-sideline-enable nil
+      lsp-enable-snippet nil
       org-startup-truncated nil
       flycheck-display-errors-delay 0.5
       display-line-numbers-type nil
