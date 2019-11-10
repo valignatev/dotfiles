@@ -18,6 +18,8 @@
       lsp-rust-server 'rust-analyzer
       rustic-lsp-server 'rust-analyzer
       evil-echo-state nil
+      evil-split-window-below t
+      evil-vsplit-window-right t
       +evil-want-o/O-to-continue-comments nil)
 
 (add-to-list '+doom-solaire-themes '(spacemacs-light . t))
