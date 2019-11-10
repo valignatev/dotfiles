@@ -2,6 +2,7 @@
 set $class_telegram "Telegram"
 set $class_slack "Slack"
 set $class_discord "discord"
+set $class_firefox "firefox"
 
 set $class_chrome "Google-chrome"
 set $class_pycharm "jetbrains-pycharm"
