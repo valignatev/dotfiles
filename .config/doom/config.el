@@ -5,6 +5,7 @@
 (fast-scroll-config)
 (fast-scroll-mode 1)
 (minions-mode)
+(modify-syntax-entry ?_ "w" (standard-syntax-table))
 
 (setq doom-font (font-spec :family "Hack" :size 24)
       doom-theme 'spacemacs-light
