@@ -26,7 +26,7 @@
 !.config/polybar/
 !.config/termite/
 !.config/libinput-gestures.conf
-!.config/compton.conf
+!.config/picom.conf
 !.config/nvim/init.vim
 !.config/doom/
 
