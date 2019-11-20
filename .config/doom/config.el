@@ -29,9 +29,6 @@
 (after! solaire-mode
   (setq hl-line-range-function nil))
 
-(custom-set-faces!
- '((hl-line region) :extend t))
-
 (after! lsp-ui
   (setq lsp-eldoc-enable-hover t
         lsp-enable-symbol-highlighting nil))
