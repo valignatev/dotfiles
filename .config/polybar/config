@@ -18,7 +18,7 @@ font-0 = Iosevka\ Nerd\ Font:pixelsize=14;weight=bold;0
 
 modules-left = i3 xwindow
 modules-center = xkeyboard date
-modules-right = volume backlight filesystem memory cpu battery temperature
+modules-right = volume backlight filesystem battery temperature
 
 tray-position = right
 
@@ -76,26 +76,6 @@ format = <label>
 format-padding = 2
 
 label =  %percentage%%
-
-[module/cpu]
-type = internal/cpu
-
-interval = 2
-
-format = <label>
-format-padding = 2
-
-label =  %percentage%%
-
-[module/memory]
-type = internal/memory
-
-interval = 2
-
-format = <label>
-format-padding = 2
-
-label =  %gb_used% (%percentage_used%%)
 
 [module/date]
 type = internal/date
