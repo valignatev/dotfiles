@@ -8,6 +8,8 @@
 (modify-syntax-entry ?_ "w" (standard-syntax-table))
 
 (setq doom-font (font-spec :family "Hack" :size 24)
+      ;; Live long and suffer 🖖
+      doom-unicode-font "Noto Color Emoji:pixelsize=25:weight=normal"
       doom-theme 'spacemacs-light
       doom-gc-cons-threshold 36777216
       spacemacs-theme-comment-bg nil
