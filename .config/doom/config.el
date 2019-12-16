@@ -5,7 +5,11 @@
 (fast-scroll-config)
 (fast-scroll-mode 1)
 (minions-mode)
+(electric-pair-mode 1)
 (modify-syntax-entry ?_ "w" (standard-syntax-table))
+
+(after! smartparens
+  (smartparens-global-mode -1))
 
 (setq doom-font (font-spec :family "Hack" :size 24)
       ;; Live long and suffer 🖖
