@@ -53,6 +53,8 @@
 (map!
  :i "C-w" 'evil-window-map)
 
+(add-hook '+popup-buffer-mode-hook
+  (lambda () (visual-line-mode 1)))
 
 (use-package! glsl-mode
   :mode "\\.glsl\\'"
