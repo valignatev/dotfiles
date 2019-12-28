@@ -20,11 +20,10 @@
       yas-indent-line 'fixed
       lsp-ui-sideline-enable nil
       lsp-enable-snippet nil
+      lsp-rust-server 'rust-analyzer
       org-startup-truncated nil
       flycheck-display-errors-delay 0.5
       display-line-numbers-type nil
-      lsp-rust-server 'rust-analyzer
-      rustic-lsp-server 'rust-analyzer
       evil-echo-state nil
       evil-split-window-below t
       evil-vsplit-window-right t
