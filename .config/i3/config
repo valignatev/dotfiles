@@ -195,7 +195,7 @@ exec --no-startup-id slack
 bindsym shift+Print exec maim -m 1 -s | xclip -selection clipboard -t image/png
 bindsym Control+shift+Print exec flameshot gui
 
-exec picom --config ~/.config/picom.conf -b
+exec picom --config ~/.config/picom.conf -b --experimental-backends
 exec redshift-gtk
 exec nm-applet
 
