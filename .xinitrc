@@ -44,4 +44,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 xclear
 picom --config ~/.config/picom.conf -b --experimental-backends
 ~/.fehbg &
+redshift-gtk &
+nm-applet &
+
+# Get my location, used by Redshift
+/usr/lib/geoclue-2.0/demos/agent &
 exec i3
