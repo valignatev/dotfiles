@@ -16,3 +16,4 @@
 (package! glsl-mode)
 (package! fast-scroll)
 (package! minions)
+(package! guix)
