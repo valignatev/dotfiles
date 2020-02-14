@@ -31,14 +31,6 @@
 !.config/nvim/init.vim
 !.config/doom/
 
-# ~/.emacs.d folder
-!.emacs.d/
-.emacs.d/*
-!.emacs.d/init.el
-!.emacs.d/custom.el
-!.emacs.d/etc/
-!.emacs.d/config/
-
 # ~/.local/bin folder
 !.local/
 .local/*
