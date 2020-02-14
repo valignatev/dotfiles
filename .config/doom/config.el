@@ -29,7 +29,8 @@
       evil-split-window-below t
       evil-vsplit-window-right t
       +evil-want-o/O-to-continue-comments nil
-      company-box-doc-enable nil)
+      company-box-doc-enable nil
+      geiser-active-implementations '(guile))
 
 (add-to-list '+doom-solaire-themes '(spacemacs-light . t))
 (after! solaire-mode
