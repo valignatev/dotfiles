@@ -17,7 +17,7 @@ foreground = ${colors.foreground}
 font-0 = Iosevka\ Nerd\ Font:pixelsize=14;weight=bold;0
 
 modules-left = i3 xwindow
-modules-center = xkeyboard date
+modules-center = xkeyboard date time-la time-ch
 modules-right = volume backlight filesystem battery temperature
 
 tray-position = right
@@ -87,6 +87,16 @@ time = %H:%M
 format-padding = 2
 
 label =  %date% %time%
+
+[module/time-la]
+type = custom/script
+exec = TZ=America/Los_Angeles date +"| SF: %H:%M | "
+interval = 5
+
+[module/time-ch]
+type = custom/script
+exec = TZ=America/Chicago date +"Dallas: %H:%M"
+interval = 5
 
 [module/volume]
 type = internal/alsa
