@@ -50,6 +50,12 @@
        ;;term              ; terminals in Emacs
        vc                ; version-control and Emacs, sitting in a tree
 
+       :checkers
+       (syntax +childframe); tasing you for every semicolon you forget
+       spell             ; tasing you for misspelling mispelling
+       ;;grammar           ; tasing grammar mistake every you make
+
+
        :tools
        ;;ansible
        eval              ; run code, run (also, repls)
@@ -60,9 +66,6 @@
        ;;gist              ; interacting with github gists
        ;;macos             ; MacOS-specific commands
        ;;make              ; run make tasks from Emacs
-       (flycheck
-        +childframe)          ; tasing you for every semicolon you forget
-       flyspell          ; tasing you for misspelling mispelling
        (lookup           ; helps you navigate your code and documentation
         +docsets)        ; ...or in Dash docsets locally
        lsp
