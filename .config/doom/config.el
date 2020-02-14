@@ -16,6 +16,7 @@
       doom-unicode-font "Noto Color Emoji:pixelsize=25:weight=normal"
       doom-theme 'spacemacs-light
       doom-gc-cons-threshold 36777216
+      +modeline-height 20
       spacemacs-theme-comment-bg nil
       yas-indent-line 'fixed
       lsp-ui-sideline-enable nil
