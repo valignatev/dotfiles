@@ -134,12 +134,11 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Turn off tray icons and use polybar
+# Turn off the bar and tray icons, I use polybar
 bar {
     mode invisible
     tray_output none
 }
-
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Borders
@@ -186,10 +185,6 @@ bindsym XF86AudioMicMute exec "pamixer --source 1 -t"
 for_window [title="^terminal_scratchpad"] move scratchpad
 bindsym $mod+x scratchpad show
 bindsym $mod+minus move scratchpad
-exec --no-startup-id i3-sensible-terminal -t "terminal_scratchpad"
-
-# Auto start Slack
-exec --no-startup-id slack
 
 # Screenshoting
 bindsym shift+Print exec maim -m 1 -s | xclip -selection clipboard -t image/png
