@@ -15,13 +15,13 @@
       ;; Live long and suffer 🖖
       doom-unicode-font "Noto Color Emoji:pixelsize=25:weight=normal"
       doom-theme 'spacemacs-light
-      doom-gc-cons-threshold 36777216
       +modeline-height 20
+      ;; doom-gc-cons-threshold 46777216
       spacemacs-theme-comment-bg nil
       yas-indent-line 'fixed
       lsp-ui-sideline-enable nil
       lsp-enable-snippet nil
-      lsp-rust-server 'rust-analyzer
+      rustic-lsp-server 'rust-analyzer
       org-startup-truncated nil
       flycheck-display-errors-delay 0.5
       display-line-numbers-type nil
@@ -32,9 +32,9 @@
       company-box-doc-enable nil
       geiser-active-implementations '(guile))
 
-(add-to-list '+doom-solaire-themes '(spacemacs-light . t))
 (after! solaire-mode
-  (setq hl-line-range-function nil))
+  (setq hl-line-range-function nil)
+  (solaire-global-mode -1))
 
 (after! lsp-ui
   (setq lsp-eldoc-enable-hover t
