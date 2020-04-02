@@ -31,7 +31,7 @@ type = internal/xkeyboard
 blacklist-0 = num lock
 
 format-padding = 2
-format-prefix = " "
+format-prefix = "  "
 
 label-layout = %layout%
 
@@ -141,9 +141,9 @@ format-discharging-padding = 2
 format-full = <ramp-capacity> <label-full>
 format-full-padding = 2
 
-label-charging = %percentage%%
-label-discharging = %percentage%%
-label-full = %percentage%%
+label-charging = " %percentage%%"
+label-discharging = " %percentage%%"
+label-full = " %percentage%%"
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
