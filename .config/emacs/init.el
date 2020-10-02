@@ -32,6 +32,20 @@
       read-process-output-max (* 1024 1024))
 (setq-default indent-tabs-mode nil)
 
+(defun my/edit-init-file ()
+  "Opens init.el for editing"
+  (interactive)
+  (find-file user-init-file))
+
+(defun my/terminal-in-project-root (arg)
+  "Opens the $TERMINAL in project root.
+With ARG, opens in in the current working directory"
+  (interactive "P")
+  (let ((default-directory
+          (if arg default-directory
+            (cdr (project-current)))))
+    (start-process "terminal" nil (getenv "TERMINAL"))))
+
 ;; straight.el boilerplate
 (setq straight-use-package-by-default t)
 (defvar bootstrap-version)
@@ -49,6 +63,11 @@
 
 (setq use-package-hook-name-suffix nil)
 (straight-use-package 'use-package)
+
+(use-package emacs
+  :mode (("Pipfile\\'" . conf-toml-mode)
+         ("Pipfile.lock\\'" . js-mode))
+  :bind (("C-x t" . my/terminal-in-project-root)))
 
 ;; Magic garbage collector hack
 ;; It's kinda small so maybe makes sense to just copy/paste
@@ -94,22 +113,6 @@
   (tree-sitter-hl-face:property ((t (:inherit 'font-lock-constant-face))))
   :hook ((tree-sitter-after-on-hook . tree-sitter-hl-mode)))
 
-(defun my/terminal-in-project-root (arg)
-  "Opens the $TERMINAL in project root.
-With ARG, opens in in the current working directory"
-  (interactive "P")
-  (let ((default-directory
-          (if arg default-directory
-            (cdr (project-current)))))
-    (start-process "terminal" nil (getenv "TERMINAL"))))
-
-(global-set-key (kbd "C-x t") #'my/terminal-in-project-root)
-
-(defun my/edit-init-file ()
-  "Opens init.el for editing"
-  (interactive)
-  (find-file user-init-file))
-
 (use-package selectrum
   :config
   (selectrum-mode +1))
@@ -124,3 +127,9 @@ With ARG, opens in in the current working directory"
 
 (use-package deadgrep
   :bind ("<f5>" . deadgrep))
+
+(use-package dockerfile-mode
+  :defer t)
+
+(use-package yaml-mode
+  :defer t)
