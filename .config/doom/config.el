@@ -32,10 +32,6 @@
       company-box-doc-enable nil
       geiser-active-implementations '(guile))
 
-(after! solaire-mode
-  (setq hl-line-range-function nil)
-  (solaire-global-mode -1))
-
 (after! lsp-ui
   (setq lsp-eldoc-enable-hover t
         lsp-enable-symbol-highlighting nil))

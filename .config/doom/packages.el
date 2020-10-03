@@ -6,6 +6,7 @@
 ;; (package! another-package :recipe (:fetcher github :repo "username/repo"))
 ;; (package! builtin-package :disable t)
 (package! magit-todos :disable t)
+(package! solaire-mode :disable t)
 (package! nose :disable t)
 (package! heaven-and-hell)
 (package! spacemacs-theme)
@@ -16,4 +17,3 @@
 (package! glsl-mode)
 (package! fast-scroll)
 (package! minions)
-(package! guix)
