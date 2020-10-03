@@ -66,7 +66,8 @@ With ARG, opens in in the current working directory"
 
 (use-package emacs
   :mode (("Pipfile\\'" . conf-toml-mode)
-         ("Pipfile.lock\\'" . js-mode))
+         ("Pipfile.lock\\'" . js-mode)
+         ("requirements.txt\\'" . conf-mode))
   :bind (("C-x t" . my/terminal-in-project-root)))
 
 ;; Magic garbage collector hack
