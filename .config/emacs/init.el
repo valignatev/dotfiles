@@ -32,6 +32,12 @@
       read-process-output-max (* 1024 1024))
 (setq-default indent-tabs-mode nil)
 
+(defvar IS-WINDOWS (eq system-type 'windows-nt))
+(when IS-WINDOWS
+  (setq w32-get-true-file-attributes nil
+        w32-pipe-read-delay 0
+        w32-pipe-buffer-size (* 64 1024)))
+
 (defun my/edit-init-file ()
   "Opens init.el for editing"
   (interactive)
