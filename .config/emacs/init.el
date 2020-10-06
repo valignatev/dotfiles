@@ -140,3 +140,6 @@ With ARG, opens in in the current working directory"
 
 (use-package yaml-mode
   :defer t)
+
+(use-package zig-mode
+  :defer t)
