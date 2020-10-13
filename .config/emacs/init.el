@@ -1,16 +1,4 @@
 ;; -*- lexical-binding: t; -*-
-(tool-bar-mode 0)
-(menu-bar-mode 0)
-(scroll-bar-mode 0)
-(blink-cursor-mode 0)
-(set-frame-font "Hack-18" t t)
-(show-paren-mode t)
-(global-auto-revert-mode t)
-(savehist-mode 1)
-(recentf-mode 1)
-(defalias 'yes-or-no-p 'y-or-n-p)
-(advice-add #'display-startup-echo-area-message :override #'ignore)
-
 (setq inhibit-startup-message t
       inhibit-startup-echo-area-message user-login-name
       inhibit-default-init t
@@ -29,8 +17,24 @@
       dired-dwim-target t
       tab-always-indent t
       ;; 1mb
-      read-process-output-max (* 1024 1024))
+      read-process-output-max (* 1024 1024)
+      column-number-indicator-zero-based nil
+      save-interprogram-paste-before-kill t)
 (setq-default indent-tabs-mode nil)
+
+(load-theme 'tsdh-light)
+(column-number-mode 1)
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
+(blink-cursor-mode 0)
+(set-frame-font "Hack-18" t t)
+(show-paren-mode t)
+(global-auto-revert-mode t)
+(savehist-mode 1)
+(recentf-mode 1)
+(defalias 'yes-or-no-p 'y-or-n-p)
+(advice-add #'display-startup-echo-area-message :override #'ignore)
 
 (defvar IS-WINDOWS (eq system-type 'windows-nt))
 (when IS-WINDOWS
