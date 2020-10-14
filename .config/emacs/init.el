@@ -19,8 +19,10 @@
       ;; 1mb
       read-process-output-max (* 1024 1024)
       column-number-indicator-zero-based nil
-      save-interprogram-paste-before-kill t)
-(setq-default indent-tabs-mode nil)
+      save-interprogram-paste-before-kill t
+      truncate-partial-width-windows nil)
+(setq-default indent-tabs-mode nil
+              truncate-lines t)
 
 (load-theme 'tsdh-light)
 (column-number-mode 1)
