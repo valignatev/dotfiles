@@ -20,7 +20,8 @@
       read-process-output-max (* 1024 1024)
       column-number-indicator-zero-based nil
       save-interprogram-paste-before-kill t
-      truncate-partial-width-windows nil)
+      truncate-partial-width-windows nil
+      ring-bell-function 'ignore)
 (setq-default indent-tabs-mode nil
               truncate-lines t)
 
