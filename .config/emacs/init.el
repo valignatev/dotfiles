@@ -111,18 +111,25 @@ With ARG, opens in in the current working directory"
   :commands (git-link git-link-commit)
   :custom (git-link-open-in-browser t))
 
+(use-package evil
+  :init
+  (setq evil-default-state 'emacs
+        evil-want-C-w-in-emacs-state t
+        evil-want-C-w-delete nil
+        evil-want-Y-yank-to-eol t
+        evil-want-C-u-scroll t
+        evil-vsplit-window-right t
+        evil-split-window-below t)
+  :config
+  (evil-set-initial-state 'prog-mode 'normal)
+  :hook (after-init-hook . evil-mode))
+
 (use-package tree-sitter
-  :straight (tree-sitter :host github
-                         :repo "ubolonton/emacs-tree-sitter"
-                         :files ("lisp/*.el"))
   :config (require 'tree-sitter-langs)
   :hook ((python-mode-hook . tree-sitter-mode)
          (js-mode-hook . tree-sitter-mode)))
 
 (use-package tree-sitter-langs
-  :straight (tree-sitter-langs :host github
-                               :repo "ubolonton/emacs-tree-sitter"
-                               :files ("langs/*.el" "langs/queries"))
   :custom-face
   (tree-sitter-hl-face:property ((t (:inherit 'font-lock-constant-face))))
   :hook ((tree-sitter-after-on-hook . tree-sitter-hl-mode)))
