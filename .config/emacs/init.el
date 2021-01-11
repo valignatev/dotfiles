@@ -122,6 +122,10 @@ With ARG, opens in in the current working directory"
         evil-split-window-below t)
   :config
   (evil-set-initial-state 'prog-mode 'normal)
+  (evil-set-initial-state 'text-mode 'normal)
+  (evil-set-initial-state 'conf-mode 'normal)
+  (evil-set-initial-state 'fundamental-mode 'normal)
+  (evil-set-initial-state 'git-commit-mode 'insert)
   :hook (after-init-hook . evil-mode))
 
 (use-package tree-sitter
