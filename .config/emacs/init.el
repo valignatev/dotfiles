@@ -81,7 +81,9 @@ With ARG, opens in in the current working directory"
   :mode (("Pipfile\\'" . conf-toml-mode)
          ("Pipfile.lock\\'" . js-mode)
          ("requirements.txt\\'" . conf-mode))
-  :bind (("C-x t" . my/terminal-in-project-root)))
+  :bind (("C-x t" . my/terminal-in-project-root))
+  :config
+  (setq js-indent-level 2))
 
 ;; Magic garbage collector hack
 ;; It's kinda small so maybe makes sense to just copy/paste
@@ -131,7 +133,8 @@ With ARG, opens in in the current working directory"
 (use-package tree-sitter
   :config (require 'tree-sitter-langs)
   :hook ((python-mode-hook . tree-sitter-mode)
-         (js-mode-hook . tree-sitter-mode)))
+         (js-mode-hook . tree-sitter-mode)
+         (php-mode-hook . tree-sitter-mode)))
 
 (use-package tree-sitter-langs
   :custom-face
@@ -167,3 +170,6 @@ With ARG, opens in in the current working directory"
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
+
+(use-package php-mode
+  :defer t)
