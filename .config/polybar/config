@@ -17,7 +17,7 @@ foreground = ${colors.foreground}
 font-0 = Iosevka\ Nerd\ Font:pixelsize=14;weight=bold;0
 
 modules-left = i3 xwindow
-modules-center = xkeyboard date time-la time-ch
+modules-center = xkeyboard date time-ny time-la
 modules-right = volume backlight filesystem battery temperature
 
 tray-position = right
@@ -88,14 +88,14 @@ format-padding = 2
 
 label =  %date% %time%
 
-[module/time-la]
+[module/time-ny]
 type = custom/script
-exec = TZ=America/Los_Angeles date +"| SF: %H:%M | "
+exec = TZ=America/New_York date +"| NY: %H:%M"
 interval = 5
 
-[module/time-ch]
+[module/time-la]
 type = custom/script
-exec = TZ=America/Chicago date +"Dallas: %H:%M"
+exec = TZ=America/Los_Angeles date +" | SF: %H:%M"
 interval = 5
 
 [module/volume]
