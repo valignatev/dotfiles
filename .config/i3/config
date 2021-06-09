@@ -181,8 +181,8 @@ bindsym XF86AudioMicMute exec "pamixer --source 1 -t"
 
 # Scratchpad
 for_window [title="^terminal_scratchpad"] move scratchpad
-bindsym $mod+x scratchpad show
-bindsym $mod+minus move scratchpad
+bindsym $mod+minus scratchpad show
+bindsym $mod+shift+minus move scratchpad
 
 # Screenshoting
 bindsym shift+Print exec maim -m 1 -s | xclip -selection clipboard -t image/png
