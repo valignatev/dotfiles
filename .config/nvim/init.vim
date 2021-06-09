@@ -6,8 +6,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'flazz/vim-colorschemes'
-Plug 'iCyMind/NeoSolarized'
+Plug 'morhetz/gruvbox'
 Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -17,14 +16,12 @@ Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'sgur/vim-editorconfig'
 Plug 'alvan/vim-closetag'
-Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
 "" Interface
 set updatetime=250
 set mouse=a
-set cursorline
 set title
 set linebreak
 set scrolloff=3
@@ -36,11 +33,11 @@ set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 " Postpone redraw on macro execution. It could be very slow otherwise
 set lazyredraw
 set termguicolors
-colorscheme NeoSolarized
-let g:neosolarized_contrast = "high"
-let g:neosolarized_bold = 1
-let g:neosolarized_underline = 2
-let g:neosolarized_italic = 1
+set background=light
+let g:gruvbox_bold = 1
+let g:gruvbox_contrast_light = 'hard'
+let g:gruvbox_invert_selection = 0
+colorscheme gruvbox
 
 "" Spelling
 set spelllang=en_us,ru
@@ -100,7 +97,6 @@ autocmd BufRead,BufNewFile *.jinja2 setfiletype jinja2
 autocmd BufRead,BufNewFile *.css,*.scss,*.js,*.json set shiftwidth=2 softtabstop=2
 
 "" FZF
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 nnoremap <leader>f :FZF<cr>
 
 "" HTML
