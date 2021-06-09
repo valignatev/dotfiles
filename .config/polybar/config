@@ -4,8 +4,9 @@ foreground = #c4b7c5
 foreground-alt = #555
 secondary = #e60053
 
-[bar/top]
+[bar/bottom]
 monitor = eDP-1
+bottom = true
 width = 100%
 height = 30
 fixed-center = true
