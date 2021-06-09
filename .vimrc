@@ -1,83 +1,83 @@
+"" Leader
+let mapleader="\<Space>"
+
 "" Plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'flazz/vim-colorschemes'
-Plug 'iCyMind/NeoSolarized'
+Plug 'tpope/vim-repeat'
+Plug 'morhetz/gruvbox'
 Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'rakr/vim-one'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'jiangmiao/auto-pairs'
+Plug 'godlygeek/tabular'  " vim-markdown dependency
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'sheerun/vim-polyglot'
+Plug 'airblade/vim-gitgutter'
+Plug 'sgur/vim-editorconfig'
+Plug 'alvan/vim-closetag'
 
 call plug#end()
 
-"" General
-let mapleader="\<Space>"
+"" Interface
+set updatetime=250
+set mouse=a
+set title
+set linebreak
+set scrolloff=3
+set sidescrolloff=5
+set confirm
+" Unicode characters for various things
+set list
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+" Postpone redraw on macro execution. It could be very slow otherwise
+set lazyredraw
+set termguicolors
+set background=light
+let g:gruvbox_bold = 1
+let g:gruvbox_contrast_light = 'hard'
+let g:gruvbox_invert_selection = 0
+colorscheme gruvbox
 
-"""""""""""""""""""""""""""""""""""""""""""""""
-" Movement
-"""""""""""""""""""""""""""""""""""""""""""""""
-noremap j gj
-noremap k gk
+"" Spelling
+set spelllang=en_us,ru
 
-" Emacs-like bindings in the command line from `:h emacs-keys`
-cnoremap <C-a>  <Home>
-cnoremap <C-b>  <Left>
-cnoremap <C-f>  <Right>
-cnoremap <C-d>  <Del>
-cnoremap <C-e>  <End>
-cnoremap <M-b>  <S-Left>
-cnoremap <M-f>  <S-Right>
-cnoremap <M-d>  <S-right><Delete>
-cnoremap <Esc>b <S-Left>
-cnoremap <Esc>f <S-Right>
-cnoremap <Esc>d <S-right><Delete>
-cnoremap <C-g> <C-c>
+"" Buffers
+set hidden
+set autoread
 
-"" Tabs
+"" Windows
+" Open new split window to the right for vertical
+" and below for horizontal. Both for regular windows
+" and for netrw.
+set splitbelow
+set splitright
+let g:netrw_altv=1
+let g:netrw_alto=1
+
+"" Default Indentation
 set tabstop=4
-set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-"" Backup, Swap and Undo
-set undofile " Persistent Undo
-set directory=$HOME/.vim/swap,/tmp
-set backupdir=$HOME/.vim/backup,/tmp
-set undodir=~/.vim/undo,/tmp
+"" Search
+set ignorecase
+set smartcase
+" No search highlighting while in insert mode
+autocmd InsertEnter * :setlocal nohlsearch
+autocmd InsertLeave * :setlocal hlsearch
+" Mnemonic is C-l in unix shell - clear all
+nnoremap <C-l> :nohlsearch<CR><C-l>
 
-""""""""""""""""""""""""""""""""
-"" Display
-""""""""""""""""""""""""""""""""
-" Theme
-set cursorline
-set hlsearch
-set list
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:· " Unicode characters for various things
-set termguicolors
-let g:neosolarized_contrast = "high"
-let g:neosolarized_bold = 1
-let g:neosolarized_underline = 2
-let g:neosolarized_italic = 1
-colorscheme NeoSolarized
+"" Session
+set nobackup
+set undofile
 
 " Markdown
 let g:vim_markdown_folding_disabled = 1
 
-" Goyo
-let g:goyo_height = '90%'
-
 "" NetRW
 let g:netrw_banner = 0
-
-"" Autocompletion
-set omnifunc=syntaxcomplete#Complete
-set completeopt=menuone,preview,noinsert,noselect
 
 "" Linting
 let g:ale_sign_error = '>>'
@@ -88,4 +88,16 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \}
 
-autocmd BufRead,BufNewFile *.css,*.scss,*.js set shiftwidth=2  softtabstop=2
+"" Autocompletion
+set omnifunc=syntaxcomplete#Complete
+set completeopt=menuone,preview,noinsert,noselect
+
+"" Filetypes
+autocmd BufRead,BufNewFile *.jinja2 setfiletype jinja2
+autocmd BufRead,BufNewFile *.css,*.scss,*.js,*.json set shiftwidth=2 softtabstop=2
+
+"" FZF
+nnoremap <leader>f :FZF<cr>
+
+"" HTML
+let g:closetag_filenames = '*.html,*.jinja2'
