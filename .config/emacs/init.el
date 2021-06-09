@@ -25,7 +25,6 @@
 (setq-default indent-tabs-mode nil
               truncate-lines t)
 
-(load-theme 'tsdh-light)
 (column-number-mode 1)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -77,13 +76,24 @@ With ARG, opens in in the current working directory"
 (setq use-package-hook-name-suffix nil)
 (straight-use-package 'use-package)
 
+(use-package spacemacs-theme
+  :defer t
+  :init
+  (setq spacemacs-theme-comment-bg nil
+        spacemacs-theme-comment-italics t)
+  (load-theme 'spacemacs-light t)
+  :custom-face
+  (font-lock-type-face ((t (:inherit nil)))))
+
 (use-package emacs
   :mode (("Pipfile\\'" . conf-toml-mode)
          ("Pipfile.lock\\'" . js-mode)
-         ("requirements.txt\\'" . conf-mode))
+         ("requirements.txt\\'" . conf-mode)
+         ("\\.styl\\'" . css-mode))
   :bind (("C-x t" . my/terminal-in-project-root))
   :config
-  (setq js-indent-level 2))
+  (setq js-indent-level 2
+        css-indent-offset 2))
 
 ;; Magic garbage collector hack
 ;; It's kinda small so maybe makes sense to just copy/paste
