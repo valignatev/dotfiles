@@ -30,7 +30,7 @@
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 (blink-cursor-mode 0)
-(set-frame-font "Hack-18" t t)
+(set-frame-font "Hack-12" t t)
 (show-paren-mode t)
 (global-auto-revert-mode t)
 (savehist-mode 1)
@@ -120,6 +120,8 @@ With ARG, opens in in the current working directory"
   :bind (("C-x g" . magit-status)))
 
 (use-package git-link
+  :init
+  (setq git-link-open-in-browser t)
   :commands (git-link git-link-commit)
   :custom (git-link-open-in-browser t))
 

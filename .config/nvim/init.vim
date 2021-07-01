@@ -7,15 +7,14 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'morhetz/gruvbox'
-Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'godlygeek/tabular'  " vim-markdown dependency
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'sgur/vim-editorconfig'
 Plug 'alvan/vim-closetag'
+Plug 'ziglang/zig.vim'
 
 call plug#end()
 
@@ -79,25 +78,19 @@ let g:vim_markdown_folding_disabled = 1
 "" NetRW
 let g:netrw_banner = 0
 
-"" Linting
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'jsx': ['eslint'],
-\   'python': ['flake8'],
-\}
-
 "" Autocompletion
 set omnifunc=syntaxcomplete#Complete
-set completeopt=menuone,preview,noinsert,noselect
+"" :help completeopt
+set completeopt=menuone,preview,noinsert
 
 "" Filetypes
+autocmd FileType * setlocal formatoptions-=ro
 autocmd BufRead,BufNewFile *.jinja2 setfiletype jinja2
 autocmd BufRead,BufNewFile *.css,*.scss,*.js,*.json set shiftwidth=2 softtabstop=2
 
-"" FZF
+"" Mappings
 nnoremap <leader>f :FZF<cr>
+nnoremap <leader>w :w<cr>
 
 "" HTML
 let g:closetag_filenames = '*.html,*.jinja2'
