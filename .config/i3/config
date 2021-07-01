@@ -48,6 +48,8 @@ bindsym $mod+Shift+j move down 30px
 bindsym $mod+Shift+k move up 30px
 bindsym $mod+Shift+l move right 30px
 
+bindsym $mod+b splith
+bindsym $mod+v splitv
 # toggle split mode between horizontal/vertical
 bindsym $mod+t split toggle
 
