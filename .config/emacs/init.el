@@ -35,6 +35,7 @@
 (global-auto-revert-mode t)
 (savehist-mode 1)
 (recentf-mode 1)
+(winner-mode 1)
 (defalias 'yes-or-no-p 'y-or-n-p)
 (advice-add #'display-startup-echo-area-message :override #'ignore)
 

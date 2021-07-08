@@ -44,6 +44,8 @@ set spelllang=en_us,ru
 "" Buffers
 set hidden
 set autoread
+set clipboard=unnamedplus
+
 
 "" Windows
 " Open new split window to the right for vertical
