@@ -144,15 +144,14 @@ With ARG, opens in in the current working directory"
   :hook (after-init-hook . evil-mode))
 
 (use-package tree-sitter
-  :config (require 'tree-sitter-langs)
-  :hook ((python-mode-hook . tree-sitter-mode)
-         (js-mode-hook . tree-sitter-mode)
-         (php-mode-hook . tree-sitter-mode)))
+  :config
+  (require 'tree-sitter-langs)
+  (global-tree-sitter-mode)
+  :hook((tree-sitter-after-on-hook . tree-sitter-hl-mode)))
 
 (use-package tree-sitter-langs
   :custom-face
-  (tree-sitter-hl-face:property ((t (:inherit 'font-lock-constant-face))))
-  :hook ((tree-sitter-after-on-hook . tree-sitter-hl-mode)))
+  (tree-sitter-hl-face:property ((t (:inherit 'font-lock-constant-face)))))
 
 (use-package selectrum
   :config
