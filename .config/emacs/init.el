@@ -140,7 +140,7 @@ With ARG, opens in in the current working directory"
   (evil-set-initial-state 'text-mode 'normal)
   (evil-set-initial-state 'conf-mode 'normal)
   (evil-set-initial-state 'fundamental-mode 'normal)
-  (evil-set-initial-state 'git-commit-mode 'insert)
+  (evil-set-initial-state 'git-commit-mode 'emacs)
   :hook (after-init-hook . evil-mode))
 
 (use-package tree-sitter
