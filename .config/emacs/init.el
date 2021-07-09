@@ -185,3 +185,12 @@ With ARG, opens in in the current working directory"
 
 (use-package php-mode
   :defer t)
+
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c l"
+        lsp-enable-symbol-highlighting nil)
+  :hook (
+         (php-mode-hook . lsp)
+         (zig-mode-hook . lsp))
+  :commands lsp)
