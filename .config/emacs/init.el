@@ -84,7 +84,9 @@ With ARG, opens in in the current working directory"
         spacemacs-theme-comment-italics t)
   (load-theme 'spacemacs-light t)
   :custom-face
-  (font-lock-type-face ((t (:inherit nil)))))
+  (font-lock-type-face ((t (:inherit nil))))
+  :hook
+  ((dired-mode-hook . dired-hide-details-mode)))
 
 (use-package emacs
   :mode (("Pipfile\\'" . conf-toml-mode)
