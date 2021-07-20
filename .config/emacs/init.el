@@ -196,3 +196,6 @@ With ARG, opens in in the current working directory"
          (php-mode-hook . lsp)
          (zig-mode-hook . lsp))
   :commands lsp)
+
+(use-package web-mode
+  :defer t)
