@@ -21,7 +21,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start a file manager
-bindsym $mod+m exec thunar
+bindsym $mod+m exec pcmanfm
 
 # kill focused window
 bindsym $mod+q kill
