@@ -13,15 +13,13 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# Set faster key repeat and DPI
-xset r rate 200 70
 xset b off
 xrandr --dpi 150
 
 libinput-gestures-setup start
 
 xclear
-picom --config ~/.config/picom.conf -b --experimental-backends
+picom --config ~/.config/picom.conf -b
 ~/.fehbg &
 redshift-gtk &
 nm-applet &
