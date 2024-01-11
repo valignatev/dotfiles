@@ -18,7 +18,6 @@ xrandr --dpi 150
 
 libinput-gestures-setup start
 
-xclear
 picom --config ~/.config/picom.conf -b
 ~/.fehbg &
 redshift-gtk &
