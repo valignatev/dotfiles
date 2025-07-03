@@ -1,6 +1,10 @@
 "" Leader
 let mapleader="\<Space>"
 
+set guifont=Hack:h13
+let g:neovide_cursor_animation_length=0.02
+let g:neovide_cursor_trail_length=0
+
 "" Plugins
 call plug#begin('~/.vim/plugged')
 
@@ -15,6 +19,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'sgur/vim-editorconfig'
 Plug 'alvan/vim-closetag'
 Plug 'ziglang/zig.vim'
+Plug 'Tetralux/odin.vim'
 
 call plug#end()
 
@@ -64,6 +69,7 @@ set expandtab
 "" Search
 set ignorecase
 set smartcase
+set signcolumn=yes
 " No search highlighting while in insert mode
 autocmd InsertEnter * :setlocal nohlsearch
 autocmd InsertLeave * :setlocal hlsearch

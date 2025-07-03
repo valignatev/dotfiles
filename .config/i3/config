@@ -8,7 +8,7 @@ set $class_chrome "Google-chrome"
 set $class_pycharm "jetbrains-pycharm"
 
 # It is Super_R, check .Xmodmap
-set $mod Mod5
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -48,8 +48,6 @@ bindsym $mod+Shift+j move down 30px
 bindsym $mod+Shift+k move up 30px
 bindsym $mod+Shift+l move right 30px
 
-bindsym $mod+b splith
-bindsym $mod+v splitv
 # toggle split mode between horizontal/vertical
 bindsym $mod+t split toggle
 
@@ -62,10 +60,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+n floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+n focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
